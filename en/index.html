@@ -80,6 +80,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 .legal-body h2{font-size:1.15rem;margin:1.2rem 0 .5rem;color:var(--accent)}
 .legal-body p,.legal-body li{font-size:.95rem;color:var(--text)}
 .legal-body ul{padding-left:1.2rem;margin:.4rem 0}
+.previews{position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;max-height:320px;overflow:auto}
+.previews a.pv{display:flex;gap:.8rem;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
+.previews a.pv:last-child{border-bottom:none}
+.previews a.pv:hover{background:#eef2ff;text-decoration:none}
+.previews a.pv img{width:64px;height:44px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.previews a.pv strong{display:block;font-size:.95rem;color:var(--text)}
+.previews a.pv span{font-size:.82rem;color:var(--muted)}
 @media(max-width:640px){.pkg{grid-template-columns:1fr}}
 </style>
 </head>
@@ -96,13 +103,14 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 <div class="hero">
   <h1>🎪 Your event, packed & ready</h1>
   <p class="sub">Each event brings together: the ticket, the journey, and hotels within a 15-minute walk. All you have to do is book.</p>
-  <div class="searchbar">
-    <input id="q" type="text" placeholder="Search a festival, a city…" oninput="filterCards()">
+  <div class="searchbar" style="position:relative">
+    <input id="q" type="text" autocomplete="off" placeholder="Search a festival, a city…" oninput="filterCards()" onfocus="openPreviews(this.value)" onblur="setTimeout(closePreviews,150)">
     <select id="r" onchange="filterCards()">
       <option value="">🌍 All regions</option>
       <option value="NA">🌎 North America</option>
       <option value="EU">🌍 Europe</option>
     </select>
+    <div id="previews" class="previews" hidden></div>
   </div>
 </div>
 
@@ -3389,15 +3397,41 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 
 
 <script>
+var CARDS = [].slice.call(document.querySelectorAll('#cards .card'));
+
+function norm(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
 function filterCards(){
-  const q=document.getElementById('q').value.toLowerCase();
+  const q=norm(document.getElementById('q').value);
   const r=document.getElementById('r').value;
-  document.querySelectorAll('#cards .card').forEach(c=>{
-    const okQ=!q || c.dataset.name.includes(q) || c.dataset.city.includes(q);
+  CARDS.forEach(c=>{
+    const okQ=!q || norm(c.dataset.name).includes(q) || norm(c.dataset.city).includes(q);
     const okR=!r || c.dataset.region===r;
     c.style.display=(okQ&&okR)?'':'none';
   });
+  openPreviews(document.getElementById('q').value);
 }
+function openPreviews(v){
+  const box=document.getElementById('previews');
+  if(!box) return;
+  const q=norm(v||'');
+  if(!q){ box.hidden=true; box.innerHTML=''; return; }
+  const r=document.getElementById('r').value;
+  const hits=CARDS.filter(c=>{
+    const okQ=norm(c.dataset.name).includes(q)||norm(c.dataset.city).includes(q);
+    const okR=!r||c.dataset.region===r;
+    return okQ&&okR;
+  }).slice(0,6);
+  if(!hits.length){ box.hidden=true; box.innerHTML=''; return; }
+  box.innerHTML=hits.map(c=>{
+    const img=c.querySelector('.card-img');
+    return '<a class="pv" href="'+c.getAttribute('href')+'">'+
+      (img?'<img src="'+img.getAttribute('src')+'" loading="lazy">':'')+
+      '<div><strong>'+c.querySelector('h3').textContent+'</strong>'+
+      '<span>📍 '+(c.dataset.city||'').replace(/^./,x=>x.toUpperCase())+'</span></div></a>';
+  }).join('');
+  box.hidden=false;
+}
+function closePreviews(){ const box=document.getElementById('previews'); if(box) box.hidden=true; }
 </script>
 
 </main>

@@ -80,6 +80,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 .legal-body h2{font-size:1.15rem;margin:1.2rem 0 .5rem;color:var(--accent)}
 .legal-body p,.legal-body li{font-size:.95rem;color:var(--text)}
 .legal-body ul{padding-left:1.2rem;margin:.4rem 0}
+.previews{position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;max-height:320px;overflow:auto}
+.previews a.pv{display:flex;gap:.8rem;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
+.previews a.pv:last-child{border-bottom:none}
+.previews a.pv:hover{background:#eef2ff;text-decoration:none}
+.previews a.pv img{width:64px;height:44px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.previews a.pv strong{display:block;font-size:.95rem;color:var(--text)}
+.previews a.pv span{font-size:.82rem;color:var(--muted)}
 @media(max-width:640px){.pkg{grid-template-columns:1fr}}
 </style>
 </head>
@@ -128,7 +135,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 2: VOL (séparé, destination préremplie) -->
+<!-- STEP 2: VOL (destination + origine auto par IP, lien construit côté client) -->
 <div class="step" data-step="2">
   <div class="step-head">
     <span class="step-num">2</span>
@@ -136,8 +143,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="2" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   
-  <p class="sub">💡 Destination pre-filled — just pick your flight.</p>
-  <a class="btn main-cta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Ftrip%3DROUNDTRIP%26leg1%3Dfrom%3AYUL%2Cto%3ASt.%2520Petersburg%2Cdeparture%3A2026-08-29TANYTIME%26leg2%3Dfrom%3ASt.%2520Petersburg%2Cto%3AYUL%2Cdeparture%3A2026-08-31TANYTIME&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Choose my flight → St. Petersburg</a>
+  <p class="sub">💡 Departure auto-detected from your location — destination pre-filled.</p>
+  <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Ftrip%3DROUNDTRIP%26leg1%3Dfrom%3AYUL%2Cto%3ASt.%2520Petersburg%2Cdeparture%3A2026-08-29TANYTIME%26leg2%3Dfrom%3ASt.%2520Petersburg%2Cto%3AYUL%2Cdeparture%3A2026-08-31TANYTIME&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Choose my flight → St. Petersburg</a>
   
   
   
@@ -188,6 +195,63 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   🎉 All checked! You're ready to go. Have a great festival!
 </div>
 
+<script>
+/* --- Vol : origine auto par IP + lien Expedia (wrapper affilié, corrigé) --- */
+(function () {
+  var CTA = document.getElementById('flightCta');
+  if (!CTA) return;
+  var dest = "St. Petersburg";
+  // dates ISO: début → fin
+  var dm = ("2026-08-30 \u2192 2026-08-30" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var isEn = "en" === 'en';
+  var CAMREF = "1101l5IQud";
+  var CREATIVEREF = "1100l68075";
+  var ADREF = "PZG6faduu1";
+
+  function makeUrl(origin) {
+    var o = encodeURIComponent(origin || '');
+    var d = encodeURIComponent(dest || '');
+    var landing = 'https://www.expedia.ca/Flights-Search?trip=ROUNDTRIP' +
+      '&leg1=from:' + o + ',to:' + d +
+      (dep ? ',departure:' + dep + 'TANYTIME' : '') +
+      '&leg2=from:' + d + ',to:' + o +
+      (ret ? ',departure:' + ret + 'TANYTIME' : '');
+    // wrapper affilié officiel (camref) — c'est lui qui crédite la commission
+    var base = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + encodeURIComponent(landing);
+    if (CAMREF) base += '&camref=' + encodeURIComponent(CAMREF);
+    if (CREATIVEREF) base += '&creativeref=' + encodeURIComponent(CREATIVEREF);
+    if (ADREF) base += '&adref=' + encodeURIComponent(ADREF);
+    return base;
+  }
+  function setLabel(origin) {
+    var prefix = isEn ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
+    CTA.textContent = prefix + dest + (origin ? '  (✈ ' + origin + ')' : '');
+  }
+  function apply(origin) {
+    CTA.href = makeUrl(origin);
+    setLabel(origin);
+  }
+  // Origine déjà détectée (cache session)
+  var cached = null;
+  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
+  if (cached) { apply(cached); return; }
+  // Origine par IP (géolocalisation)
+  try {
+    fetch('https://ipwho.is/')
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || j.success === false) return;
+        var city = j.city || '';
+        window.__flightOrigin = city;
+        try { sessionStorage.setItem('fp-origin', city); } catch (e) {}
+        apply(city);
+      })
+      .catch(function () {});
+  } catch (e) {}
+})();
+</script>
 <script>
 (function () {
   var total = 4;
