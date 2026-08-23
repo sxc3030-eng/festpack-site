@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fest'Pack">
+<title>Fest'Pack — Festivals & Concerts</title>
+<style>
+:root{--bg:#ffffff;--card:#f5f7fa;--accent:#2563eb;--gold:#0f766e;--text:#1a1a1a;--muted:#5b6472;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{padding:1.4rem 1.2rem;background:#ffffff;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+header .logo{font-size:1.25rem;font-weight:800;letter-spacing:.5px;color:var(--text)}
+header .logo span{color:var(--accent)}
+header .langs{margin-left:auto;display:flex;gap:.5rem}
+header .langs a{color:var(--muted);font-size:.9rem;padding:.2rem .6rem;border:1px solid var(--border);border-radius:99px}
+header .langs a.active{color:var(--text);border-color:var(--accent);background:#eef2ff}
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
+h1{font-size:1.6rem;margin-bottom:.4rem}
+h2{font-size:1.2rem;margin:1.4rem 0 .6rem;color:var(--accent)}
+p.sub{color:var(--muted);margin-bottom:1.2rem}
+.searchbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.searchbar input,.searchbar select{padding:.55rem .8rem;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text);font-size:.95rem}
+.searchbar input{flex:1;min-width:200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+.card{background:var(--card);border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:.4rem;border:1px solid var(--border);transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card-img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:.3rem}
+.hero-img{width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:.8rem}
+.card h3{font-size:1.05rem;color:var(--text)}
+.card .meta{color:var(--muted);font-size:.85rem}
+.card .badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.2rem}
+.badge{font-size:.72rem;padding:.15rem .5rem;border-radius:99px;background:#eef2f7;color:var(--text)}
+.badge.hot{background:#fef3e2;color:#b45309}
+.badge.region{background:#e0f2fe;color:#0369a1}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:8px;font-weight:600;margin-top:.4rem;text-align:center}
+.btn:hover{filter:brightness(1.05);text-decoration:none}
+.btn.alt{background:#eef2f7;color:var(--text)}
+.step{background:var(--card);border-radius:12px;padding:1.1rem;margin:1rem 0;border-left:4px solid var(--accent);border:1px solid var(--border)}
+.step h2{margin-top:0}
+.step .cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+table{width:100%;border-collapse:collapse;margin:.6rem 0}
+th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--border);font-size:.92rem}
+th{color:var(--muted);font-weight:600}
+.transparency{background:#f0fdf4;border-radius:10px;padding:.9rem;font-size:.88rem;color:var(--muted);margin-top:1.2rem;border:1px solid var(--border)}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
+.hero{background:var(--card);border-radius:14px;padding:1.6rem;margin-bottom:1.4rem;border:1px solid var(--border)}
+.hero h1{font-size:1.8rem}
+.hero .meta{color:var(--muted);margin:.4rem 0 1rem}
+.pkg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.6rem}
+.pkg div{background:#fafbfc;border-radius:10px;padding:.9rem;border:1px solid var(--border)}
+@media(max-width:640px){.pkg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🎪 Fest<span>'</span>Pack</div>
+  <div class="langs">
+    <a href="../fr/index.html" class="active">🇫🇷 FR</a>
+    <a href="../en/index.html" class="">🇬🇧 EN</a>
+  </div>
+</header>
+<main>
+
+<div class="hero">
+  <h1>🎪 Ton événement, packé & prêt</h1>
+  <p class="sub">Chaque événement réunit : le billet, le trajet, et les hôtels à moins de 15 min à pied. Tu as juste à réserver.</p>
+  <div class="searchbar">
+    <input id="q" type="text" placeholder="Rechercher un festival, une ville…" oninput="filterCards()">
+    <select id="r" onchange="filterCards()">
+      <option value="">🌍 Toutes les régions</option>
+      <option value="NA">🌎 Amérique du Nord</option>
+      <option value="EU">🌍 Europe</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="grid" id="cards">
+  
+  <a class="card" href="bivouac-festival-festival-dans-la-foret-pass-weekend-du-28-a.html" data-name="bivouac festival–festival dans la foret - pass weekend du 28 au 30 aout 2026" data-city="maisnil-les-ruitz" data-region="EU">
+    <img class="card-img" src="../img/bivouac-festival-festival-dans-la-foret-pass-weekend-du-28-a.jpg" alt="BIVOUAC FESTIVAL–FESTIVAL DANS LA FORET - PASS WEEKEND DU 28 AU 30 AOUT 2026" loading="lazy">
+    <h3>BIVOUAC FESTIVAL–FESTIVAL DANS LA FORET - PASS WEEKEND DU 28 AU 30 AOUT 2026</h3>
+    <div class="meta">📍 Maisnil-Les-Ruitz · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="bivouac-festival-festival-dans-la-foret-vendredi-28-aout-16h.html" data-name="bivouac festival–festival dans la foret - vendredi 28 aout 16h00" data-city="maisnil-les-ruitz" data-region="EU">
+    <img class="card-img" src="../img/bivouac-festival-festival-dans-la-foret-vendredi-28-aout-16h.jpg" alt="BIVOUAC FESTIVAL–FESTIVAL DANS LA FORET - VENDREDI 28 AOUT 16H00" loading="lazy">
+    <h3>BIVOUAC FESTIVAL–FESTIVAL DANS LA FORET - VENDREDI 28 AOUT 16H00</h3>
+    <div class="meta">📍 Maisnil-Les-Ruitz · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="electrolapse-festival.html" data-name="electrolapse festival" data-city="saint sorlin en valloire" data-region="EU">
+    <img class="card-img" src="../img/electrolapse-festival.jpg" alt="ELECTROLAPSE FESTIVAL" loading="lazy">
+    <h3>ELECTROLAPSE FESTIVAL</h3>
+    <div class="meta">📍 Saint Sorlin En Valloire · 🗓️ 2026-08-22 → 2026-08-22</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="eurockéennes.html" data-name="eurockéennes" data-city="sedan" data-region="EU">
+    <img class="card-img" src="../img/eurockéennes.jpg" alt="Eurockéennes" loading="lazy">
+    <h3>Eurockéennes</h3>
+    <div class="meta">📍 Sedan · 🗓️ 2026-07-08 → 2026-07-11</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="festival-attrap-sons-6-3-jours-3-jours.html" data-name="festival attrap'sons #6 - 3 jours - 3 jours" data-city="chatelaudren plouagat" data-region="EU">
+    <img class="card-img" src="../img/festival-attrap-sons-6-3-jours-3-jours.jpg" alt="FESTIVAL ATTRAP'SONS #6 - 3 JOURS - 3 JOURS" loading="lazy">
+    <h3>FESTIVAL ATTRAP'SONS #6 - 3 JOURS - 3 JOURS</h3>
+    <div class="meta">📍 Chatelaudren Plouagat · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="festival-cabaret-vert-1-jour-dimanche.html" data-name="festival cabaret vert - 1 jour - dimanche" data-city="charleville-mezieres" data-region="EU">
+    <img class="card-img" src="../img/festival-cabaret-vert-1-jour-dimanche.jpg" alt="FESTIVAL CABARET VERT - 1 JOUR - DIMANCHE" loading="lazy">
+    <h3>FESTIVAL CABARET VERT - 1 JOUR - DIMANCHE</h3>
+    <div class="meta">📍 Charleville-Mezieres · 🗓️ 2026-08-23 → 2026-08-23</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="festival-cabaret-vert-1-jour-samedi.html" data-name="festival cabaret vert - 1 jour - samedi" data-city="charleville-mezieres" data-region="EU">
+    <img class="card-img" src="../img/festival-cabaret-vert-1-jour-samedi.jpg" alt="FESTIVAL CABARET VERT - 1 JOUR - SAMEDI" loading="lazy">
+    <h3>FESTIVAL CABARET VERT - 1 JOUR - SAMEDI</h3>
+    <div class="meta">📍 Charleville-Mezieres · 🗓️ 2026-08-22 → 2026-08-23</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="festival-drulhe-en-fete-pass-1-jour-matmatah-mpl-cachemire.html" data-name="festival drulhe en fete pass 1 jour - matmatah, mpl, cachemire," data-city="drulhe" data-region="EU">
+    <img class="card-img" src="../img/festival-drulhe-en-fete-pass-1-jour-matmatah-mpl-cachemire.jpg" alt="FESTIVAL DRULHE EN FETE PASS 1 JOUR - MATMATAH, MPL, CACHEMIRE," loading="lazy">
+    <h3>FESTIVAL DRULHE EN FETE PASS 1 JOUR - MATMATAH, MPL, CACHEMIRE,</h3>
+    <div class="meta">📍 Drulhe · 🗓️ 2026-08-22 → 2026-08-22</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="festival-du-roi-arthur-1-jour-pass-1-jour.html" data-name="festival du roi arthur - 1 jour - pass 1 jour" data-city="breal sous montfort" data-region="EU">
+    <img class="card-img" src="../img/festival-du-roi-arthur-1-jour-pass-1-jour.jpg" alt="FESTIVAL DU ROI ARTHUR - 1 JOUR - PASS 1 JOUR" loading="lazy">
+    <h3>FESTIVAL DU ROI ARTHUR - 1 JOUR - PASS 1 JOUR</h3>
+    <div class="meta">📍 Breal Sous Montfort · 🗓️ 2026-08-22 → 2026-08-23</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="festival-les-fanfarfelues-pass-1-jour-festival-les-fanfarfel.html" data-name="festival les fanfarfelues - pass 1 jour - festival les fanfarfelues" data-city="vitre" data-region="EU">
+    <img class="card-img" src="../img/festival-les-fanfarfelues-pass-1-jour-festival-les-fanfarfel.jpg" alt="FESTIVAL LES FANFARFELUES - PASS 1 JOUR - FESTIVAL LES FANFARFELUES" loading="lazy">
+    <h3>FESTIVAL LES FANFARFELUES - PASS 1 JOUR - FESTIVAL LES FANFARFELUES</h3>
+    <div class="meta">📍 Vitre · 🗓️ 2026-08-22 → 2026-08-23</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="francofolies-la-rochelle.html" data-name="francofolies la rochelle" data-city="la rochelle" data-region="EU">
+    <img class="card-img" src="../img/francofolies-la-rochelle.jpg" alt="Francofolies La Rochelle" loading="lazy">
+    <h3>Francofolies La Rochelle</h3>
+    <div class="meta">📍 La Rochelle · 🗓️ 2026-07-08 → 2026-07-12</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="golden-coast-festival-2026-1-jour-golden-coast-festival-2026.html" data-name="golden coast festival 2026 - 1 jour - golden coast festival 2026" data-city="corcelles les monts" data-region="EU">
+    <img class="card-img" src="../img/golden-coast-festival-2026-1-jour-golden-coast-festival-2026.jpg" alt="GOLDEN COAST FESTIVAL 2026 - 1 JOUR - GOLDEN COAST FESTIVAL 2026" loading="lazy">
+    <h3>GOLDEN COAST FESTIVAL 2026 - 1 JOUR - GOLDEN COAST FESTIVAL 2026</h3>
+    <div class="meta">📍 Corcelles Les Monts · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="golden-coast-festival-pass-3-jours-pass-3-jours.html" data-name="golden coast festival - pass 3 jours - pass 3 jours" data-city="corcelles les monts" data-region="EU">
+    <img class="card-img" src="../img/golden-coast-festival-pass-3-jours-pass-3-jours.jpg" alt="GOLDEN COAST FESTIVAL - PASS 3 JOURS - PASS 3 JOURS" loading="lazy">
+    <h3>GOLDEN COAST FESTIVAL - PASS 3 JOURS - PASS 3 JOURS</h3>
+    <div class="meta">📍 Corcelles Les Monts · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="golden-coast-festival-vendredi-dimanche-pass-2-jours.html" data-name="golden coast festival -vendredi dimanche - pass 2 jours" data-city="corcelles les monts" data-region="EU">
+    <img class="card-img" src="../img/golden-coast-festival-vendredi-dimanche-pass-2-jours.jpg" alt="GOLDEN COAST FESTIVAL -VENDREDI DIMANCHE - PASS 2 JOURS" loading="lazy">
+    <h3>GOLDEN COAST FESTIVAL -VENDREDI DIMANCHE - PASS 2 JOURS</h3>
+    <div class="meta">📍 Corcelles Les Monts · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="golden-coast-festival-vendredi-samedi-pass-2-jours.html" data-name="golden coast festival - vendredi samedi - pass 2 jours" data-city="corcelles les monts" data-region="EU">
+    <img class="card-img" src="../img/golden-coast-festival-vendredi-samedi-pass-2-jours.jpg" alt="GOLDEN COAST FESTIVAL - VENDREDI SAMEDI - PASS 2 JOURS" loading="lazy">
+    <h3>GOLDEN COAST FESTIVAL - VENDREDI SAMEDI - PASS 2 JOURS</h3>
+    <div class="meta">📍 Corcelles Les Monts · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="hellfest-2026.html" data-name="hellfest 2026" data-city="clisson" data-region="EU">
+    <img class="card-img" src="../img/hellfest-2026.jpg" alt="Hellfest 2026" loading="lazy">
+    <h3>Hellfest 2026</h3>
+    <div class="meta">📍 Clisson · 🗓️ 2026-06-18 → 2026-06-21</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="les-printemps-de-bourges.html" data-name="les printemps de bourges" data-city="bourges" data-region="EU">
+    <img class="card-img" src="../img/les-printemps-de-bourges.jpg" alt="Les Printemps de Bourges" loading="lazy">
+    <h3>Les Printemps de Bourges</h3>
+    <div class="meta">📍 Bourges · 🗓️ 2026-04-21 → 2026-04-26</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="les-vieilles-charrues.html" data-name="les vieilles charrues" data-city="carhaix" data-region="EU">
+    <img class="card-img" src="../img/les-vieilles-charrues.jpg" alt="Les Vieilles Charrues" loading="lazy">
+    <h3>Les Vieilles Charrues</h3>
+    <div class="meta">📍 Carhaix · 🗓️ 2026-07-16 → 2026-07-19</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="main-square-festival.html" data-name="main square festival" data-city="arras" data-region="EU">
+    <img class="card-img" src="../img/main-square-festival.jpg" alt="Main Square Festival" loading="lazy">
+    <h3>Main Square Festival</h3>
+    <div class="meta">📍 Arras · 🗓️ 2026-07-03 → 2026-07-05</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="pagaille-festival-pass-vendredi.html" data-name="pagaille festival - pass vendredi" data-city="bordeaux" data-region="EU">
+    
+    <h3>PAGAILLE FESTIVAL - PASS VENDREDI</h3>
+    <div class="meta">📍 Bordeaux · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="rock-en-seine.html" data-name="rock en seine" data-city="paris" data-region="EU">
+    <img class="card-img" src="../img/rock-en-seine.jpg" alt="Rock en Seine" loading="lazy">
+    <h3>Rock en Seine</h3>
+    <div class="meta">📍 Paris · 🗓️ 2026-08-27 → 2026-08-30</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="rose-festival-2026-pass-jeudi.html" data-name="rose festival 2026 - pass jeudi" data-city="aussonne" data-region="EU">
+    <img class="card-img" src="../img/rose-festival-2026-pass-jeudi.jpg" alt="ROSE FESTIVAL 2026 - PASS JEUDI" loading="lazy">
+    <h3>ROSE FESTIVAL 2026 - PASS JEUDI</h3>
+    <div class="meta">📍 Aussonne · 🗓️ 2026-08-27 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="rose-festival-2026-pass-vendredi.html" data-name="rose festival 2026 - pass vendredi" data-city="aussonne" data-region="EU">
+    <img class="card-img" src="../img/rose-festival-2026-pass-vendredi.jpg" alt="ROSE FESTIVAL 2026 - PASS VENDREDI" loading="lazy">
+    <h3>ROSE FESTIVAL 2026 - PASS VENDREDI</h3>
+    <div class="meta">📍 Aussonne · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="solidays.html" data-name="solidays" data-city="paris" data-region="EU">
+    <img class="card-img" src="../img/solidays.jpg" alt="Solidays" loading="lazy">
+    <h3>Solidays</h3>
+    <div class="meta">📍 Paris · 🗓️ 2026-06-26 → 2026-06-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="touquet-music-beach-festival-pass-2-jour-pass-2-jours.html" data-name="touquet music beach festival-pass 2 jour - pass 2 jours" data-city="le touquet paris plage" data-region="EU">
+    <img class="card-img" src="../img/touquet-music-beach-festival-pass-2-jour-pass-2-jours.jpg" alt="TOUQUET MUSIC BEACH FESTIVAL-PASS 2 JOUR - PASS 2 JOURS" loading="lazy">
+    <h3>TOUQUET MUSIC BEACH FESTIVAL-PASS 2 JOUR - PASS 2 JOURS</h3>
+    <div class="meta">📍 Le Touquet Paris Plage · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+  <a class="card" href="touquet-music-beach-festival-vendredi-touquet-music-beach-fe.html" data-name="touquet music beach festival-vendredi - touquet music beach festival" data-city="le touquet paris plage" data-region="EU">
+    
+    <h3>TOUQUET MUSIC BEACH FESTIVAL-VENDREDI - TOUQUET MUSIC BEACH FESTIVAL</h3>
+    <div class="meta">📍 Le Touquet Paris Plage · 🗓️ 2026-08-28 → 2026-08-28</div>
+    <div class="badges">
+      <span class="badge region">🌍 Europe</span>
+      <span class="badge">✈️ Vol</span>
+      
+      <span class="badge">🎟️ Billet</span>
+    </div>
+    <span class="btn">Voir le guide</span>
+  </a>
+  
+</div>
+
+
+<script>
+function filterCards(){
+  const q=document.getElementById('q').value.toLowerCase();
+  const r=document.getElementById('r').value;
+  document.querySelectorAll('#cards .card').forEach(c=>{
+    const okQ=!q || c.dataset.name.includes(q) || c.dataset.city.includes(q);
+    const okR=!r || c.dataset.region===r;
+    c.style.display=(okQ&&okR)?'':'none';
+  });
+}
+</script>
+
+</main>
+<footer>💡 En passant par mes liens, tu paies exactement le même prix — le site me reverse juste une petite commission qui finance mes recherches. Merci !</footer>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
