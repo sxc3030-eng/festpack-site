@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Fest'Pack">
-<title>Exemple : Concert à Bordeaux — Guide complet</title>
+<title>Exemple : Concert à Bordeaux — Ton plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -52,6 +52,19 @@ p.sub{color:var(--muted);margin-bottom:1.2rem}
 .step{background:var(--card);border-radius:12px;padding:1.1rem;margin:1rem 0;border-left:4px solid var(--accent);border:1px solid var(--border)}
 .step h2{margin-top:0}
 .step .cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.step-head{display:flex;align-items:center;gap:.7rem}
+.step-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.step.locked{opacity:.55;border-left-color:#94a3b8}
+.check{display:inline-flex;align-items:center;gap:.35rem;margin-left:auto;cursor:pointer;user-select:none}
+.check input{width:20px;height:20px;accent-color:var(--gold);cursor:pointer}
+.check input:disabled{cursor:not-allowed;opacity:.35}
+.check span{font-weight:700;color:var(--gold)}
+.progress-wrap{display:flex;align-items:center;gap:.8rem;margin:1rem 0 .4rem}
+.progress{flex:1;height:10px;background:#e2e8f0;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#0f766e);transition:width .35s ease}
+.progress-label{font-weight:700;color:var(--muted);font-size:.9rem;min-width:2.5rem;text-align:right}
+.done{background:#f0fdf4;border:1px solid #86efac;color:#14532d;border-radius:12px;padding:1rem;font-weight:700;text-align:center;margin-top:1rem}
+.small{font-size:.85rem;color:var(--muted);margin-top:.5rem}
 table{width:100%;border-collapse:collapse;margin:.6rem 0}
 th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--border);font-size:.92rem}
 th{color:var(--muted);font-weight:600}
@@ -76,6 +89,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 <main>
 
 
+
+
+
+
+
+
+
 <div class="hero">
   
   
@@ -84,38 +104,54 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <p class="sub">Le guide complet pour vivre ce concert à Bordeaux</p>
 </div>
 
+<!-- Progress bar -->
+<div class="progress-wrap">
+  <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0/4</div>
+</div>
 
-<div class="step">
-  <h2>1️⃣ Le Billet (la priorité)</h2>
-  <p>💬 <em>N'achète rien d'autre tant que tu n'as pas ça.</em></p>
-  <div class="cta">
-    <a class="btn" href="https://www.ticketmaster.fr/lien-deep-a-completer" target="_blank" rel="nofollow sponsored">🎟️ Acheter sur Ticketmaster</a>
-    
-    <a class="btn alt" href="https://www.viagogo.fr/recherche?q=exemple" target="_blank" rel="nofollow sponsored">🔄 Revente sécurisée</a>
-    
+<!-- STEP 1 : BILLET -->
+<div class="step" data-step="1">
+  <div class="step-head">
+    <span class="step-num">1</span>
+    <h2>🎟️ Réserve le billet</h2>
+    <label class="check"><input type="checkbox" data-check="1" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
+  <p class="sub">D'abord le billet — ne réserve pas ton voyage avant de l'avoir.</p>
+  
+  <a class="btn" href="https://www.ticketmaster.fr/lien-deep-a-completer" target="_blank" rel="nofollow sponsored">🎟️ Acheter le billet →</a>
+  
+  
+  <a class="btn alt" href="https://www.viagogo.fr/recherche?q=exemple" target="_blank" rel="nofollow sponsored">🔄 Revente</a>
+  
 </div>
 
-
-
-<div class="step">
-  <h2>2️⃣ Le Transport + l'Hôtel (un seul booking)</h2>
+<!-- STEP 2: TRANSPORT -->
+<div class="step" data-step="2">
+  <div class="step-head">
+    <span class="step-num">2</span>
+    <h2>✈️ Réserve le transport</h2>
+    <label class="check"><input type="checkbox" data-check="2" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
   
   
-  
-  <p>✈️ <a href="https://www.expedia.fr/FlightsSearch?origin=PAR&destination=BOD&startDate=2026-07-24&endDate=2026-07-26&pid={PID}&eapid={EAPID}" target="_blank" rel="nofollow sponsored">Vol uniquement vers Bordeaux</a></p>
-  
+  <a class="btn alt" href="https://www.expedia.fr/FlightsSearch?origin=PAR&destination=BOD&startDate=2026-07-24&endDate=2026-07-26&pid={PID}&eapid={EAPID}" target="_blank" rel="nofollow sponsored">✈️ Vol seul → Bordeaux</a>
   
   
-  <p>🚆 <a href="https://www.omio.fr/train/paris-bordeaux" target="_blank" rel="nofollow sponsored">Train / bus</a></p>
+  <a class="btn alt" href="https://www.omio.fr/train/paris-bordeaux" target="_blank" rel="nofollow sponsored">🚆 Train / bus</a>
   
-  <p>🛬 Aéroport conseillé : Aéroport Bordeaux-Mérignac (BOD)</p>
-  <p>🚌 Sur place : Ligne A du tram — direct vers l'Aréna</p>
+  <p class="small">🛬 Aéroport : Aéroport Bordeaux-Mérignac (BOD)</p>
 </div>
 
-
-<div class="step">
-  <h2>3️⃣ L'Hôtel (à moins de 15 min à pied)</h2>
+<!-- STEP 3: HÔTEL -->
+<div class="step" data-step="3">
+  <div class="step-head">
+    <span class="step-num">3</span>
+    <h2>🏨 Réserve l'hôtel</h2>
+    <label class="check"><input type="checkbox" data-check="3" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  
+  
   
   <table>
     <tr><th>Hôtel</th><th>À pied</th><th>Note</th><th></th></tr>
@@ -145,30 +181,88 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
+<!-- STEP 4: PACKAGES (optionnel) -->
 
-<div class="step">
-  <h2>👛 Deux façons de le vivre</h2>
+<div class="step" data-step="4">
+  <div class="step-head">
+    <span class="step-num">4</span>
+    <h2>👛 Ton vibe</h2>
+    <label class="check"><input type="checkbox" data-check="4" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
   <div class="pkg">
     <div>
       <strong>🎒 Backpacker</strong>
       <p class="sub">Auberge de jeunesse à 10 min du centre</p>
-      <p class="sub">Bus long-courrier + tram</p>
-      <p><strong>60 €</strong></p>
       
     </div>
     <div>
       <strong>💎 VIP / Confort</strong>
       <p class="sub">Hôtel 4★ avec spa, à 5 min à pied</p>
-      <p class="sub">Vol direct + transfert</p>
-      <p><strong>250 €</strong></p>
       
     </div>
   </div>
 </div>
 
-<div class="transparency">
-  💡 <em>En passant par mes liens, tu paies exactement le même prix — le site me reverse juste une petite commission qui finance mes recherches. Merci !</em>
+
+<div class="done" id="doneBanner" hidden>
+  🎉 Tout est coché ! Tu es prêt·e. Profite du festival !
 </div>
+
+<script>
+(function () {
+  var total = 4;
+  var key = 'festpack-done-' + 'exemple-:-concert-à-bordeaux';
+
+  function boxes() {
+    return [].slice.call(document.querySelectorAll('input[data-check]'));
+  }
+
+  function count() {
+    var bs = boxes();
+    var done = bs.filter(function (b) { return b.checked; }).length;
+    var tot = total; // toujours le total d'étapes (pas les contrôles verrouillés)
+    var fill = document.getElementById('progressFill');
+    var label = document.getElementById('progressLabel');
+    var banner = document.getElementById('doneBanner');
+    if (fill) fill.style.width = Math.round((done / tot) * 100) + '%';
+    if (label) label.textContent = done + '/' + tot;
+    if (banner) banner.hidden = done < tot;
+  }
+
+  function unlockSteps() {
+    [].slice.call(document.querySelectorAll('.step[data-step]')).forEach(function (s) {
+      var n = parseInt(s.getAttribute('data-step'), 10);
+      var check = s.querySelector('input[data-check]');
+      if (!check) return;
+      var prev = true;
+      for (var i = 1; i < n; i++) {
+        var p = document.querySelector('input[data-check="' + i + '"]');
+        if (p && !p.checked) { prev = false; break; }
+      }
+      check.disabled = !prev;
+      s.classList.toggle('locked', !prev);
+    });
+  }
+
+  window.handleChange = function () {
+    var arr = boxes().map(function (b) { return b.checked && !b.disabled ? 1 : 0; });
+    try { localStorage.setItem(key, JSON.stringify(arr)); } catch (e) {}
+    count();
+    unlockSteps();
+  };
+
+  // restore
+  try {
+    var saved = JSON.parse(localStorage.getItem(key) || '[]');
+    boxes().forEach(function (b, i) {
+      if (i < saved.length && saved[i] === 1) b.checked = true;
+    });
+  } catch (e) {}
+
+  unlockSteps();
+  count();
+})();
+</script>
 
 </main>
 <footer>💡 En passant par mes liens, tu paies exactement le même prix — le site me reverse juste une petite commission qui finance mes recherches. Merci !</footer>

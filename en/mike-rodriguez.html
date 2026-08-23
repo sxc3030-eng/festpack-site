@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Fest'Pack">
-<title>Mike Rodriguez — Complete guide</title>
+<title>Mike Rodriguez — Your plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -52,6 +52,19 @@ p.sub{color:var(--muted);margin-bottom:1.2rem}
 .step{background:var(--card);border-radius:12px;padding:1.1rem;margin:1rem 0;border-left:4px solid var(--accent);border:1px solid var(--border)}
 .step h2{margin-top:0}
 .step .cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.step-head{display:flex;align-items:center;gap:.7rem}
+.step-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.step.locked{opacity:.55;border-left-color:#94a3b8}
+.check{display:inline-flex;align-items:center;gap:.35rem;margin-left:auto;cursor:pointer;user-select:none}
+.check input{width:20px;height:20px;accent-color:var(--gold);cursor:pointer}
+.check input:disabled{cursor:not-allowed;opacity:.35}
+.check span{font-weight:700;color:var(--gold)}
+.progress-wrap{display:flex;align-items:center;gap:.8rem;margin:1rem 0 .4rem}
+.progress{flex:1;height:10px;background:#e2e8f0;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#2563eb,#0f766e);transition:width .35s ease}
+.progress-label{font-weight:700;color:var(--muted);font-size:.9rem;min-width:2.5rem;text-align:right}
+.done{background:#f0fdf4;border:1px solid #86efac;color:#14532d;border-radius:12px;padding:1rem;font-weight:700;text-align:center;margin-top:1rem}
+.small{font-size:.85rem;color:var(--muted);margin-top:.5rem}
 table{width:100%;border-collapse:collapse;margin:.6rem 0}
 th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--border);font-size:.92rem}
 th{color:var(--muted);font-weight:600}
@@ -76,6 +89,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 <main>
 
 
+
+
+
+
+
+
+
 <div class="hero">
   
   
@@ -84,72 +104,146 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <p class="sub">Le guide complet pour vivre Mike Rodriguez</p>
 </div>
 
+<!-- Progress bar -->
+<div class="progress-wrap">
+  <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0/4</div>
+</div>
 
-<div class="step">
-  <h2>1️⃣ The Ticket (priority)</h2>
-  <p>💬 <em>Don't buy anything else until you have this.</em></p>
-  <div class="cta">
-    <a class="btn" href="https://www.ticketmaster.com/mike-rodriguez-norfolk-virginia-09-26-2026/event/01006507962DB3DA" target="_blank" rel="nofollow sponsored">🎟️ Buy on Billetterie officielle</a>
-    
+<!-- STEP 1 : BILLET -->
+<div class="step" data-step="1">
+  <div class="step-head">
+    <span class="step-num">1</span>
+    <h2>🎟️ Book the ticket</h2>
+    <label class="check"><input type="checkbox" data-check="1" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-</div>
-
-
-
-<div class="step">
-  <h2>2️⃣ Transport & Stay (one booking!)</h2>
+  <p class="sub">First things first — don't book travel before you have your ticket.</p>
   
-  
-  <p>✈️🏨 <a class="btn main-cta" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2Fgo%2Fpackage%2Fsearch%2FFlightHotel%2F2026-09-25%2F2026-09-27%3FFromAirport%3DNYC%26Destination%3DNorfolk%26NumAdult%3D2%26load%3D1&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔥 Book Flight + Hotel together → Norfolk</a></p>
-  <p class="sub">One search, same dates, synchronized — best price guaranteed by Expedia.</p>
-  
-  
-  <p>✈️ <a href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FFlights-Search%3Ftrip%3DROUNDTRIP%26leg1%3Dfrom%3ANYC%2Cto%3ANorfolk%2Cdeparture%3A2026-09-25TANYTIME%26leg2%3Dfrom%3ANorfolk%2Cto%3ANYC%2Cdeparture%3A2026-09-27TANYTIME&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">Flight only to Norfolk</a></p>
-  
-  
-  <p>🏨 <a href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DNorfolk%26startDate%3D2026-09-26%26endDate%3D2026-09-26&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">Hotel only near Norfolk</a></p>
-  
-  
+  <a class="btn" href="https://www.ticketmaster.com/mike-rodriguez-norfolk-virginia-09-26-2026/event/01006507962DB3DA" target="_blank" rel="nofollow sponsored">🎟️ Get the ticket →</a>
   
   
 </div>
 
-
-<div class="step">
-  <h2>3️⃣ The Hotel (within 15 min walk)</h2>
+<!-- STEP 2: TRANSPORT -->
+<div class="step" data-step="2">
+  <div class="step-head">
+    <span class="step-num">2</span>
+    <h2>✈️ Book transport</h2>
+    <label class="check"><input type="checkbox" data-check="2" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
   
-  <p class="sub">🏨 Hotels for this event are being added — check Expedia near Norfolk.</p>
+  <p class="sub">💡 Flight + hotel together — same dates, one booking.</p>
+  <a class="btn main-cta" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2Fgo%2Fpackage%2Fsearch%2FFlightHotel%2F2026-09-25%2F2026-09-27%3FFromAirport%3DNYC%26Destination%3DNorfolk%26NumAdult%3D2%26load%3D1&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔥 Flight + Hotel → Norfolk</a>
+  
+  
+  <a class="btn alt" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FFlights-Search%3Ftrip%3DROUNDTRIP%26leg1%3Dfrom%3ANYC%2Cto%3ANorfolk%2Cdeparture%3A2026-09-25TANYTIME%26leg2%3Dfrom%3ANorfolk%2Cto%3ANYC%2Cdeparture%3A2026-09-27TANYTIME&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Flight only → Norfolk</a>
+  
+  
   
 </div>
 
+<!-- STEP 3: HÔTEL -->
+<div class="step" data-step="3">
+  <div class="step-head">
+    <span class="step-num">3</span>
+    <h2>🏨 Book your stay</h2>
+    <label class="check"><input type="checkbox" data-check="3" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  
+  <a class="btn alt" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DNorfolk%26startDate%3D2026-09-26%26endDate%3D2026-09-26&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Hotel near Norfolk</a>
+  
+  
+  <p class="small">💡 Already covered by the Flight + Hotel link in step 2.</p>
+  
+  
+</div>
 
-<div class="step">
-  <h2>👛 Two ways to experience it</h2>
+<!-- STEP 4: PACKAGES (optionnel) -->
+
+<div class="step" data-step="4">
+  <div class="step-head">
+    <span class="step-num">4</span>
+    <h2>👛 Pick your vibe</h2>
+    <label class="check"><input type="checkbox" data-check="4" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
   <div class="pkg">
     <div>
       <strong>🎒 Backpacker</strong>
       <p class="sub">Auberge/hôtel budget à Norfolk</p>
-      <p class="sub">Bus/Train + hôtel 1-2★</p>
-      <p><strong>à partir de ...</strong></p>
       
-      <a class="btn" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DNorfolk%26startDate%3D2026-09-26%26endDate%3D2026-09-26%26stars%3D1%2C2&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔎 See the budget options</a>
+      <a class="btn" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DNorfolk%26startDate%3D2026-09-26%26endDate%3D2026-09-26%26stars%3D1%2C2&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔎 Budget options</a>
       
     </div>
     <div>
       <strong>💎 VIP / Comfort</strong>
       <p class="sub">Hôtel 4-5★ proche de Norfolk</p>
-      <p class="sub">Vol + transfert + hôtel 4★</p>
-      <p><strong>à partir de ...</strong></p>
       
-      <a class="btn" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DNorfolk%26startDate%3D2026-09-26%26endDate%3D2026-09-26%26stars%3D4%2C5&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔎 See the VIP options</a>
+      <a class="btn" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DNorfolk%26startDate%3D2026-09-26%26endDate%3D2026-09-26%26stars%3D4%2C5&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔎 VIP options</a>
       
     </div>
   </div>
 </div>
 
-<div class="transparency">
-  💡 <em>By using my links, you pay exactly the same price — the site just gives me a small commission that funds my research. Thanks!</em>
+
+<div class="done" id="doneBanner" hidden>
+  🎉 All checked! You're ready to go. Have a great festival!
 </div>
+
+<script>
+(function () {
+  var total = 4;
+  var key = 'festpack-done-' + 'mike-rodriguez';
+
+  function boxes() {
+    return [].slice.call(document.querySelectorAll('input[data-check]'));
+  }
+
+  function count() {
+    var bs = boxes();
+    var done = bs.filter(function (b) { return b.checked; }).length;
+    var tot = total; // toujours le total d'étapes (pas les contrôles verrouillés)
+    var fill = document.getElementById('progressFill');
+    var label = document.getElementById('progressLabel');
+    var banner = document.getElementById('doneBanner');
+    if (fill) fill.style.width = Math.round((done / tot) * 100) + '%';
+    if (label) label.textContent = done + '/' + tot;
+    if (banner) banner.hidden = done < tot;
+  }
+
+  function unlockSteps() {
+    [].slice.call(document.querySelectorAll('.step[data-step]')).forEach(function (s) {
+      var n = parseInt(s.getAttribute('data-step'), 10);
+      var check = s.querySelector('input[data-check]');
+      if (!check) return;
+      var prev = true;
+      for (var i = 1; i < n; i++) {
+        var p = document.querySelector('input[data-check="' + i + '"]');
+        if (p && !p.checked) { prev = false; break; }
+      }
+      check.disabled = !prev;
+      s.classList.toggle('locked', !prev);
+    });
+  }
+
+  window.handleChange = function () {
+    var arr = boxes().map(function (b) { return b.checked && !b.disabled ? 1 : 0; });
+    try { localStorage.setItem(key, JSON.stringify(arr)); } catch (e) {}
+    count();
+    unlockSteps();
+  };
+
+  // restore
+  try {
+    var saved = JSON.parse(localStorage.getItem(key) || '[]');
+    boxes().forEach(function (b, i) {
+      if (i < saved.length && saved[i] === 1) b.checked = true;
+    });
+  } catch (e) {}
+
+  unlockSteps();
+  count();
+})();
+</script>
 
 </main>
 <footer>💡 By using my links, you pay exactly the same price — the site just gives me a small commission that funds my research. Thanks!</footer>
