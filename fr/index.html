@@ -24,9 +24,20 @@ a:hover{text-decoration:underline}
 header{padding:1.4rem 1.2rem;background:#ffffff;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.06)}
 header .logo{font-size:1.25rem;font-weight:800;letter-spacing:.5px;color:var(--text)}
 header .logo span{color:var(--accent)}
+header .menu{display:flex;gap:1rem;margin-left:.6rem}
+header .menu a{color:var(--muted);font-size:.92rem;font-weight:600;padding:.3rem .7rem;border-radius:8px}
+header .menu a:hover{background:#eef2ff;color:var(--accent);text-decoration:none}
 header .langs{margin-left:auto;display:flex;gap:.5rem}
 header .langs a{color:var(--muted);font-size:.9rem;padding:.2rem .6rem;border:1px solid var(--border);border-radius:99px}
 header .langs a.active{color:var(--text);border-color:var(--accent);background:#eef2ff}
+.burger{display:none;background:none;border:1px solid var(--border);border-radius:8px;font-size:1.2rem;padding:.25rem .6rem;cursor:pointer;color:var(--accent)}
+@media(max-width:700px){
+  header .burger{display:block;order:2;margin-left:auto}
+  header .langs{order:3;margin-left:0}
+  header .menu{display:none;order:4;width:100%;flex-direction:column;gap:.2rem;padding:.4rem 0;border-top:1px solid var(--border);margin-top:.4rem}
+  header .menu.open{display:flex}
+  header .menu a{padding:.6rem .7rem}
+}
 main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
 h1{font-size:1.6rem;margin-bottom:.4rem}
 h2{font-size:1.2rem;margin:1.4rem 0 .6rem;color:var(--accent)}
@@ -81,6 +92,21 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 .legal-body p,.legal-body li{font-size:.95rem;color:var(--text)}
 .legal-body ul{padding-left:1.2rem;margin:.4rem 0}
 .previews{position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;max-height:320px;overflow:auto}
+.tl{display:flex;flex-direction:column;gap:1.2rem;margin-top:.6rem}
+.tl-month{display:flex;gap:.9rem;position:relative}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.35rem;box-shadow:0 0 0 4px #eef2ff}
+.tl-month:not(:last-child)::before{content:'';position:absolute;left:6px;top:1.1rem;bottom:-1.2rem;width:2px;background:var(--border)}
+.tl-body{flex:1;min-width:0}
+.tl-header{font-weight:800;color:var(--accent);margin-bottom:.4rem}
+.tl-event{display:flex;gap:.7rem;align-items:center;padding:.45rem 0;color:var(--text)!important}
+.tl-event:hover{text-decoration:none;color:var(--accent)!important}
+.tl-event img{width:56px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.tl-event strong{display:block;font-size:.95rem}
+.tl-event span{font-size:.8rem;color:var(--muted)}
+@media(max-width:640px){.tl-dot{display:none}.tl-month::before{display:none}}
+.breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.breadcrumb a{color:var(--accent)}
+.backlink{display:inline-block;margin:1.2rem 0 0;font-weight:600;color:var(--accent)}
 .previews a.pv{display:flex;gap:.8rem;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
 .previews a.pv:last-child{border-bottom:none}
 .previews a.pv:hover{background:#eef2ff;text-decoration:none}
@@ -92,7 +118,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 </head>
 <body>
 <header>
-  <div class="logo">🎪 Fest<span>'</span>Pack</div>
+  <div class="logo"><a href="../fr/index.html" style="color:inherit;text-decoration:none">🎪 Fest<span>'</span>Pack</a></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">☰</button>
+  <nav class="menu" id="mainMenu">
+    <a href="../fr/index.html">Accueil</a>
+    <a href="../fr/index.html#timeline">Timeline</a>
+    <a href="mailto:festivalpacktravel@gmail.com">Contact</a>
+  </nav>
   <div class="langs">
     <a href="../fr/index.html" class="active">🇫🇷 FR</a>
     <a href="../en/index.html" class="">🇬🇧 EN</a>
@@ -3396,6 +3428,2071 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 </div>
 
 
+<!-- TIMELINE : tous les événements, triés par date -->
+<section id="timeline" style="margin-top:2.5rem">
+  <h2>📅 Timeline des événements</h2>
+  <p class="sub">Ordre chronologique — planifie ta saison d'un coup d'œil.</p>
+  <div class="tl" id="tlBox">
+    
+    <div class="tl-month">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-header">Avril 2026</div>
+        
+        <a class="tl-event" href="les-printemps-de-bourges.html">
+          <img src="../img/les-printemps-de-bourges.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Les Printemps de Bourges</strong>
+            <span>📅 2026-04-21 → 2026-04-26 · 📍 Bourges</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="tl-month">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-header">Juin 2026</div>
+        
+        <a class="tl-event" href="hellfest-2026.html">
+          <img src="../img/hellfest-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Hellfest 2026</strong>
+            <span>📅 2026-06-18 → 2026-06-21 · 📍 Clisson</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="solidays.html">
+          <img src="../img/solidays.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Solidays</strong>
+            <span>📅 2026-06-26 → 2026-06-28 · 📍 Paris</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="tl-month">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-header">Juillet 2026</div>
+        
+        <a class="tl-event" href="main-square-festival.html">
+          <img src="../img/main-square-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Main Square Festival</strong>
+            <span>📅 2026-07-03 → 2026-07-05 · 📍 Arras</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="eurockéennes.html">
+          <img src="../img/eurockéennes.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Eurockéennes</strong>
+            <span>📅 2026-07-08 → 2026-07-11 · 📍 Sedan</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="francofolies-la-rochelle.html">
+          <img src="../img/francofolies-la-rochelle.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Francofolies La Rochelle</strong>
+            <span>📅 2026-07-08 → 2026-07-12 · 📍 La Rochelle</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="les-vieilles-charrues.html">
+          <img src="../img/les-vieilles-charrues.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Les Vieilles Charrues</strong>
+            <span>📅 2026-07-16 → 2026-07-19 · 📍 Carhaix</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="tl-month">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-header">Août 2026</div>
+        
+        <a class="tl-event" href="electrolapse-festival.html">
+          <img src="../img/electrolapse-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>ELECTROLAPSE FESTIVAL</strong>
+            <span>📅 2026-08-22 → 2026-08-22 · 📍 Saint Sorlin En Valloire</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="festival-cabaret-vert-1-jour-samedi.html">
+          <img src="../img/festival-cabaret-vert-1-jour-samedi.jpg" loading="lazy" alt="">
+          <div>
+            <strong>FESTIVAL CABARET VERT - 1 JOUR - SAMEDI</strong>
+            <span>📅 2026-08-22 → 2026-08-23 · 📍 Charleville-Mezieres</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="festival-drulhe-en-fete-pass-1-jour-matmatah-mpl-cachemire.html">
+          <img src="../img/festival-drulhe-en-fete-pass-1-jour-matmatah-mpl-cachemire.jpg" loading="lazy" alt="">
+          <div>
+            <strong>FESTIVAL DRULHE EN FETE PASS 1 JOUR - MATMATAH, MPL, CACHEMIRE,</strong>
+            <span>📅 2026-08-22 → 2026-08-22 · 📍 Drulhe</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="festival-du-roi-arthur-1-jour-pass-1-jour.html">
+          <img src="../img/festival-du-roi-arthur-1-jour-pass-1-jour.jpg" loading="lazy" alt="">
+          <div>
+            <strong>FESTIVAL DU ROI ARTHUR - 1 JOUR - PASS 1 JOUR</strong>
+            <span>📅 2026-08-22 → 2026-08-23 · 📍 Breal Sous Montfort</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="festival-les-fanfarfelues-pass-1-jour-festival-les-fanfarfel.html">
+          <img src="../img/festival-les-fanfarfelues-pass-1-jour-festival-les-fanfarfel.jpg" loading="lazy" alt="">
+          <div>
+            <strong>FESTIVAL LES FANFARFELUES - PASS 1 JOUR - FESTIVAL LES FANFARFELUES</strong>
+            <span>📅 2026-08-22 → 2026-08-23 · 📍 Vitre</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="festival-cabaret-vert-1-jour-dimanche.html">
+          <img src="../img/festival-cabaret-vert-1-jour-dimanche.jpg" loading="lazy" alt="">
+          <div>
+            <strong>FESTIVAL CABARET VERT - 1 JOUR - DIMANCHE</strong>
+            <span>📅 2026-08-23 → 2026-08-23 · 📍 Charleville-Mezieres</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="rock-en-seine.html">
+          <img src="../img/rock-en-seine.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Rock en Seine</strong>
+            <span>📅 2026-08-27 → 2026-08-30 · 📍 Paris</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="rose-festival-2026-pass-jeudi.html">
+          <img src="../img/rose-festival-2026-pass-jeudi.jpg" loading="lazy" alt="">
+          <div>
+            <strong>ROSE FESTIVAL 2026 - PASS JEUDI</strong>
+            <span>📅 2026-08-27 → 2026-08-28 · 📍 Aussonne</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="bivouac-festival-festival-dans-la-foret-pass-weekend-du-28-a.html">
+          <img src="../img/bivouac-festival-festival-dans-la-foret-pass-weekend-du-28-a.jpg" loading="lazy" alt="">
+          <div>
+            <strong>BIVOUAC FESTIVAL–FESTIVAL DANS LA FORET - PASS WEEKEND DU 28 AU 30 AOUT 2026</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Maisnil-Les-Ruitz</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="bivouac-festival-festival-dans-la-foret-vendredi-28-aout-16h.html">
+          <img src="../img/bivouac-festival-festival-dans-la-foret-vendredi-28-aout-16h.jpg" loading="lazy" alt="">
+          <div>
+            <strong>BIVOUAC FESTIVAL–FESTIVAL DANS LA FORET - VENDREDI 28 AOUT 16H00</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Maisnil-Les-Ruitz</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="festival-attrap-sons-6-3-jours-3-jours.html">
+          <img src="../img/festival-attrap-sons-6-3-jours-3-jours.jpg" loading="lazy" alt="">
+          <div>
+            <strong>FESTIVAL ATTRAP'SONS #6 - 3 JOURS - 3 JOURS</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Chatelaudren Plouagat</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="golden-coast-festival-2026-1-jour-golden-coast-festival-2026.html">
+          <img src="../img/golden-coast-festival-2026-1-jour-golden-coast-festival-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>GOLDEN COAST FESTIVAL 2026 - 1 JOUR - GOLDEN COAST FESTIVAL 2026</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Corcelles Les Monts</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="golden-coast-festival-pass-3-jours-pass-3-jours.html">
+          <img src="../img/golden-coast-festival-pass-3-jours-pass-3-jours.jpg" loading="lazy" alt="">
+          <div>
+            <strong>GOLDEN COAST FESTIVAL - PASS 3 JOURS - PASS 3 JOURS</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Corcelles Les Monts</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="golden-coast-festival-vendredi-dimanche-pass-2-jours.html">
+          <img src="../img/golden-coast-festival-vendredi-dimanche-pass-2-jours.jpg" loading="lazy" alt="">
+          <div>
+            <strong>GOLDEN COAST FESTIVAL -VENDREDI DIMANCHE - PASS 2 JOURS</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Corcelles Les Monts</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="golden-coast-festival-vendredi-samedi-pass-2-jours.html">
+          <img src="../img/golden-coast-festival-vendredi-samedi-pass-2-jours.jpg" loading="lazy" alt="">
+          <div>
+            <strong>GOLDEN COAST FESTIVAL - VENDREDI SAMEDI - PASS 2 JOURS</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Corcelles Les Monts</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="pagaille-festival-pass-vendredi.html">
+          
+          <div>
+            <strong>PAGAILLE FESTIVAL - PASS VENDREDI</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Bordeaux</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="rose-festival-2026-pass-vendredi.html">
+          <img src="../img/rose-festival-2026-pass-vendredi.jpg" loading="lazy" alt="">
+          <div>
+            <strong>ROSE FESTIVAL 2026 - PASS VENDREDI</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Aussonne</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="touquet-music-beach-festival-pass-2-jour-pass-2-jours.html">
+          <img src="../img/touquet-music-beach-festival-pass-2-jour-pass-2-jours.jpg" loading="lazy" alt="">
+          <div>
+            <strong>TOUQUET MUSIC BEACH FESTIVAL-PASS 2 JOUR - PASS 2 JOURS</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Le Touquet Paris Plage</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="touquet-music-beach-festival-vendredi-touquet-music-beach-fe.html">
+          <img src="../img/touquet-music-beach-festival-vendredi-touquet-music-beach-fe.jpg" loading="lazy" alt="">
+          <div>
+            <strong>TOUQUET MUSIC BEACH FESTIVAL-VENDREDI - TOUQUET MUSIC BEACH FESTIVAL</strong>
+            <span>📅 2026-08-28 → 2026-08-28 · 📍 Le Touquet Paris Plage</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/el-bueno-la-mala-y-el-feo-fest.html">
+          
+          <div>
+            <strong>El Bueno La Mala y El Feo Fest</strong>
+            <span>📅 2026-08-30 → 2026-08-30 · 📍 The Woodlands</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/goodwaves-festival.html">
+          <img src="../img/goodwaves-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>GoodWaves Festival</strong>
+            <span>📅 2026-08-30 → 2026-08-30 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/native-wellz-summer-fest-ii-w-brady-turner-and-more.html">
+          
+          <div>
+            <strong>NATIVE WELLZ SUMMER FEST II w/BRADY TURNER and more!</strong>
+            <span>📅 2026-08-30 → 2026-08-30 · 📍 St. Petersburg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/outlaw-festival-willie-nelson-avett-brothers-sheryl-crow-mor.html">
+          
+          <div>
+            <strong>Outlaw Festival: Willie Nelson, Avett Brothers, Sheryl Crow & More!</strong>
+            <span>📅 2026-08-30 → 2026-08-30 · 📍 Saratoga Springs</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/wave-fest-presented-by-creative-nation-worldwide.html">
+          
+          <div>
+            <strong>WAVE FEST presented by Creative Nation Worldwide</strong>
+            <span>📅 2026-08-30 → 2026-08-30 · 📍 Portsmouth</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="tl-month">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-header">Septembre 2026</div>
+        
+        <a class="tl-event" href="../en/the-motorcity-all-white-gospel-fest.html">
+          
+          <div>
+            <strong>The MotorCity All White Gospel Fest</strong>
+            <span>📅 2026-09-02 → 2026-09-02 · 📍 Detroit</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/beats-bites-festival-w-clay-walker.html">
+          
+          <div>
+            <strong>Beats & Bites Festival w/ Clay Walker</strong>
+            <span>📅 2026-09-03 → 2026-09-03 · 📍 Norman</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/9th-annual-riverfront-jazz-festival-friday-admission.html">
+          <img src="../img/9th-annual-riverfront-jazz-festival-friday-admission.jpg" loading="lazy" alt="">
+          <div>
+            <strong>9th ANNUAL RIVERFRONT JAZZ FESTIVAL - Friday Admission</strong>
+            <span>📅 2026-09-04 → 2026-09-04 · 📍 Dallas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/9th-annual-riverfront-jazz-festival-weekend-pass.html">
+          
+          <div>
+            <strong>9th ANNUAL RIVERFRONT JAZZ FESTIVAL - Weekend Pass</strong>
+            <span>📅 2026-09-04 → 2026-09-04 · 📍 Dallas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/arc-music-festival.html">
+          <img src="../img/arc-music-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>ARC Music Festival</strong>
+            <span>📅 2026-09-04 → 2026-09-07 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/brownstonejazz-fest-concert-series.html">
+          
+          <div>
+            <strong>BrownstoneJAZZ FEST CONCERT SERIES</strong>
+            <span>📅 2026-09-04 → 2026-10-17 · 📍 Brooklyn </span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/celestial-festival-191-toole.html">
+          
+          <div>
+            <strong>Celestial Festival @ 191 Toole</strong>
+            <span>📅 2026-09-04 → 2026-09-04 · 📍 Tucson</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/deep-tropics-festival.html">
+          
+          <div>
+            <strong>Deep Tropics Festival</strong>
+            <span>📅 2026-09-04 → 2026-09-06 · 📍 Nashville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/pennsylvania-gospel-music-festival.html">
+          
+          <div>
+            <strong>Pennsylvania Gospel Music Festival</strong>
+            <span>📅 2026-09-04 → 2026-09-06 · 📍 Shippensburg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/portland-yacht-rock-festival-2026.html">
+          <img src="../img/portland-yacht-rock-festival-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Portland Yacht Rock Festival 2026</strong>
+            <span>📅 2026-09-04 → 2026-09-04 · 📍 Portland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/wasteland.html">
+          
+          <div>
+            <strong>Wasteland</strong>
+            <span>📅 2026-09-04 → 2026-09-05 · 📍 San Bernardino</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/what-s-it-fest.html">
+          
+          <div>
+            <strong>What's it Fest</strong>
+            <span>📅 2026-09-04 → 2026-09-04 · 📍 Houston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/9th-annual-riverfront-jazz-festival-saturday-admission.html">
+          <img src="../img/9th-annual-riverfront-jazz-festival-saturday-admission.jpg" loading="lazy" alt="">
+          <div>
+            <strong>9th ANNUAL RIVERFRONT JAZZ FESTIVAL - Saturday Admission</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Dallas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/band-wars-music-festival-2026.html">
+          
+          <div>
+            <strong>Band Wars Music Festival 2026</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Reno</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/cousinz-festival.html">
+          <img src="../img/cousinz-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Cousinz Festival</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Norfolk</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/dc-jazzfest-presents-dc-jazzprix-finals.html">
+          
+          <div>
+            <strong>DC JazzFest presents: DC JazzPrix Finals</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Washington</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/evanston-folk-festival-labor-day-party.html">
+          
+          <div>
+            <strong>Evanston Folk Festival Labor Day Party</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/hypnotique-presents-sway-festival-day-1.html">
+          
+          <div>
+            <strong>Hypnotique Presents: Sway Festival - DAY 1</strong>
+            <span>📅 2026-09-05 → 2026-09-06 · 📍 Los Angeles</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/ohio-is-for-lovers-festival.html">
+          
+          <div>
+            <strong>Ohio Is For Lovers Festival</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Huber Heights</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/pennsylvania-gospel-music-festival-saturday-7pm-show-only.html">
+          
+          <div>
+            <strong>Pennsylvania Gospel Music Festival - Saturday 7PM Show Only</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Shippensburg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/portland-yacht-rock-festival-2026-night-2.html">
+          
+          <div>
+            <strong>Portland Yacht Rock Festival 2026 (Night 2)</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Portland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-ann-arbor-fall-beard-day-fest-2026-van-haven-redemption-.html">
+          
+          <div>
+            <strong>The Ann Arbor Fall Beard Day Fest 2026, Van Haven, Redemption Road, LÜCID, Unholy Honor, Keller</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Ann Arbor</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-rochester-r-b-festival.html">
+          
+          <div>
+            <strong>The Rochester R&B Festival</strong>
+            <span>📅 2026-09-05 → 2026-09-05 · 📍 Rochester</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/2026-spiritfest.html">
+          <img src="../img/2026-spiritfest.jpg" loading="lazy" alt="">
+          <div>
+            <strong>2026 Spiritfest</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Greenville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/9th-annual-riverfront-jazz-festival-sunday-admission.html">
+          
+          <div>
+            <strong>9th ANNUAL RIVERFRONT JAZZ FESTIVAL - Sunday Admission</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Dallas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="afro-indigenous-cultural-festival-after-party.html">
+          <img src="../img/afro-indigenous-cultural-festival-after-party.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Afro & Indigenous Cultural Festival After Party</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/afrocity-music-festival-with-txc-21.html">
+          
+          <div>
+            <strong>AfroCity Music Festival with TxC ( 21+ )</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Boston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/dc-jazz-fest.html">
+          
+          <div>
+            <strong>DC Jazz Fest</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Washington</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/flag-fete-dj-x-nyc-dj-young-rass-dj-elie.html">
+          
+          <div>
+            <strong>Flag Fete - DJ X NYC + DJ YOUNG RASS + DJ ELIE</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Reading</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/flatland-cavalry.html">
+          
+          <div>
+            <strong>Flatland Cavalry</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 Manteo</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/labor-day-jazz-fest.html">
+          
+          <div>
+            <strong>Labor Day Jazz Fest</strong>
+            <span>📅 2026-09-06 → 2026-09-06 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/music-trivia-with-brendan-and-sean-evanston-folk-festival-ed.html">
+          <img src="../img/music-trivia-with-brendan-and-sean-evanston-folk-festival-ed.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Music Trivia with Brendan and Sean: Evanston Folk Festival Edition (Space Patio)</strong>
+            <span>📅 2026-09-09 → 2026-09-09 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/irish-fest-kick-off-party-featuring-the-town-pants.html">
+          
+          <div>
+            <strong>Irish Fest Kick Off Party Featuring: The Town Pants</strong>
+            <span>📅 2026-09-10 → 2026-09-10 · 📍 Syracuse</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mchenry-music-festival-w-shinedown.html">
+          
+          <div>
+            <strong>McHenry Music Festival w/ Shinedown</strong>
+            <span>📅 2026-09-10 → 2026-09-10 · 📍 McHenry</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/amp-music-festival-with-is-this-real-jenny-don-t-and-the-spu.html">
+          <img src="../img/amp-music-festival-with-is-this-real-jenny-don-t-and-the-spu.jpg" loading="lazy" alt="">
+          <div>
+            <strong>AMP MUSIC FESTIVAL with Is This Real?, Jenny Don't and the Spurs and Pete Krebs</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Portland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/atlantic-city-jazz-fest-2-day-ticket.html">
+          
+          <div>
+            <strong>Atlantic City Jazz Fest - 2 day ticket</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Atlantic City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/atlantic-city-jazz-fest.html">
+          
+          <div>
+            <strong>Atlantic City Jazz Fest</strong>
+            <span>📅 2026-09-11 → 2026-09-12 · 📍 Atlantic City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/breakaway-philadelphia-2026.html">
+          <img src="../img/breakaway-philadelphia-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Breakaway Philadelphia 2026</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Chester</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/durango-fest-2026.html">
+          
+          <div>
+            <strong>Durango Fest 2026</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 El Paso</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/goldrush-music-festival-2-dayticket.html">
+          
+          <div>
+            <strong>Goldrush Music Festival 2-DayTicket</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Chandler</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/goldrush-music-festival-friday-18.html">
+          
+          <div>
+            <strong>Goldrush Music Festival - Friday (18+)</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Chandler</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="harvest-festival-2026-rv-pass.html">
+          
+          <div>
+            <strong>Harvest Festival 2026 - RV Pass</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Burk's Falls</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="harvest-festival-2026.html">
+          
+          <div>
+            <strong>Harvest Festival 2026</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Burk's Falls</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="harvest-thermodome-cafe-bistro-meal-plans.html">
+          
+          <div>
+            <strong>Harvest Thermodome Cafe, Bistro Meal Plans</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Burk's Falls</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mchenry-music-festival-w-kane-brown.html">
+          
+          <div>
+            <strong>McHenry Music Festival w/ Kane Brown</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 McHenry</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="purple-city-music-festival.html">
+          <img src="../img/purple-city-music-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Purple City Music Festival</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="rare-dm-møaa-bridgeland-stillwaves-ghost-fetish-jet-cemetery.html">
+          
+          <div>
+            <strong>Rare DM - MØAA - Bridgeland - StillWaves - Ghost Fetish - Jet Cemetery - Mox Jet - DansePlus - Hype Phyllis | I Die: You Die & Purple City Music Festival</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/rock-the-country-hamburg-ny.html">
+          
+          <div>
+            <strong>Rock The Country - Hamburg, NY</strong>
+            <span>📅 2026-09-11 → 2026-09-12 · 📍 Hamburg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/songwriter-s-circle-celebrating-lgbtqia-evanston-folk-festiv.html">
+          <img src="../img/songwriter-s-circle-celebrating-lgbtqia-evanston-folk-festiv.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Songwriter's Circle Celebrating LGBTQIA+: Evanston Folk Festival Aftershow presented by Bluegrass Situation</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="sos-fest-2026-2-day-punk-pass-friday-sunday.html">
+          <img src="../img/sos-fest-2026-2-day-punk-pass-friday-sunday.jpg" loading="lazy" alt="">
+          <div>
+            <strong>SOS Fest 2026: 2-Day Punk Pass - Friday & Sunday</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="sos-fest-2026-night-1-moneen.html">
+          <img src="../img/sos-fest-2026-night-1-moneen.jpg" loading="lazy" alt="">
+          <div>
+            <strong>SOS Fest 2026 Night 1 - Moneen</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="sos-festival-2026-3-day-pass.html">
+          
+          <div>
+            <strong>SOS Festival 2026 - 3 day pass</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/two-nights-at-navy-pier-friday-18-event.html">
+          <img src="../img/two-nights-at-navy-pier-friday-18-event.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Two Nights at Navy Pier: Friday (18+ Event)</strong>
+            <span>📅 2026-09-11 → 2026-09-11 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/abgt700.html">
+          
+          <div>
+            <strong>ABGT700</strong>
+            <span>📅 2026-09-12 → 2026-09-13 · 📍 George</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/amp-music-festival-with-altar-girl-ogre-the-mistons-triple-l.html">
+          <img src="../img/amp-music-festival-with-altar-girl-ogre-the-mistons-triple-l.jpg" loading="lazy" alt="">
+          <div>
+            <strong>AMP MUSIC FESTIVAL with Altar Girl, Ogre, The Mistons, Triple Lutz and Grolixes</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Portland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="bambara-revolution-above-disorder-big-evil-rat-dour-the-carp.html">
+          
+          <div>
+            <strong>Bambara - Revolution Above Disorder - Big Evil Rat - DOUR - The Carpoolers | Purple City Music Festival</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/bay-area-fest-moneybagg-yo-dababy-g-herbo-friends.html">
+          
+          <div>
+            <strong>Bay Area Fest - Moneybagg Yo, DaBaby, G Herbo & Friends</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Oakland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="cherry-pick-gadfly-sundress-still-depths-fishlips-purple-cit.html">
+          
+          <div>
+            <strong>Cherry Pick - Gadfly - Sundress - Still Depths - Fishlips | Purple City Music Festival</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="dark-chisme-theo-vandenhoff-tiffadelic-ani-crune-girlfriends.html">
+          <img src="../img/dark-chisme-theo-vandenhoff-tiffadelic-ani-crune-girlfriends.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Dark Chisme - Theo Vandenhoff - Tiffadelic - ANI - CRUNE - Girlfriends and Boyfriends - E.T. - Sloosh - Ringfinger  | I Die: You Die & Purple City Music Festival</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/evanston-folk-festival-2026-2-day-pass.html">
+          
+          <div>
+            <strong>Evanston Folk Festival 2026 (2-Day Pass)</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/evanston-folk-festival-2026-saturday.html">
+          
+          <div>
+            <strong>Evanston Folk Festival 2026 - SATURDAY</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/goldrush-music-festival-saturday-18.html">
+          
+          <div>
+            <strong>Goldrush Music Festival - Saturday (18+)</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Chandler</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/hurray-for-the-riff-raff-w-free-range-evanston-folk-festival.html">
+          
+          <div>
+            <strong>Hurray for the Riff Raff w. Free Range: Evanston Folk Festival Aftershow presented by Bluegrass Situation</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/island-fest.html">
+          
+          <div>
+            <strong>Island Fest </strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Rancho Mirage</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mchenry-music-festival-w-hardy.html">
+          
+          <div>
+            <strong>McHenry Music Festival w/ Hardy</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 McHenry</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/rubber-city-jazz-blues-festival-presents-gerald-albright.html">
+          
+          <div>
+            <strong>Rubber City Jazz & Blues Festival Presents Gerald Albright</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Akron</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/saturday-september-12th-reggae-fest-atl-at-believe-music-hal.html">
+          
+          <div>
+            <strong>Saturday September 12th Reggae Fest ATL  at Believe Music Hall</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Atlanta</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="sos-fest-2026-night-2-opal-in-sky-filth.html">
+          <img src="../img/sos-fest-2026-night-2-opal-in-sky-filth.jpg" loading="lazy" alt="">
+          <div>
+            <strong>SOS FEST 2026 Night 2 - Opal in Sky | Filth</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/tacos-and-tequila-festival-21-and-over.html">
+          
+          <div>
+            <strong>Tacos and Tequila Festival (21 and Over)</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 O Fallon</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-5th-annual-king-of-soul-festival-an-evening-of-respect.html">
+          <img src="../img/the-5th-annual-king-of-soul-festival-an-evening-of-respect.jpg" loading="lazy" alt="">
+          <div>
+            <strong>The 5th Annual King of Soul Festival: An Evening of Respect</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Macon</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-6th-annual-drifter-fest.html">
+          
+          <div>
+            <strong>THE 6TH ANNUAL DRIFTER FEST</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Charleston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/two-nights-at-navy-pier-saturday-18-event.html">
+          
+          <div>
+            <strong>Two Nights at Navy Pier: Saturday (18+ Event)</strong>
+            <span>📅 2026-09-12 → 2026-09-12 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/a-tribute-to-john-prine-s-bruised-orange-evanston-folk-festi.html">
+          
+          <div>
+            <strong>A Tribute to John Prine's Bruised Orange: Evanston Folk Festival Aftershow presented by Bluegrass Situation</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/afrofuture-presents-champion-sound-at-the-rooftop-at-pier-17.html">
+          
+          <div>
+            <strong>Afrofuture Presents Champion Sound at The Rooftop at Pier 17</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 New York</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/australian-pink-floyd-show.html">
+          
+          <div>
+            <strong>Australian Pink Floyd Show</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 Lancaster</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/bigger-than-life-fest-featuring-kevin-gates-friends.html">
+          <img src="../img/bigger-than-life-fest-featuring-kevin-gates-friends.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Bigger Than Life Fest featuring Kevin Gates & Friends</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 Portland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/evanston-folk-festival-2026-sunday.html">
+          
+          <div>
+            <strong>Evanston Folk Festival 2026 - SUNDAY</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/second-sunday-presents-second-sunday-fest.html">
+          
+          <div>
+            <strong>Second Sunday Presents: Second Sunday Fest</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 St. Louis</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="sos-fest-2026-night-3-teenage-bottlerocket.html">
+          
+          <div>
+            <strong>SOS Fest 2026: Night 3 - Teenage Bottlerocket</strong>
+            <span>📅 2026-09-13 → 2026-09-13 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-24th-annual-chicago-gypsy-jazz-fest.html">
+          
+          <div>
+            <strong>The 24th Annual Chicago Gypsy Jazz Fest</strong>
+            <span>📅 2026-09-15 → 2026-09-15 · 📍 Evanston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="cityfolk-festival.html">
+          
+          <div>
+            <strong>CityFolk Festival</strong>
+            <span>📅 2026-09-16 → 2026-09-20 · 📍 Ottawa</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/born-and-raised-music-festival-thursday-pass.html">
+          <img src="../img/born-and-raised-music-festival-thursday-pass.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Born and Raised Music Festival - Thursday Pass</strong>
+            <span>📅 2026-09-17 → 2026-09-17 · 📍 Pryor</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/exacta-pass.html">
+          
+          <div>
+            <strong>Exacta Pass</strong>
+            <span>📅 2026-09-17 → 2026-09-17 · 📍 Louisville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/louder-than-life.html">
+          
+          <div>
+            <strong>Louder Than Life</strong>
+            <span>📅 2026-09-17 → 2026-09-20 · 📍 Louisville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/relix-presents-americanafest.html">
+          
+          <div>
+            <strong>Relix Presents: AmericanaFest</strong>
+            <span>📅 2026-09-17 → 2026-09-17 · 📍 Nashville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="bckyrd-london.html">
+          
+          <div>
+            <strong>BCKYRD LONDON</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 London</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/blondie-garbage-paramore-cranberries-tribute-unpolished-hot-.html">
+          <img src="../img/blondie-garbage-paramore-cranberries-tribute-unpolished-hot-.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Blondie, Garbage, Paramore, Cranberries Tribute + Unpolished - Hot Girl Summer Tribute Fest</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Garden Grove</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/born-and-raised-music-festival-friday-pass.html">
+          <img src="../img/born-and-raised-music-festival-friday-pass.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Born and Raised Music Festival - Friday Pass</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Pryor</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/eagles-live-at-sphere.html">
+          <img src="../img/eagles-live-at-sphere.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Eagles Live at Sphere</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Las Vegas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/grand-point-north-festival-3-day-pass.html">
+          
+          <div>
+            <strong>Grand Point North Festival - 3 Day Pass</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Burlington</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/gulf-coast-summer-fest-3-day-tickets.html">
+          
+          <div>
+            <strong>Gulf Coast Summer Fest 3-Day Tickets</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Pensacola</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/gulf-coast-summer-fest-friday-only.html">
+          
+          <div>
+            <strong>Gulf Coast Summer Fest - Friday Only</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Pensacola</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/iheartradio-music-festival.html">
+          
+          <div>
+            <strong>iHeartRadio Music Festival</strong>
+            <span>📅 2026-09-18 → 2026-09-19 · 📍 Las Vegas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/lost-lands.html">
+          
+          <div>
+            <strong>Lost Lands</strong>
+            <span>📅 2026-09-18 → 2026-09-20 · 📍 Thornville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="misty-city-music-festival.html">
+          
+          <div>
+            <strong>Misty City Music Festival</strong>
+            <span>📅 2026-09-18 → 2026-09-20 · 📍 Niagara Falls</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-2026-friday.html">
+          
+          <div>
+            <strong>Riot Fest 2026 - Friday</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-late-night-thrice.html">
+          
+          <div>
+            <strong>Riot Fest Late Night: Thrice</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sea-hear-now-presents-the-offspring-just-the-punk-stuff-18-e.html">
+          <img src="../img/sea-hear-now-presents-the-offspring-just-the-punk-stuff-18-e.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Sea.Hear.Now Presents: The Offspring Just the Punk Stuff  18+ EVENT</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Asbury Park</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sea-hear-now-presents-there-goes-the-neighborhood-21-event.html">
+          
+          <div>
+            <strong>Sea.Hear.Now Presents:  There Goes The Neighborhood 21+ Event</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Asbury Park</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/shaky-knees-music-festival.html">
+          
+          <div>
+            <strong>Shaky Knees Music Festival</strong>
+            <span>📅 2026-09-18 → 2026-09-20 · 📍 Atlanta</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sold-out-riot-fest-late-night-chat-pile-soul-glo.html">
+          
+          <div>
+            <strong>*SOLD OUT* Riot Fest Late Night: Chat Pile / Soul Glo</strong>
+            <span>📅 2026-09-18 → 2026-09-18 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/telluride-blues-brews-festival.html">
+          
+          <div>
+            <strong>Telluride Blues & Brews Festival</strong>
+            <span>📅 2026-09-18 → 2026-09-20 · 📍 Telluride</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/11th-annual-asia-fest-with-dragon-boat-racing-featuring-the-.html">
+          <img src="../img/11th-annual-asia-fest-with-dragon-boat-racing-featuring-the-.jpg" loading="lazy" alt="">
+          <div>
+            <strong>11th Annual Asia Fest with Dragon Boat Racing, Featuring the Greater Triangle Area Dragon Boat Festival</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Cary</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/6th-annual-lake-elsinore-mariachi-fest-2026.html">
+          
+          <div>
+            <strong>6th Annual Lake Elsinore Mariachi Fest 2026</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Lake Elsinore</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/afi.html">
+          
+          <div>
+            <strong>AFI</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Santa Ana</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/born-and-raised-music-festival-saturday-pass.html">
+          
+          <div>
+            <strong>Born and Raised Music Festival - Saturday Pass</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Pryor</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/broccoli-city-2026-feat-summer-walker-kwn-elmiene.html">
+          
+          <div>
+            <strong>Broccoli City 2026 feat. Summer Walker, kwn, & Elmiene</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Bristow</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/fuego-fest-feat-blood-club-nikko-rubio-katzu-oso-dustbowlcha.html">
+          
+          <div>
+            <strong>Fuego Fest feat. Blood Club, Nikko Rubio, Katzu Oso, DustBowlChampion</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Los Angeles</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/gulf-coast-summer-fest-saturday-only.html">
+          <img src="../img/gulf-coast-summer-fest-saturday-only.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Gulf Coast Summer Fest - SATURDAY ONLY</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Pensacola</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/iron-blossom-festival.html">
+          
+          <div>
+            <strong>Iron Blossom Festival</strong>
+            <span>📅 2026-09-19 → 2026-09-20 · 📍 Richmond</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/nocturnal-wonderland.html">
+          
+          <div>
+            <strong>Nocturnal Wonderland</strong>
+            <span>📅 2026-09-19 → 2026-09-20 · 📍 San Bernardino</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-2026-saturday.html">
+          
+          <div>
+            <strong>Riot Fest 2026 - Saturday</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-late-night-bratmobile-hammered-hulls.html">
+          
+          <div>
+            <strong>Riot Fest Late Night: Bratmobile / Hammered Hulls</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-late-night-mom-jeans.html">
+          
+          <div>
+            <strong>Riot Fest Late Night: Mom Jeans</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/rock-fest-at-the-fair.html">
+          
+          <div>
+            <strong>Rock Fest at the Fair</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Hutchinson</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sea-hear-now-festival.html">
+          <img src="../img/sea-hear-now-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Sea.Hear.Now Festival</strong>
+            <span>📅 2026-09-19 → 2026-09-20 · 📍 Asbury Park</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sea-hear-now-presents-makua-21-event.html">
+          <img src="../img/sea-hear-now-presents-makua-21-event.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Sea.Hear.Now Presents Makua 21+ Event</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Asbury Park</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sea-hear-now-presents-ocean-ave-stomp-ft-tangiers-blues-band.html">
+          <img src="../img/sea-hear-now-presents-ocean-ave-stomp-ft-tangiers-blues-band.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Sea.Hear.Now Presents: Ocean Ave Stomp ft. Tangiers Blues Band 18+</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Asbury Park</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/tacos-and-tequila-festival.html">
+          
+          <div>
+            <strong>Tacos and Tequila Festival</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Crestview Hills</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/tradeup-fest-feat-larry-fleet.html">
+          
+          <div>
+            <strong>TradeUp Fest feat. Larry Fleet</strong>
+            <span>📅 2026-09-19 → 2026-09-19 · 📍 Noblesville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/gulf-coast-summer-fest-sunday-only.html">
+          
+          <div>
+            <strong>Gulf Coast Summer Fest - SUNDAY ONLY</strong>
+            <span>📅 2026-09-20 → 2026-09-20 · 📍 Pensacola</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-2026-sunday.html">
+          
+          <div>
+            <strong>Riot Fest 2026 - Sunday</strong>
+            <span>📅 2026-09-20 → 2026-09-20 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riot-fest-late-night-pretty-girls-make-graves-ok-cool.html">
+          
+          <div>
+            <strong>Riot Fest Late Night: Pretty Girls Make Graves / Ok Cool</strong>
+            <span>📅 2026-09-20 → 2026-09-20 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-market-arts-festival-5-year-anniversary-w-dj-sandio-dj-r.html">
+          
+          <div>
+            <strong>The Market Arts Festival - 5 Year Anniversary! w/ DJ Sandio + DJ Rell + JC-Caution + J-Blenz</strong>
+            <span>📅 2026-09-20 → 2026-09-20 · 📍 Oakland</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/bourbon-beyond-festival.html">
+          <img src="../img/bourbon-beyond-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Bourbon & Beyond Festival</strong>
+            <span>📅 2026-09-24 → 2026-09-27 · 📍 Louisville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/bourbon-beyond.html">
+          
+          <div>
+            <strong>Bourbon & Beyond</strong>
+            <span>📅 2026-09-24 → 2026-09-27 · 📍 Louisville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/river-revival-12-the-final-chapter.html">
+          
+          <div>
+            <strong>River Revival 12: The Final Chapter</strong>
+            <span>📅 2026-09-24 → 2026-09-24 · 📍 Reno</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="second-summer-festival.html">
+          
+          <div>
+            <strong>Second Summer Festival</strong>
+            <span>📅 2026-09-24 → 2026-09-26 · 📍 Toronto</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/united-we-dance-festival-energy-all-night.html">
+          
+          <div>
+            <strong>United We Dance: Festival Energy. All Night.</strong>
+            <span>📅 2026-09-24 → 2026-09-24 · 📍 Lexington</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/all-things-go-music-festival-3-day-pass.html">
+          <img src="../img/all-things-go-music-festival-3-day-pass.jpg" loading="lazy" alt="">
+          <div>
+            <strong>All Things Go Music Festival - 3-Day Pass</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Columbia</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/all-things-go-music-festival-friday.html">
+          <img src="../img/all-things-go-music-festival-friday.jpg" loading="lazy" alt="">
+          <div>
+            <strong>All Things Go Music Festival - Friday</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Columbia</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/all-things-go-music-festival.html">
+          <img src="../img/all-things-go-music-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>All Things Go Music Festival</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Forest Hills</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/breakaway-carolina-2026.html">
+          <img src="../img/breakaway-carolina-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Breakaway Carolina 2026</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Concord</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/cornstock-music-festival-2026.html">
+          <img src="../img/cornstock-music-festival-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Cornstock Music Festival 2026</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Garnett</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/four-chord-music-festival.html">
+          
+          <div>
+            <strong>Four Chord Music Festival</strong>
+            <span>📅 2026-09-25 → 2026-09-26 · 📍 Pittsburgh</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/grinders-kc-fest-day-1.html">
+          
+          <div>
+            <strong>GRINDERS KC FEST DAY 1</strong>
+            <span>📅 2026-09-25 → 2026-09-26 · 📍 Kansas City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/oceans-calling-festival.html">
+          
+          <div>
+            <strong>Oceans Calling Festival</strong>
+            <span>📅 2026-09-25 → 2026-09-27 · 📍 Ocean City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/oceans-calling.html">
+          
+          <div>
+            <strong>Oceans Calling</strong>
+            <span>📅 2026-09-25 → 2026-09-27 · 📍 Ocean City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/ohana-festival.html">
+          <img src="../img/ohana-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Ohana Festival</strong>
+            <span>📅 2026-09-25 → 2026-09-27 · 📍 Dana Point</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/ohana-music-festival.html">
+          <img src="../img/ohana-music-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Ohana Music Festival</strong>
+            <span>📅 2026-09-25 → 2026-09-27 · 📍 Dana Point</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/phoebus-jazz-festival-3rd-annual-2-day-ticket.html">
+          
+          <div>
+            <strong>PHOEBUS JAZZ FESTIVAL (3rd Annual) 2-DAY TICKET</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Hampton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/phoebus-jazz-festival-3rd-annual.html">
+          
+          <div>
+            <strong>PHOEBUS JAZZ FESTIVAL (3rd Annual)</strong>
+            <span>📅 2026-09-25 → 2026-09-26 · 📍 Hampton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/somewhere-festival-2026.html">
+          
+          <div>
+            <strong>Somewhere Festival 2026</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Wichita</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/stones-fest-2026.html">
+          
+          <div>
+            <strong>Stones Fest 2026</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Metairie</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/united-we-dance-festival-energy-all-night-18-event.html">
+          
+          <div>
+            <strong>United We Dance: Festival Energy. All Night (18+ event)</strong>
+            <span>📅 2026-09-25 → 2026-09-25 · 📍 Louisville</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/all-things-go-music-festival-saturday.html">
+          <img src="../img/all-things-go-music-festival-saturday.jpg" loading="lazy" alt="">
+          <div>
+            <strong>All Things Go Music Festival - Saturday</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Forest Hills</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/day-trip-block-party-denver.html">
+          
+          <div>
+            <strong>Day Trip Block Party Denver</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Denver</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/duck-island-festival-bands-vendors-food-and-fun-at-san-loren.html">
+          
+          <div>
+            <strong>Duck Island Festival : Bands, Vendors, Food and Fun at San Lorenzo Park</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Santa Cruz</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/eric-clapton-s-crossroads-guitar-festival.html">
+          <img src="../img/eric-clapton-s-crossroads-guitar-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Eric Clapton's Crossroads Guitar Festival</strong>
+            <span>📅 2026-09-26 → 2026-09-27 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/flashback-funk-fest.html">
+          
+          <div>
+            <strong>Flashback Funk Fest</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Huber Heights</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/global-citizen-festival.html">
+          
+          <div>
+            <strong>Global Citizen Festival</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 New York</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/jazz-is-dead-presents-cortex-18.html">
+          <img src="../img/jazz-is-dead-presents-cortex-18.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Jazz Is Dead Presents - Cortex (18+)</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Chicago</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mariachi-usa.html">
+          
+          <div>
+            <strong>MARIACHI USA!</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mid-autumn-moon-festival.html">
+          
+          <div>
+            <strong>Mid-Autumn Moon Festival</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Hollywood</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mike-rodriguez.html">
+          
+          <div>
+            <strong>Mike Rodriguez</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Norfolk</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/tacos-and-tequila-festival-21.html">
+          <img src="../img/tacos-and-tequila-festival-21.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Tacos and Tequila Festival (21+)</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Geneva</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="victorious-festival.html">
+          <img src="../img/victorious-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Victorious Festival</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 Edmonton</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/way-out-west-festival-featuring-cole-swindell.html">
+          
+          <div>
+            <strong>Way Out West Festival Featuring Cole Swindell</strong>
+            <span>📅 2026-09-26 → 2026-09-26 · 📍 El Paso</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/all-things-go-music-festival-sunday.html">
+          <img src="../img/all-things-go-music-festival-sunday.jpg" loading="lazy" alt="">
+          <div>
+            <strong>All Things Go Music Festival - Sunday</strong>
+            <span>📅 2026-09-27 → 2026-09-27 · 📍 Forest Hills</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/start-the-peace-fest.html">
+          
+          <div>
+            <strong>Start the Peace Fest</strong>
+            <span>📅 2026-09-27 → 2026-09-27 · 📍 St. Louis</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="vieux-farka-touré-co-presented-by-wff-fdv.html">
+          
+          <div>
+            <strong>Vieux Farka Touré, Co-Presented by WFF & FDV</strong>
+            <span>📅 2026-09-29 → 2026-09-29 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    
+    <div class="tl-month">
+      <div class="tl-dot"></div>
+      <div class="tl-body">
+        <div class="tl-header">Octobre 2026</div>
+        
+        <a class="tl-event" href="../en/aftershock.html">
+          
+          <div>
+            <strong>Aftershock</strong>
+            <span>📅 2026-10-01 → 2026-10-04 · 📍 Sacramento</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="muz-2026-rendez-vous-des-musiques-métissées.html">
+          
+          <div>
+            <strong>Muz 2026 - Rendez-vous Des Musiques Métissées</strong>
+            <span>📅 2026-10-01 → 2026-10-04 · 📍 Montreal</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/2-day-palm-tree-music-festival.html">
+          <img src="../img/2-day-palm-tree-music-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>2-Day Palm Tree Music Festival</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 Napa</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/austin-city-limits-festival.html">
+          
+          <div>
+            <strong>Austin City Limits Festival</strong>
+            <span>📅 2026-10-02 → 2026-10-11 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/austin-city-limits-music-festival-weekend-one.html">
+          
+          <div>
+            <strong>Austin City Limits Music Festival - Weekend One</strong>
+            <span>📅 2026-10-02 → 2026-10-11 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/breakaway-music-festival.html">
+          
+          <div>
+            <strong>Breakaway Music Festival</strong>
+            <span>📅 2026-10-02 → 2026-10-03 · 📍 Salt Lake City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/breakaway-utah-2026.html">
+          
+          <div>
+            <strong>Breakaway Utah 2026</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 Sandy</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/country-calling.html">
+          <img src="../img/country-calling.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Country Calling</strong>
+            <span>📅 2026-10-02 → 2026-10-03 · 📍 Ocean City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-bleachers.html">
+          
+          <div>
+            <strong>Official 2026 ACL Fest Nights: Bleachers</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-night-tapes.html">
+          
+          <div>
+            <strong>Official 2026 ACL Fest Nights: Night Tapes</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/palm-tree-music-festival-fri-10-2.html">
+          
+          <div>
+            <strong>Palm Tree Music Festival - FRI 10/2</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 Napa</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/rock-the-rails-fest.html">
+          
+          <div>
+            <strong>Rock The Rails Fest</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 Worcester</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-national-fried-chicken-festival-presented-by-raising-can.html">
+          
+          <div>
+            <strong>THE NATIONAL FRIED CHICKEN FESTIVAL PRESENTED BY RAISING CANE’S</strong>
+            <span>📅 2026-10-02 → 2026-10-02 · 📍 New Orleans</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/eagle-fest-featuring-zz-top.html">
+          
+          <div>
+            <strong>Eagle Fest Featuring ZZ Top</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 The Woodlands</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/midwest-mafia-presents-october-fest.html">
+          
+          <div>
+            <strong>Midwest Mafia Presents: October Fest</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Lincoln</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/neverender-festival-2-day-pass.html">
+          <img src="../img/neverender-festival-2-day-pass.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Neverender Festival - 2 Day Pass</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Santa Ana</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/neverender-festival-single-day-10-3.html">
+          
+          <div>
+            <strong>Neverender Festival - Single Day 10/3</strong>
+            <span>📅 2026-10-03 → 2026-10-04 · 📍 Santa Ana</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-parcels.html">
+          
+          <div>
+            <strong>Official 2026 ACL Fest Nights: Parcels</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/pachanka-music-culture-presents-latin-american-music-festiva.html">
+          
+          <div>
+            <strong>Pachanka Music Culture Presents: LATIN AMERICAN MUSIC FESTIVAL</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Berwyn</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/palm-tree-music-festival-sat-10-3.html">
+          
+          <div>
+            <strong>Palm Tree Music Festival - SAT 10/3</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Napa</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/power-to-the-people-festival.html">
+          <img src="../img/power-to-the-people-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Power to the People Festival</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Columbia</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/tacos-and-tequila-festival-21-and-over-with-a-valid-physical.html">
+          <img src="../img/tacos-and-tequila-festival-21-and-over-with-a-valid-physical.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Tacos and Tequila Festival (21 and Over with a valid physical photo ID)</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Omaha</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="toronto-blues-fest-founders-night.html">
+          <img src="../img/toronto-blues-fest-founders-night.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Toronto Blues Fest Founders Night</strong>
+            <span>📅 2026-10-03 → 2026-10-03 · 📍 Toronto</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mammoth-music-arts-fest-2026.html">
+          
+          <div>
+            <strong>Mammoth Music & Arts Fest 2026</strong>
+            <span>📅 2026-10-04 → 2026-10-04 · 📍 Newport</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-rochelle-jordan.html">
+          <img src="../img/official-2026-acl-fest-nights-rochelle-jordan.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Official 2026 ACL Fest Nights: Rochelle Jordan </strong>
+            <span>📅 2026-10-04 → 2026-10-04 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-lola-young.html">
+          
+          <div>
+            <strong>Official 2026 ACL Fest Nights: Lola Young</strong>
+            <span>📅 2026-10-06 → 2026-10-06 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/good-moon-festival-vip-weekend-pass.html">
+          
+          <div>
+            <strong>Good Moon Festival VIP Weekend Pass</strong>
+            <span>📅 2026-10-08 → 2026-10-08 · 📍 Durham</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-world-famous-pets.html">
+          <img src="../img/official-2026-acl-fest-nights-world-famous-pets.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Official 2026 ACL Fest Nights: World Famous Pets</strong>
+            <span>📅 2026-10-08 → 2026-10-08 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/form-arcosanti-festival.html">
+          
+          <div>
+            <strong>FORM Arcosanti Festival</strong>
+            <span>📅 2026-10-09 → 2026-10-09 · 📍 Mayer</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mempho-fest.html">
+          
+          <div>
+            <strong>Mempho Fest</strong>
+            <span>📅 2026-10-09 → 2026-10-11 · 📍 Memphis</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/niteharts-festival.html">
+          
+          <div>
+            <strong>Niteharts Festival</strong>
+            <span>📅 2026-10-09 → 2026-10-11 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/riverfront-revival.html">
+          <img src="../img/riverfront-revival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Riverfront Revival</strong>
+            <span>📅 2026-10-09 → 2026-10-10 · 📍 North Charleston</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="syml-presented-by-winnipeg-folk-fest.html">
+          
+          <div>
+            <strong>SYML, presented by Winnipeg Folk Fest</strong>
+            <span>📅 2026-10-09 → 2026-10-09 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="all-the-feels-r-b.html">
+          <img src="../img/all-the-feels-r-b.jpg" loading="lazy" alt="">
+          <div>
+            <strong>All The Feels R&B</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Toronto</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/birmingham-comedy-festival.html">
+          <img src="../img/birmingham-comedy-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Birmingham Comedy Festival</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Birmingham</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/day-out-with-thomas-tm-thomas-friends.html">
+          
+          <div>
+            <strong>Day Out With Thomas (TM), Thomas & Friends</strong>
+            <span>📅 2026-10-10 → 2026-10-18 · 📍 Grapevine</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/hawaii-s-finest-presents-high-watah.html">
+          
+          <div>
+            <strong>Hawaii's Finest Presents High Watah</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Las Vegas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/los-lonely-boys-rockpango-fest-2026-w-los-texmaniacs-and-lis.html">
+          
+          <div>
+            <strong>Los Lonely Boys: Rockpango Fest 2026 w/Los Texmaniacs and Lisa Morales</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 El Paso</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/official-2026-acl-fest-nights-don-west.html">
+          
+          <div>
+            <strong>Official 2026 ACL Fest Nights: Don West</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Austin</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/outermost-roots-and-blues-festival.html">
+          
+          <div>
+            <strong>OUTERMOST ROOTS AND BLUES FESTIVAL</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Orleans</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/reggae-fest-blaze-with-tba-at-wnywood-marketplace-miami-fest.html">
+          <img src="../img/reggae-fest-blaze-with-tba-at-wnywood-marketplace-miami-fest.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Reggae Fest Blaze with TBA at Wnywood Marketplace Miami Festival Stage</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Miami</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/sick-fest-1.html">
+          
+          <div>
+            <strong>Sick Fest 1</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Hickory</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/the-nu-metal-values-tribute-festival-ozzfest-rehash.html">
+          
+          <div>
+            <strong>The Nu-Metal Values Tribute Festival: Ozzfest Rehash</strong>
+            <span>📅 2026-10-10 → 2026-10-10 · 📍 Reading</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/taste-of-chaos-w-hollywood-undead.html">
+          
+          <div>
+            <strong>Taste of Chaos w/ Hollywood Undead</strong>
+            <span>📅 2026-10-13 → 2026-10-13 · 📍 Kansas City</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="moontricks-presented-by-winnipeg-folk-festival.html">
+          <img src="../img/moontricks-presented-by-winnipeg-folk-festival.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Moontricks, Presented by Winnipeg Folk Festival</strong>
+            <span>📅 2026-10-15 → 2026-10-15 · 📍 Winnipeg</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/iii-points.html">
+          
+          <div>
+            <strong>III Points</strong>
+            <span>📅 2026-10-16 → 2026-10-17 · 📍 Miami</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mission-bayfest-3-days.html">
+          
+          <div>
+            <strong>Mission Bayfest 3 DAYS</strong>
+            <span>📅 2026-10-16 → 2026-10-16 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mission-bayfest-friday-10-16-2026.html">
+          
+          <div>
+            <strong>Mission Bayfest Friday 10/16/2026</strong>
+            <span>📅 2026-10-16 → 2026-10-16 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/patti-smith-dodge-poetry-festival.html">
+          
+          <div>
+            <strong>Patti Smith: Dodge Poetry Festival</strong>
+            <span>📅 2026-10-16 → 2026-10-16 · 📍 Newark</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/23rd-annual-memphis-tri-state-blues-festival.html">
+          
+          <div>
+            <strong>23rd Annual Memphis Tri-State Blues Festival</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 Southaven</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/faultline-festival-with-dustin-lynch.html">
+          <img src="../img/faultline-festival-with-dustin-lynch.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Faultline Festival with Dustin Lynch</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 Rancho Cucamonga</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/lost-in-dreams-the-observatory-present-armnhmr-18.html">
+          <img src="../img/lost-in-dreams-the-observatory-present-armnhmr-18.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Lost In Dreams & The Observatory Present ARMNHMR (18+)</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 Santa Ana</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mission-bayfest-saturday-10-17-2026.html">
+          <img src="../img/mission-bayfest-saturday-10-17-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Mission Bayfest Saturday 10/17/2026</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/pines-fest-at-atomic-by-jamo.html">
+          
+          <div>
+            <strong>Pines Fest at Atomic by Jamo</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 St. Louis</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/reggae-fest-d-c-howard-homecoming-at-the-howard-theatre.html">
+          <img src="../img/reggae-fest-d-c-howard-homecoming-at-the-howard-theatre.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Reggae Fest D.C. Howard Homecoming at the Howard Theatre</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 Washington</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/taste-of-chaos-16-and-under-with-parent-or-legal-guardian.html">
+          
+          <div>
+            <strong>Taste of Chaos (16 and Under with Parent or Legal Guardian)</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 Dallas</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="thylacine.html">
+          
+          <div>
+            <strong>Thylacine</strong>
+            <span>📅 2026-10-17 → 2026-10-17 · 📍 Montreal</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/mission-bayfest-sunday-10-18-2026.html">
+          <img src="../img/mission-bayfest-sunday-10-18-2026.jpg" loading="lazy" alt="">
+          <div>
+            <strong>Mission Bayfest Sunday 10/18/2026</strong>
+            <span>📅 2026-10-18 → 2026-10-18 · 📍 San Diego</span>
+          </div>
+        </a>
+        
+        <a class="tl-event" href="../en/turnstile-the-never-enough-tour-pt-2.html">
+          <img src="../img/turnstile-the-never-enough-tour-pt-2.jpg" loading="lazy" alt="">
+          <div>
+            <strong>TURNSTILE: THE NEVER ENOUGH TOUR PT. 2 </strong>
+            <span>📅 2026-10-18 → 2026-10-18 · 📍 Santa Ana</span>
+          </div>
+        </a>
+        
+      </div>
+    </div>
+    
+  </div>
+</section>
+
 <script>
 var CARDS = [].slice.call(document.querySelectorAll('#cards .card'));
 
@@ -3437,6 +5534,19 @@ function closePreviews(){ const box=document.getElementById('previews'); if(box)
 </main>
 <footer>💡 En passant par mes liens, tu paies exactement le même prix — le site me reverse juste une petite commission qui finance mes recherches. Merci !<br>📧 <a href="mailto:festivalpacktravel@gmail.com">festivalpacktravel@gmail.com</a><br><a href="legal/mentions.html">Mentions légales</a> · <a href="legal/privacy.html">Confidentialité</a> · <a href="legal/terms.html">Conditions</a> · <a href="legal/affiliate.html">Divulgation d'affiliation</a> · <a href="legal/cookies.html">Cookies</a></footer>
 <script>
+/* Menu mobile (hamburger) */
+(function(){
+  var b=document.getElementById('burgerBtn'), m=document.getElementById('mainMenu');
+  if(!b||!m) return;
+  b.addEventListener('click', function(){
+    var open=m.classList.toggle('open');
+    b.setAttribute('aria-expanded', open?'true':'false');
+    b.textContent = open ? '✕' : '☰';
+  });
+  m.addEventListener('click', function(e){
+    if(e.target.tagName==='A' && window.innerWidth<=720){ m.classList.remove('open'); b.textContent='☰'; b.setAttribute('aria-expanded','false'); }
+  });
+})();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('../sw.js').catch(() => {});
