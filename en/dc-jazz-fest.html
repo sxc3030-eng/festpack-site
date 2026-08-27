@@ -118,6 +118,12 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 .vibe-btn span{font-size:.85rem;color:var(--muted)}
 .vibe-btn:hover{border-color:var(--accent)}
 .vibe-btn.active{border-color:var(--accent);background:#eef2ff;box-shadow:0 0 0 3px rgba(0,53,128,.12)}
+.info-section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin:1rem 0}
+.info-section h2{color:var(--accent);margin-bottom:.6rem}
+.info-row{margin:.3rem 0;font-size:.95rem}
+.info-block{margin-top:.8rem}
+.info-block h3{font-size:1rem;color:var(--text);margin-bottom:.3rem}
+.info-block p{font-size:.92rem;color:var(--text);line-height:1.6}
 @media(max-width:640px){.vibe{grid-template-columns:1fr}}
 .previews a.pv{display:flex;gap:.8rem;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
 .previews a.pv:last-child{border-bottom:none}
@@ -186,10 +192,28 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   </div>
 </div>
 
+<!-- SECTION INFORMATION : site officiel + descriptif festival + ville -->
+<div class="info-section">
+  <h2>ℹ️ Information</h2>
+  
+  
+  <div class="info-block">
+    <h3>🎪 About the festival</h3>
+    <p>DC Jazz Fest est un festival qui se déroule à Washington du 2026-09-06 → 2026-09-06. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ About Washington</h3>
+    <p>Washington est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+  </div>
+  
+</div>
+
 <!-- Progress bar -->
 <div class="progress-wrap">
   <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="progress-label" id="progressLabel">0/5</div>
+  <div class="progress-label" id="progressLabel">0/6</div>
 </div>
 
 <!-- STEP 1 : CHOIX VIP / BACKPACK (adapte les résultats) -->
@@ -255,13 +279,24 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: PACKAGES (optionnel) -->
-
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
-    <h2>👛 Packages</h2>
+    <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Washington</a>
+</div>
+
+<!-- STEP 6: PACKAGES (optionnel) -->
+
+<div class="step" data-step="6">
+  <div class="step-head">
+    <span class="step-num">6</span>
+    <h2>👛 Packages</h2>
+    <label class="check"><input type="checkbox" data-check="6" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <div class="pkg">
     <div>
@@ -393,8 +428,39 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
+/* --- Location de voiture : lien Expedia Cars (origine par IP) --- */
 (function () {
-  var total = 5;
+  var CTA = document.getElementById('carCta');
+  if (!CTA) return;
+  var dest = "IAD";
+  var dm = ("2026-09-06 \u2192 2026-09-06" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var CAMREF = "1101l5IQud";
+  function makeUrl(origin) {
+    var o = encodeURIComponent(origin || '');
+    var d = encodeURIComponent(dest || '');
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+    return url;
+  }
+  function apply(origin) { CTA.href = makeUrl(origin); }
+  var cached = null;
+  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
+  if (cached) { apply(cached); return; }
+  try {
+    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
+      var c = (j && j.city) ? j.city : '';
+      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
+      apply(c);
+    }).catch(function(){ apply(''); });
+  } catch(e){ apply(''); }
+})();
+</script>
+<script>
+(function () {
+  var total = 6;
   var key = 'festpack-done-' + 'dc-jazz-fest';
 
   function boxes() {
