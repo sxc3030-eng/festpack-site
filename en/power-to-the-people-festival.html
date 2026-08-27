@@ -346,7 +346,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 (function () {
   var CTA = document.getElementById('flightCta');
   if (!CTA) return;
-  var dest = "Columbia";
+  var dest = "CAE";   // code IATA (ex: NTE pour Clisson)
+  var destLabel = "Columbia";
   // dates ISO: début → fin
   var dm = ("2026-10-03 \u2192 2026-10-03" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
@@ -368,7 +369,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   }
   function setLabel(origin) {
     var prefix = isEn ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
-    CTA.textContent = prefix + dest + (origin ? '  (✈ ' + origin + ')' : '');
+    CTA.textContent = prefix + destLabel + (origin ? '  (✈ ' + origin + ')' : '');
   }
   function apply(origin) {
     CTA.href = makeUrl(origin);
