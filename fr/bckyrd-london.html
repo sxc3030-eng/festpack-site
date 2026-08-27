@@ -112,6 +112,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 .share-label{font-size:.85rem;color:var(--muted);font-weight:600}
 .share-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#eef2f7;border:1px solid var(--border);font-size:1.05rem;cursor:pointer;color:var(--text)}
 .share-btn:hover{background:#e0e7ff;border-color:var(--accent);text-decoration:none}
+.vibe{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.6rem}
+.vibe-btn{background:#fafbfc;border:2px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;text-align:left;transition:.15s}
+.vibe-btn strong{display:block;font-size:1.05rem;color:var(--text)}
+.vibe-btn span{font-size:.85rem;color:var(--muted)}
+.vibe-btn:hover{border-color:var(--accent)}
+.vibe-btn.active{border-color:var(--accent);background:#eef2ff;box-shadow:0 0 0 3px rgba(0,53,128,.12)}
+@media(max-width:640px){.vibe{grid-template-columns:1fr}}
 .previews a.pv{display:flex;gap:.8rem;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
 .previews a.pv:last-child{border-bottom:none}
 .previews a.pv:hover{background:#eef2ff;text-decoration:none}
@@ -167,15 +174,35 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 <!-- Progress bar -->
 <div class="progress-wrap">
   <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="progress-label" id="progressLabel">0/4</div>
+  <div class="progress-label" id="progressLabel">0/5</div>
 </div>
 
-<!-- STEP 1 : BILLET -->
+<!-- STEP 1 : CHOIX VIP / BACKPACK (adapte les résultats) -->
 <div class="step" data-step="1">
   <div class="step-head">
     <span class="step-num">1</span>
-    <h2>🎟️ Réserve le billet</h2>
+    <h2>👛 Choisis ton vibe</h2>
     <label class="check"><input type="checkbox" data-check="1" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  <p class="sub">Ça adapte tes options de vol et d'hôtel.</p>
+  <div class="vibe">
+    <button type="button" class="vibe-btn" data-vibe="backpack" onclick="setVibe('backpack')">
+      <strong>🎒 Backpacker</strong>
+      <span>Auberges budget & vols éco</span>
+    </button>
+    <button type="button" class="vibe-btn" data-vibe="vip" onclick="setVibe('vip')">
+      <strong>💎 VIP / Confort</strong>
+      <span>Gros hôtels & vols business</span>
+    </button>
+  </div>
+</div>
+
+<!-- STEP 2 : BILLET -->
+<div class="step" data-step="2">
+  <div class="step-head">
+    <span class="step-num">2</span>
+    <h2>🎟️ Réserve le billet</h2>
+    <label class="check"><input type="checkbox" data-check="2" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">D'abord le billet — ne réserve pas ton voyage avant de l'avoir.</p>
   
@@ -184,12 +211,12 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 2: VOL (destination + origine auto par IP, lien construit côté client) -->
-<div class="step" data-step="2">
+<!-- STEP 3: VOL (destination + origine auto par IP, lien construit côté client) -->
+<div class="step" data-step="3">
   <div class="step-head">
-    <span class="step-num">2</span>
+    <span class="step-num">3</span>
     <h2>✈️ Réserve ton vol</h2>
-    <label class="check"><input type="checkbox" data-check="2" onchange="handleChange(this)"> <span>✓</span></label>
+    <label class="check"><input type="checkbox" data-check="3" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   
   <p class="sub">💡 Départ détecté automatiquement depuis ta position — destination préremplie.</p>
@@ -199,27 +226,27 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 3: HÔTEL (séparé, destination préremplie) -->
-<div class="step" data-step="3">
+<!-- STEP 4: HÔTEL (séparé, destination préremplie) -->
+<div class="step" data-step="4">
   <div class="step-head">
-    <span class="step-num">3</span>
+    <span class="step-num">4</span>
     <h2>🏨 Réserve ton hôtel</h2>
-    <label class="check"><input type="checkbox" data-check="3" onchange="handleChange(this)"> <span>✓</span></label>
+    <label class="check"><input type="checkbox" data-check="4" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   
   <p class="sub">💡 Destination + dates préremplies — choisis juste ton hôtel.</p>
-  <a class="btn main-cta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DLondon%26startDate%3D2026-09-18%26endDate%3D2026-09-18&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Choisir mon hôtel → London</a>
+  <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DLondon%26startDate%3D2026-09-18%26endDate%3D2026-09-18&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Choisir mon hôtel → London</a>
   
   
 </div>
 
-<!-- STEP 4: PACKAGES (optionnel) -->
+<!-- STEP 5: PACKAGES (optionnel) -->
 
-<div class="step" data-step="4">
+<div class="step" data-step="5">
   <div class="step-head">
-    <span class="step-num">4</span>
-    <h2>👛 Ton vibe</h2>
-    <label class="check"><input type="checkbox" data-check="4" onchange="handleChange(this)"> <span>✓</span></label>
+    <span class="step-num">5</span>
+    <h2>👛 Packages</h2>
+    <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <div class="pkg">
     <div>
@@ -246,6 +273,35 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 
 <a class="backlink" href="../fr/index.html">← Retour à tous les événements</a>
 
+<script>
+/* --- Choix VIP / Backpack : adapte les liens vol + hôtel --- */
+(function () {
+  var PKG = {
+    backpack: "https://www.expedia.ca/affiliate?siteid=1\u0026landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DLondon%26startDate%3D2026-09-18%26endDate%3D2026-09-18%26stars%3D1%2C2\u0026camref=1101l5IQud\u0026creativeref=1100l68075\u0026adref=PZG6faduu1",
+    vip: "https://www.expedia.ca/affiliate?siteid=1\u0026landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DLondon%26startDate%3D2026-09-18%26endDate%3D2026-09-18%26stars%3D4%2C5\u0026camref=1101l5IQud\u0026creativeref=1100l68075\u0026adref=PZG6faduu1"
+  };
+  var hotelCta = document.getElementById('hotelCta');
+  var flightCta = document.getElementById('flightCta');
+  var saved = null;
+  try { saved = sessionStorage.getItem('fp-vibe'); } catch (e) {}
+  window.setVibe = function (v) {
+    try { sessionStorage.setItem('fp-vibe', v); } catch (e) {}
+    document.querySelectorAll('.vibe-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-vibe') === v);
+    });
+    // Hôtel : bascule vers le package correspondant (VIP = gros hôtel, Backpack = budget)
+    if (hotelCta && PKG[v]) hotelCta.href = PKG[v];
+    // Vol : on peut ajuster la classe (business vs éco) — le lien reste le même,
+    // mais on note le choix pour le label
+    if (flightCta) {
+      var dest = flightCta.textContent.split('→').pop() || '';
+      var prefix = ("fr" === 'en') ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
+      flightCta.textContent = prefix + dest.trim() + (v === 'vip' ? ' 💎' : ' 🎒');
+    }
+  };
+  if (saved) setVibe(saved);
+})();
+</script>
 <script>
 /* --- Partage réseaux sociaux --- */
 (function () {
@@ -322,7 +378,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 </script>
 <script>
 (function () {
-  var total = 4;
+  var total = 5;
   var key = 'festpack-done-' + 'bckyrd-london';
 
   function boxes() {
