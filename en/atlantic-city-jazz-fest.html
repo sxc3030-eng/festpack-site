@@ -182,6 +182,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <h1>🎪 Atlantic City Jazz Fest</h1>
   <div class="meta">🗓️ 2026-09-11 → 2026-09-12 · 📍 Sound Waves at Hard Rock Hotel & Casino Atlantic City, Atlantic City</div>
+  
   <p class="sub">Le guide complet pour vivre Atlantic City Jazz Fest</p>
   <div class="share">
     <span class="share-label">Share:</span>
@@ -213,7 +214,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 <!-- Progress bar -->
 <div class="progress-wrap">
   <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
-  <div class="progress-label" id="progressLabel">0/6</div>
+  <div class="progress-label" id="progressLabel">0/5</div>
 </div>
 
 <!-- STEP 1 : CHOIX VIP / BACKPACK (adapte les résultats) -->
@@ -259,7 +260,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   </div>
   
   <p class="sub">💡 Departure auto-detected from your location — destination pre-filled.</p>
-  <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Ftrip%3DROUNDTRIP%26leg1%3Dfrom%3AYUL%2Cto%3AAtlantic%2520City%2Cdeparture%3A2026-09-10TANYTIME%26leg2%3Dfrom%3AAtlantic%2520City%2Cto%3AYUL%2Cdeparture%3A2026-09-13TANYTIME&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Choose my flight → Atlantic City</a>
+  <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Fmode%3Dsearch%26trip%3Droundtrip%26leg1%3Dfrom%3AYUL%2Cto%3AACY%2Cdeparture%3A2026-09-10TANYTIME%26leg2%3Dfrom%3AACY%2Cto%3AYUL%2Cdeparture%3A2026-09-13TANYTIME%26options%3Dcabinclass%253Aeconomy%26pwaDialog%3D1&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Choose my flight → Atlantic City</a>
   
   
   
@@ -279,43 +280,21 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
+<!-- STEP 5: LOCATION DE VOITURE (Kayak + agences à l'aéroport) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
     <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Atlantic City</a>
-</div>
-
-<!-- STEP 6: PACKAGES (optionnel) -->
-
-<div class="step" data-step="6">
-  <div class="step-head">
-    <span class="step-num">6</span>
-    <h2>👛 Packages</h2>
-    <label class="check"><input type="checkbox" data-check="6" onchange="handleChange(this)"> <span>✓</span></label>
-  </div>
-  <div class="pkg">
-    <div>
-      <strong>🎒 Backpacker</strong>
-      <p class="sub">Auberge/hôtel budget à Atlantic City</p>
-      
-      <a class="btn" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DAtlantic%2520City%26startDate%3D2026-09-11%26endDate%3D2026-09-12%26stars%3D1%2C2&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔎 Budget options</a>
-      
-    </div>
-    <div>
-      <strong>💎 VIP / Comfort</strong>
-      <p class="sub">Hôtel 4-5★ proche de Atlantic City</p>
-      
-      <a class="btn" href="https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DAtlantic%2520City%26startDate%3D2026-09-11%26endDate%3D2026-09-12%26stars%3D4%2C5&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🔎 VIP options</a>
-      
-    </div>
+  <p class="sub">💡 Compare prices (Kayak) or find agencies at the airport.</p>
+  <div class="cta">
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Compare car rentals → Atlantic City</a>
+    <a class="btn alt" id="carAirportCta" href="#" target="_blank" rel="nofollow sponsored">🛬 Agencies at the airport</a>
   </div>
 </div>
 
+<!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
 
 <div class="done" id="doneBanner" hidden>
   🎉 All checked! You're ready to go. Have a great festival!
@@ -327,8 +306,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 /* --- Choix VIP / Backpack : adapte les liens vol + hôtel --- */
 (function () {
   var PKG = {
-    backpack: "https://www.expedia.com/affiliate?siteid=1\u0026landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DAtlantic%2520City%26startDate%3D2026-09-11%26endDate%3D2026-09-12%26stars%3D1%2C2\u0026camref=1101l5IQud\u0026creativeref=1100l68075\u0026adref=PZG6faduu1",
-    vip: "https://www.expedia.com/affiliate?siteid=1\u0026landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DAtlantic%2520City%26startDate%3D2026-09-11%26endDate%3D2026-09-12%26stars%3D4%2C5\u0026camref=1101l5IQud\u0026creativeref=1100l68075\u0026adref=PZG6faduu1"
+    backpack: https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DAtlantic%2520City%26startDate%3D2026-09-11%26endDate%3D2026-09-12%26stars%3D1%2C2&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1,
+    vip: https://www.expedia.com/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.com%2FHotel-Search%3Fdestination%3DAtlantic%2520City%26startDate%3D2026-09-11%26endDate%3D2026-09-12%26stars%3D4%2C5&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1
   };
   var hotelCta = document.getElementById('hotelCta');
   var flightCta = document.getElementById('flightCta');
@@ -428,24 +407,32 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : lien Expedia Cars (origine par IP) --- */
+/* --- Location de voiture : Kayak (comparateur) + Google Maps (agences aéroport) --- */
 (function () {
   var CTA = document.getElementById('carCta');
+  var AIR = document.getElementById('carAirportCta');
   if (!CTA) return;
-  var dest = "ACY";
+  var dest = "Atlantic City";
   var dm = ("2026-09-11 \u2192 2026-09-12" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
-  var CAMREF = "1101l5IQud";
+  var isEn = "en" === 'en';
   function makeUrl(origin) {
     var o = encodeURIComponent(origin || '');
     var d = encodeURIComponent(dest || '');
-    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
-      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    if (o) url += '?pickup=' + o;
     return url;
   }
-  function apply(origin) { CTA.href = makeUrl(origin); }
+  function airportUrl() {
+    var d = encodeURIComponent(dest || '');
+    var q = isEn ? 'car rental ' + (dest || '') + ' airport' : 'location voiture aéroport ' + (dest || '');
+    return 'https://www.google.com/maps/search/' + encodeURIComponent(q);
+  }
+  function apply(origin) {
+    CTA.href = makeUrl(origin);
+    if (AIR) AIR.href = airportUrl();
+  }
   var cached = null;
   try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
   if (cached) { apply(cached); return; }
@@ -460,7 +447,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 </script>
 <script>
 (function () {
-  var total = 6;
+  var total = 5;
   var key = 'festpack-done-' + 'atlantic-city-jazz-fest';
 
   function boxes() {
@@ -538,8 +525,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var input = document.getElementById('chatInput');
   var send = document.getElementById('chatSend');
   if (!fab || !box) return;
-  fab.addEventListener('click', function () { box.hidden = !box.hidden; });
-  close.addEventListener('click', function () { box.hidden = true; });
+  var online = false;
+  var checked = false;
   function addMsg(text, who) {
     var d = document.createElement('div');
     d.className = 'chat-msg ' + who;
@@ -547,19 +534,47 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     msgs.appendChild(d);
     msgs.scrollTop = msgs.scrollHeight;
   }
+  // Vérifie la connexion au serveur (Ollama) — appelé à l'ouverture du chat
+  function checkHealth() {
+    if (checked) return;
+    checked = true;
+    fetch('/api/health', { method: 'GET' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        online = !!(d && d.status === 'ok');
+        if (online) {
+          addMsg('✅ Connected — ask me anything!', 'bot');
+        } else {
+          addMsg('🤖 Assistant offline — start the local server.', 'bot');
+        }
+      })
+      .catch(function () {
+        online = false;
+        addMsg('🤖 Assistant offline — start the local server.', 'bot');
+      });
+  }
+  fab.addEventListener('click', function () {
+    box.hidden = !box.hidden;
+    if (!box.hidden) { checkHealth(); input.focus(); }
+  });
+  close.addEventListener('click', function () { box.hidden = true; });
   function ask() {
     var q = input.value.trim();
     if (!q) return;
     addMsg(q, 'user');
     input.value = '';
-    // Appelle le serveur local (Ollama) — si absent, réponse de secours
+    if (!online) {
+      addMsg('🤖 Assistant offline — start the local server.', 'bot');
+      return;
+    }
+    // Appelle le serveur local (Ollama)
     fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: q })
     }).then(function (r) { return r.json(); })
       .then(function (d) { addMsg(d.reply || '…', 'bot'); })
-      .catch(function () { addMsg('🤖 (Assistant hors ligne — démarre le serveur local)', 'bot'); });
+      .catch(function () { addMsg('🤖 Assistant offline — start the local server.', 'bot'); });
   }
   send.addEventListener('click', ask);
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter') ask(); });
