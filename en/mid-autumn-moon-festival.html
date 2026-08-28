@@ -200,13 +200,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Mid-Autumn Moon Festival est un festival qui se déroule à Hollywood du 2026-09-26 → 2026-09-26. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Le Mid-Autumn Moon Festival est un événement unique et magique qui aura lieu à Hollywood du 26 septembre 2026 au 26 septembre 2026. Cette fête traditionnelle chinoise célèbre la lune pleine et est caractérisée par une ambiance ensoleillée et festive, avec des décorations colorées et des lanternes lumineuses qui illuminent la nuit. La musique est une combinaison de thèmes traditionnels chinois et de musique contemporaine, créant une ambiance énergique et joyeuse. C'est un événement à ne pas manquer pour découvrir la richesse culturelle chinoise et profiter d'une soirée inoubliable sous la lumière de la lune pleine.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Hollywood</h3>
-    <p>Hollywood est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Hollywood, la ville des rêves, est la destination idéale pour un festival de cinéma ou de musique. L'ambiance est animée et colorée, avec ses rues pavées, ses magasins de souvenirs et ses étoiles du film sur le Walk of Fame. Pour découvrir la ville, il est recommandé de se rendre à pied ou en bus, car la station de métro de Hollywood/Highland est bien desservie. Il est également conseillé de réserver à l'avance une place pour une visite guidée de la célèbre Universal Studios Hollywood pour une expérience unique et immersante.</p>
   </div>
   
 </div>
@@ -280,7 +280,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -288,10 +288,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Hollywood</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Hollywood</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -407,10 +404,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Hollywood";
   var dm = ("2026-09-26 \u2192 2026-09-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -420,11 +416,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -434,16 +428,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

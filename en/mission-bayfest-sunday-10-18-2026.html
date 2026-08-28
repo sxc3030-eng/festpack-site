@@ -202,13 +202,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Mission Bayfest Sunday 10/18/2026 est un festival qui se déroule à San Diego du 2026-10-18 → 2026-10-18. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Je suis désolé, mais je ne peux pas fournir d'informations précises sur un événement spécifique qui n'a pas encore eu lieu en 2026. Cependant, je peux vous donner une idée générale de ce que pourrait être le festival Mission Bayfest Sunday 10/18/2026 à San Diego.
+
+Mission Bayfest Sunday 10/18/2026 est un événement musical qui se déroulera au bord de la baie de Mission à San Diego, dans un ambiance festive et conviviale. Le festival rassemblera divers artistes de genre rock, pop, folk et reggae pour offrir une programmation musicale variée et excitante. L'atmosphère sera animée et conviviale, avec des stands de nourriture et de boissons, des activités de divertissement pour les enfants et des espaces de détente pour les adultes. C'est un évén</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About San Diego</h3>
-    <p>San Diego est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>San Diego est une ville idéale pour un festival, avec son climat ensoleillé et ses rues animées. Vous pouvez profiter de nombreux attractions, comme le port de San Diego, la plage de La Jolla et le parc Balboa. Pour se déplacer dans la ville, vous pouvez utiliser les transports en commun, comme les bus et les trains, ou louer une voiture pour explorer la région. Il est recommandé de réserver des hôtels ou des logements en avance pour éviter les embouteillages et profiter de la ville à son rythme.</p>
   </div>
   
 </div>
@@ -282,7 +284,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -290,10 +292,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → San Diego</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → San Diego</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -409,10 +408,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "San Diego";
   var dm = ("2026-10-18 \u2192 2026-10-18" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -422,11 +420,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -436,16 +432,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

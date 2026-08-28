@@ -202,13 +202,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Music Trivia with Brendan and Sean: Evanston Folk Festival Edition (Space Patio) est un festival qui se déroule à Evanston du 2026-09-09 → 2026-09-09. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Je suis désolé, mais je ne peux pas fournir d'informations précises sur un événement spécifique en 2026, car cela dépasserait mon horizon de connaissances actuel, qui est de décembre 2023. Cependant, je peux vous proposer un paragraphe générique qui pourrait déccrire l'ambiance et le type de musique du festival :
+
+Le Music Trivia with Brendan et Sean: Evanston Folk Festival Edition (Space Patio) devrait être un événement unique et animé, où les amoureux de la musique folk et de la trivia se réunissent pour une journée de débats, de musique et de convivialité. L'ambiance sera probablement détendue et conviviale, avec des performances live de musiciens folk et des jeux de trivia qui testeront vos connaissances musicales. Ce festival est un événement à ne pas man</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Evanston</h3>
-    <p>Evanston est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Evanston, une ville de 77 000 habitants située aux États-Unis, est une destination idéale pour un festival en famille. L'ambiance est chaleureuse et accueillante, avec des rues commerçantes animées et des parcs verdoyants. Pour découvrir la ville, il est possible d'utiliser le système de transport en commun, notamment le métro et les bus, ou de se déplacer en voiture pour atteindre les principaux sites touristiques, tels que la Université Northwestern et le Museum of Contemporary Art. Il est recommandé de réserver des hébergements à l'avance, en particulier pendant les périodes de festival, et de préparer des repas économes pour profiter du budget restant.</p>
   </div>
   
 </div>
@@ -282,7 +284,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -290,10 +292,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Evanston</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Evanston</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -409,10 +408,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Evanston";
   var dm = ("2026-09-09 \u2192 2026-09-09" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -422,11 +420,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -436,16 +432,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

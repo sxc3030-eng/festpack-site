@@ -202,15 +202,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Je ne peux pas vous fournir d'informations sur un événement spécifique qui n'a pas encore eu lieu. Cependant, je peux vous offrir une description fictive du festival « Jazz Is Dead Presents - Cortex (18+) » qui a lieu à Chicago du 26 au 26 septembre 2026.
-
-Cortex est un festival de jazz et de musique expérimentale qui célèbre la créativité et la diversité. L'ambiance est animée et électrique, avec des performances live de groupes de jazz et de musique électronique de la plus haute qualité. Le festival propose une variété de concerts, de séances de dégustation de vin et de nourriture artisanale, et de travaux d'art interactifs, créant une expérience unique et immersive pour les visiteurs. C'est un événement à ne pas manquer pour les amateurs de jazz, les musiciens et les cur</p>
+    <p>Je ne peux pas fournir de dates précises pour des événements futurs.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Chicago</h3>
-    <p>Chicago, la ville lacustre aux mille visages, est un paradis pour les amoureux de la musique et de la culture. Au cours du festival, vous pourrez vous plonger dans une ambiance vibrante et animée, avec des concerts en plein air et des spectacles de street food délicieux. Pour vous déplacer à travers la ville, les transports en commun sont très efficaces, notamment le métro et les autobus. N'oubliez pas de visiter la célèbre Willis Tower (anciennement Sears Tower) et de vous promener le long du lac Michigan, ce qui offre des vues imprenables sur la ville.</p>
+    <p>Chicago est une ville vibrante et accueillante qui se prête parfaitement à un festival de musique ou de divertissement. L'ambiance est animée, avec des rues animées et des espaces publics conviviaux, tels que le Millennium Park et la Navy Pier, qui offrent une vue imprenable sur le lac Michigan. Pour se déplacer à travers la ville, les transports en commun (le métro et les bus) sont abondants et efficaces, et il est également possible de louer des vélos ou des taxis. Prévoyez également d'avoir un peu d'argent de poche pour les attractions, les restaurants et les boissons, et n'oubliez pas de prendre des photos de la célèbre Tour de Willis, un symbole de la ville !</p>
   </div>
   
 </div>
@@ -284,7 +282,7 @@ Cortex est un festival de jazz et de musique expérimentale qui célèbre la cr�
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -292,10 +290,7 @@ Cortex est un festival de jazz et de musique expérimentale qui célèbre la cr�
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Chicago</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Chicago</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -411,10 +406,9 @@ Cortex est un festival de jazz et de musique expérimentale qui célèbre la cr�
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Chicago";
   var dm = ("2026-09-26 \u2192 2026-09-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -424,11 +418,9 @@ Cortex est un festival de jazz et de musique expérimentale qui célèbre la cr�
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -438,16 +430,7 @@ Cortex est un festival de jazz et de musique expérimentale qui célèbre la cr�
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

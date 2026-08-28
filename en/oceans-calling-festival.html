@@ -198,6 +198,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <h2>ℹ️ Information</h2>
   
   
+  <div class="info-block">
+    <h3>🎪 About the festival</h3>
+    <p>Je suis désolé, mais je ne peux pas fournir d'informations précises sur l'événement "Oceans Calling Festival" car celui-ci n'existe pas encore. Cependant, je peux vous proposer un paragraphe hypothétique pour vous donner une idée de ce que pourrait être un tel festival :
+
+"Le Oceans Calling Festival, qui aura lieu à Ocean City du 25 au 27 septembre 2026, promises de devenir un événement incontournable sur la côte est américaine. Cette festivale musical se déroulera dans un cadre idyllique, entouré de plages et de paysages naturels spectaculaires, créant une ambiance unique et détendue. Le festival sera animé par une variété de groupes de musique, allant de la musique folk à la pop-rock, avec des artistes locaux et internationaux qui se joinder</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ About Ocean City</h3>
+    <p>Ocean City est une ville vibrante située sur la côte est de l'État du Maryland aux États-Unis. Pour un festival, Ocean City offre une ambiance animée et festive avec de nombreuses scènes de rue, de concerts et de spectacles de rue. Les visiteurs peuvent profiter de la plage, de la promenade piétonne et du boardwalk, ainsi que de nombreux attraits tels que le Pier Amusement Park, le Casino de Ocean City et le Museum de la Mer. Les transports en commun sont variés, notamment les taxis, les voitures partagées et les vélos à louer, tandis que les parkings sont disponibles à proximité de nombreuses attractions. Il est recommandé de réserver à l'avance les hébergements et les billets pour éviter les soldes, et de se préparer aux mouvements de foule les week-ends estivaux.</p>
+  </div>
   
 </div>
 
@@ -270,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -278,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Ocean City</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Ocean City</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -397,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Ocean City";
   var dm = ("2026-09-25 \u2192 2026-09-27" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -410,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -424,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

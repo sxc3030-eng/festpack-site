@@ -202,13 +202,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Moontricks, Presented by Winnipeg Folk Festival est un festival qui se déroule à Winnipeg du 2026-10-15 → 2026-10-15. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Je suis désolé, mais je ne peux pas fournir d'informations à ce sujet car je n'ai pas accès aux informations les plus récentes et je ne peux pas prévoir le futur. Cependant, je peux vous donner une idée générale du type d'événement que pourrait être le festival « Moontricks, Presented by Winnipeg Folk Festival ».
+
+Le festival « Moontricks, Presented by Winnipeg Folk Festival » est une événement musical qui se déroulera à Winnipeg du 15 au 15 octobre 2026. L'ambiance sera festive et conviviale, avec une atmosphère de groupe et de communauté. Le festival proposera une programmation de musique folk, indie et alternatif, avec des artistes locaux et internationaux qui se sont associés pour créer une soirée unique et inoubliable. C'est un événement à ne pas manquer pour les amateurs</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Winnipeg</h3>
-    <p>Winnipeg est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Winnipeg, la ville de la Prairie, est une destination idéale pour les amateurs de festivals ! L'ambiance est conviviale et accueillante, avec des rues animées et des espaces verts pour vous permettre de vous détendre. Vous pouvez visiter le célèbre Festival d'été, qui propose des concerts et des performances de musique, ainsi que des activités pour enfants et des expositions de produits locaux. Pour se déplacer dans la ville, vous pouvez utiliser le système de transports en commun ou louer un vélo, car les transports en commun sont abordables et efficaces, et les vélos vous permettront de découvrir les quartiers historiques et les parcs.</p>
   </div>
   
 </div>
@@ -282,7 +284,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -290,10 +292,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Winnipeg</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Winnipeg</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -409,10 +408,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Winnipeg";
   var dm = ("2026-10-15 \u2192 2026-10-15" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -422,11 +420,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -436,16 +432,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

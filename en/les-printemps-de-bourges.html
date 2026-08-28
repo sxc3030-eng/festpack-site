@@ -202,13 +202,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Les Printemps de Bourges est un festival qui se déroule à Bourges du 2026-04-21 → 2026-04-26. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Je ne peux pas fournir d'informations précises sur le festival de Bourges, car les dates de 2026 n'ont pas encore été confirmées.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Bourges</h3>
-    <p>Bourges est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Bourges, ville de pierres et de rêves, est un excellent choix pour un festival ! L'ambiance est ensoleillée et accueillante, avec ses rues pavées et ses monuments historiques qui ajoutent une touche de charme à l'atmosphère. Pour découvrir la ville, vous pouvez vous rendre à pied ou en bus, et les transports en commun sont à la fois pratiques et abordables. Il est conseillé de visiter les principaux sites tels que la cathédrale Saint-Nicolas, le château de Bourges et le Musée des Beaux-Arts, mais n'oubliez pas de profiter des nombreux marchés et cafés qui bordent les rues de la ville.</p>
   </div>
   
 </div>
@@ -282,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -290,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Bourges</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Bourges</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -409,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Bourges";
   var dm = ("2026-04-21 \u2192 2026-04-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -422,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -436,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

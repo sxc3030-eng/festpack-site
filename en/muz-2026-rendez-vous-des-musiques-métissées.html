@@ -200,13 +200,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Muz 2026 - Rendez-vous Des Musiques Métissées est un festival qui se déroule à Montreal du 2026-10-01 → 2026-10-04. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Je suis désolé, mais je ne peux pas vous fournir d'informations sur un événement spécifique qui a lieu en 2026, car mon système de connaissance est actuellement basé sur des données jusqu'à décembre 2023. Cependant, je peux vous fournir des informations générales sur le festival « Muz 2026 - Rendez-vous Des Musiques Métissées » qui se déroulera à Montréal du 1er au 4 octobre 2026. Le festival devrait offrir une ambiance vibrante et festive, réunissant des artistes de divers horizons musicaux pour partager leur musique métissée. Les participants pourront ainsi découvrir et apprécier des genres tels que la musique afro-caraïbe, afro-américaine, jazz, funk et soul, qui se mélangent pour créer une expérience uniques et sensorielle. C'est un</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Montreal</h3>
-    <p>Montreal est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Bonjour ! Si vous cherchez une destination unique pour un festival, Montreal est une excellente choix. Cette ville vibrante offre une ambiance animée et festive, avec de nombreux endroits à visiter comme le quartier Latin, le Marché de Noël et le parc Jean-Drapeau. Pour se déplacer facilement, vous pouvez utiliser le métro ou les bus, et il est conseillé de réserver à l'avance les billets pour éviter les longues files d'attente. N'oubliez pas de profiter de la nourriture et des boissons locales, telles que les poutine et les bières craft, pour compléter votre expérience de festival.</p>
   </div>
   
 </div>
@@ -280,7 +280,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -288,10 +288,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Montreal</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Montreal</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -407,10 +404,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Montreal";
   var dm = ("2026-10-01 \u2192 2026-10-04" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -420,11 +416,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -434,16 +428,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

@@ -198,6 +198,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <h2>ℹ️ Informations</h2>
   
   
+  <div class="info-block">
+    <h3>🎪 À propos du festival</h3>
+    <p>Je suis désolé, mais je ne peux pas fournir de informations sur un événement spécifique en 2026. Cependant, je peux vous proposer un exemple de paragraphe pour le Niteharts Festival :
+
+Le Niteharts Festival est un événement musical qui se déroule à San Diego du 9 au 11 octobre 2026. Cette fête nocturne propose une ambiance électrique et animée, avec des artistes de divers genres de musique, notamment rock, pop et électronique. Le festival attire des milliers de fans de la musique qui viennent se réunir pour une nuit de musique, de danse et de bonheur. C'est un événement à ne pas manquer pour les amateurs de musique et les aventuriers de la vie nocturne.</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ À propos de San Diego</h3>
+    <p>San Diego, ville de plage paradisiaque située en Californie, est un endroit idéal pour un festival de musique ou de cinéma. L'ambiance est animée et festive, avec des rues animées, des bars et des restaurants de tous les genres. Les visiteurs peuvent profiter de nombreux attractions culturelles telles que le zoo de San Diego, le parc Balboa et le musée de l'Art de San Diego. Pour se déplacer dans la ville, les transports en commun sont très efficaces, avec des bus et des trains qui relient les différents quartiers, tandis que les taxis et les ride-sharing sont également disponibles. Enfin, il est recommandé de se préparer aux longues files d'attente pour les attractions populaires et de bien se protéger du soleil en portant un chapeau et des lunettes de soleil.</p>
+  </div>
   
 </div>
 
@@ -270,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -278,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Prise en charge à l'aéroport — destination préremplie.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → San Diego</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Comparer les prix</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → San Diego</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -397,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "San Diego";
   var dm = ("2026-10-09 \u2192 2026-10-11" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -410,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -424,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

@@ -200,13 +200,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Neverender Festival - Single Day 10/3 est un festival qui se déroule à Santa Ana du 2026-10-03 → 2026-10-04. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Je suis désolé, mais je ne peux pas fournir des informations spécifiques sur un événement spécifique en 2026, car cela ne correspond pas à ma date de knowledge (décembre 2023). Cependant, je peux vous donner une idée générale du type de festival et de l'ambiance qu'il pourrait offrir.
+
+Le Neverender Festival - Single Day 10/3 devrait être un événement unique et excitant pour les amateurs de musique et de festival. L'ambiance devrait être énergique et festive, avec des performances de divers artistes qui s'inscriront dans le genre de rock et de pop. Les fans de musique seront invités à se joindre à une journée de concerts et de spectacles, avec une atmosphère conviviale et chaleureuse. C'est un événement à ne pas manquer pour ceux qui aiment la musique live et l</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Santa Ana</h3>
-    <p>Santa Ana est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Santa Ana, une ville de Californie qui cache une véritable perle ! Pendant le festival qui vous attend, vous plongerez dans une ambiance festive et animée, avec de nombreux stands de nourriture et de boissons, ainsi que des concerts et des performances live. Vous pourrez vous promener dans le centre-ville, visiter le musée d'art de Santa Ana et explorer les quartiers historiques, comme le quartier chinois de Chinatown. Pour vous déplacer, vous pouvez utiliser les transports en commun, tels que le bus ou la ligne de métro, ou préférer prendre un taxi ou un Uber pour vous rendre à vos destinations.</p>
   </div>
   
 </div>
@@ -280,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -288,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Santa Ana</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Santa Ana</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -407,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Santa Ana";
   var dm = ("2026-10-03 \u2192 2026-10-04" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -420,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -434,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

@@ -198,6 +198,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <h2>ℹ️ Information</h2>
   
   
+  <div class="info-block">
+    <h3>🎪 About the festival</h3>
+    <p>Je suis désolé, mais je ne peux pas fournir d'informations sur un événement spécifique en 2026 car mon knowledge cut-off est décembre 2023. Cependant, je peux vous proposer un paragraphe généralement sur un festival similaire :
+
+Le Niteharts Festival est un événement musical exceptionnel qui se déroulera à San Diego du 9 au 11 octobre 2026. Cette édition sera réputée pour son ambiance électrique, avec des installations de rue et des performances de musique en plein air qui transformeront la ville en un lieu unique et inoubliable. Le festival rassemblera des artistes de divers genres, notamment la musique alternative, indie et rock, offrant à tous les amateurs un spectacle inédit et emblématique. Le Niteharts Festival est un événement à ne pas manquer pour les amateurs de musique et</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ About San Diego</h3>
+    <p>San Diego, la ville de rêve pour les festivals ! Cette ville californienne offre une ambiance ensoleillée et conviviale, idéale pour se détendre et se laisser emporter par la musique et la bonne humeur. Pour découvrir la scène musicale et festive de la ville, vous pouvez vous rendre au célèbre Balboa Park, qui accueille de nombreux événements au cours de l'année. Pour se déplacer en ville, vous pouvez utiliser les bus et les taxis, ou encore louer une voiture pour vous rendre rapidement à vos destinations préférées. N'oubliez pas de prendre soin du soleil et de l'eau, et de profiter de ce que San Diego a à offrir : une atmosphère animée, de délicieux plats de cuisine californienne et des plages parfaites pour se détendre.</p>
+  </div>
   
 </div>
 
@@ -270,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -278,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → San Diego</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → San Diego</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -397,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "San Diego";
   var dm = ("2026-10-09 \u2192 2026-10-11" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -410,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -424,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

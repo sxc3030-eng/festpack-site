@@ -198,6 +198,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <h2>ℹ️ Informations</h2>
   
   
+  <div class="info-block">
+    <h3>🎪 À propos du festival</h3>
+    <p>Je suis désolé, mais je ne peux pas vous fournir d'informations précises sur le festival de 2026 car je ne peux pas accéder à des informations à l'avenir. Cependant, je peux vous donner une idée générale du festival "Nocturnal Wonderland" qui a lieu traditionnellement à San Bernardino, en Californie, aux États-Unis.
+
+"Nocturnal Wonderland" est un festival de musique électronique qui se déroule dans un ambiance festive et nocturne. L'événement est connu pour sa musique de haute énergie, avec des artistes de genres comme le trance, le house et le techno. L'ambiance est festive et animée, avec des décorations spacieuses et des installations interactives pour les visiteurs. C'est un événement à ne pas manquer pour les amateurs de musique électronique qui cherchent une expérience unique et excit</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ À propos de San Bernardino</h3>
+    <p>San Bernardino, une ville située dans le sud de la Californie, est une destination idéale pour un festival en plein air. L'ambiance est animée, avec de nombreux parcs et jardins qui offrent un cadre idéal pour profiter de la musique et des activités. Vous pouvez visiter le San Bernardino National Forest, un désert unique avec des paysages spectaculaires, ou explorer le San Manuel Casino, un lieu de divertissement qui propose des jeux de hasard, des restaurants et des spectacles. Pour se déplacer dans la ville, vous pouvez utiliser le système de bus local ou louer une voiture pour profiter de la liberté de circulation. Il est recommandé de réserver vos billets à l'avance, car les festivals peuvent être très populaires, et de préparer vos vêtements confortables pour profiter pleinement de l'expérience.</p>
+  </div>
   
 </div>
 
@@ -270,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -278,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Prise en charge à l'aéroport — destination préremplie.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → San Bernardino</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Comparer les prix</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → San Bernardino</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -397,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "San Bernardino";
   var dm = ("2026-09-19 \u2192 2026-09-20" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -410,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -424,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

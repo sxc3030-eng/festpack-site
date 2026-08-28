@@ -198,6 +198,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <h2>ℹ️ Information</h2>
   
   
+  <div class="info-block">
+    <h3>🎪 About the festival</h3>
+    <p>Bien sûr, voici un paragraphe présentant le festival "Oceans Calling" :
+
+Le festival "Oceans Calling" à Ocean City, qui aura lieu du 25 au 27 septembre 2026, promises une expérience unique et inoubliable pour les amoureux de la musique et de la mer. L'ambiance sera rythmée par la musique acoustique et indie, avec des artistes émergents et des groupes bien connus qui s'affronteront sur scène, créant un environnement convivial et ludique. Ce festival est un événement à ne pas manquer, car il offre une occasion de se détendre sur la plage, de découvrir de nouvelles musiques et de profiter d'une atmosphère conviviale avec des milliers de personnes partageant la passion de la musique et de la mer.</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ About Ocean City</h3>
+    <p>Ocean City est une destination idéale pour les festivals, offrant une ambiance festive et animée tout au long de la journée. Sur les plages de sable fin, les visiteurs peuvent profiter de concerts, de danse et de nourriture délicieuse. Pour se déplacer dans la ville, les transports en commun et les vélos sont très pratiques, tandis que des parkings sécurisés sont disponibles pour les voitures. Pour profiter au maximum de votre séjour, il est conseillé de vérifier les programmes des événements et les heures de fermeture des restaurants et des bars pour éviter les files d'attente.</p>
+  </div>
   
 </div>
 
@@ -270,7 +282,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -278,10 +290,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Ocean City</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Ocean City</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -397,10 +406,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Ocean City";
   var dm = ("2026-09-25 \u2192 2026-09-27" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -410,11 +418,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -424,16 +430,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>

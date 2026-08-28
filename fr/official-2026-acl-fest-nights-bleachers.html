@@ -198,6 +198,16 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <h2>ℹ️ Informations</h2>
   
   
+  <div class="info-block">
+    <h3>🎪 À propos du festival</h3>
+    <p>Le festival "Official 2026 ACL Fest Nights: Bleachers" à Austin est une expérience incontournable de musique et d'ambiance. Le 2 octobre 2026, le public se réunira pour écouter le groupe Bleachers, connu pour son mélange unique de pop, rock et électronique. L'atmosphère sera électrique, avec des milliers de personnes réunies pour danser et chanter ensemble. C'est un événement à ne pas manquer pour les amateurs de musique populaire et les fans de l'énergie en plein air.</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ À propos de Austin</h3>
+    <p>Austin, la ville du Texas, est un véritable paradis pour les amoureux des festivals. L'ambiance est électrique, avec ses rues animées, ses bars et ses restaurants qui proposent une diversité de musique, de nourriture et de culture. Pour y découvrir la ville, il est recommandé de se déplacer à pied ou en vélo, car Austin est une ville très cyclable et offre une multitude de parcours pour tous les niveaux. Il est également possible de prendre l'autobus ou de louer une voiture pour explorer les environs, car Austin est située à proximité de nombreux sites touristiques, tels que le lac Travis et les montagnes de Texas.</p>
+  </div>
   
 </div>
 
@@ -270,7 +280,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
@@ -278,10 +288,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Prise en charge à l'aéroport — destination préremplie.</p>
-  <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → Austin</a>
-    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Comparer les prix</a>
-  </div>
+  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → Austin</a>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -397,10 +404,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Austin";
   var dm = ("2026-10-02 \u2192 2026-10-02" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -410,11 +416,9 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CREATIVE = "1100l68075";
   var ADREF = "PZG6faduu1";
   function expediaUrl() {
-    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
     var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
       (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    // Wrapper affilié (camref) pour le tracking
     if (CAMREF) {
       var lp = encodeURIComponent(url);
       url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
@@ -424,16 +428,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
     return url;
   }
-  function kayakUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    return url;
-  }
-  function apply() {
-    CTA.href = expediaUrl();
-    if (CMP) CMP.href = kayakUrl();
-  }
-  apply();
+  CTA.href = expediaUrl();
 })();
 </script>
 <script>
