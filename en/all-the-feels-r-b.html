@@ -202,13 +202,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>All The Feels R&B est un festival qui se déroule à Toronto du 2026-10-10 → 2026-10-10. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Get ready to immerse yourself in the ultimate R&B experience at "All The Feels R&B" coming to Toronto on October 10th, 2026. This highly-anticipated festival promises to transport attendees to a world of soulful melodies, heartfelt lyrics, and infectious beats, featuring an incredible lineup of artists and DJs that will leave you feeling all the feels. With a focus on showcasing the most talented R&B talent from around the globe, this festival is a must-see event for music lovers of all ages, offering a unique opportunity to connect with the music, the artists, and the community in a truly unforgettable way.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Toronto</h3>
-    <p>Toronto est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Toronto is a vibrant festival destination that seamlessly blends cultural, artistic, and entertainment experiences. Throughout the year, the city hosts numerous festivals, such as the Toronto International Film Festival, NXNE, and Pride Toronto, attracting millions of visitors. To get around, Toronto has an efficient public transportation system, including subways, buses, and streetcars, making it easy to navigate the city. For visitors, practical tips include purchasing a Presto card for convenient travel, taking advantage of the city's many free outdoor festivals and events, and exploring the diverse neighborhoods, such as Kensington Market and Queen West, for a unique festival experience.</p>
   </div>
   
 </div>
@@ -282,17 +282,17 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Kayak + agences à l'aéroport) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
     <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-  <p class="sub">💡 Compare prices (Kayak) or find agencies at the airport.</p>
+  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
   <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Compare car rentals → Toronto</a>
-    <a class="btn alt" id="carAirportCta" href="#" target="_blank" rel="nofollow sponsored">🛬 Agencies at the airport</a>
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Toronto</a>
+    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
   </div>
 </div>
 
@@ -409,42 +409,43 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Kayak (comparateur) + Google Maps (agences aéroport) --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var AIR = document.getElementById('carAirportCta');
+  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Toronto";
   var dm = ("2026-10-10 \u2192 2026-10-10" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
-  var isEn = "en" === 'en';
-  function makeUrl(origin) {
-    var o = encodeURIComponent(origin || '');
+  var CAMREF = "1101l5IQud";
+  var CREATIVE = "1100l68075";
+  var ADREF = "PZG6faduu1";
+  function expediaUrl() {
+    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    if (o) url += '?pickup=' + o;
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    // Wrapper affilié (camref) pour le tracking
+    if (CAMREF) {
+      var lp = encodeURIComponent(url);
+      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
+        '&camref=' + encodeURIComponent(CAMREF) +
+        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
+        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
+    }
     return url;
   }
-  function airportUrl() {
+  function kayakUrl() {
     var d = encodeURIComponent(dest || '');
-    var q = isEn ? 'car rental ' + (dest || '') + ' airport' : 'location voiture aéroport ' + (dest || '');
-    return 'https://www.google.com/maps/search/' + encodeURIComponent(q);
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    return url;
   }
-  function apply(origin) {
-    CTA.href = makeUrl(origin);
-    if (AIR) AIR.href = airportUrl();
+  function apply() {
+    CTA.href = expediaUrl();
+    if (CMP) CMP.href = kayakUrl();
   }
-  var cached = null;
-  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
-  if (cached) { apply(cached); return; }
-  try {
-    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
-      var c = (j && j.city) ? j.city : '';
-      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
-      apply(c);
-    }).catch(function(){ apply(''); });
-  } catch(e){ apply(''); }
+  apply();
 })();
 </script>
 <script>

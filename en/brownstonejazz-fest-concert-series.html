@@ -200,13 +200,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>BrownstoneJAZZ FEST CONCERT SERIES est un festival qui se déroule à Brooklyn  du 2026-09-04 → 2026-10-17. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Get ready to immerse yourself in the soulful sounds of jazz in the heart of Brooklyn! The BrownstoneJAZZ FEST CONCERT SERIES, taking place from September 4th to October 17th, 2026, promises to be an unforgettable experience. This 6-weekend festival celebrates the rich history and diversity of jazz music, featuring a diverse lineup of renowned artists and emerging talent. With a vibe that's equal parts laid-back and electrifying, BrownstoneJAZZ FEST is a must-see event for music lovers of all genres, offering a unique opportunity to experience the genre that defined a generation.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Brooklyn </h3>
-    <p>Brooklyn  est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Brooklyn is a vibrant festival destination that offers a unique blend of culture, art, and entertainment. During festivals like Brooklyn Pride, Brooklyn Book Festival, and Brooklyn Hip Hop Festival, the city transforms into a kaleidoscope of colors, music, and food. Getting to Brooklyn is easy, with multiple subway lines and bus routes connecting the borough to Manhattan and other parts of the city. To make the most of your festival experience, plan ahead and take advantage of the city's many free or low-cost attractions, such as the Brooklyn Museum's outdoor installations and the Brooklyn Bridge Park's waterfront events.</p>
   </div>
   
 </div>
@@ -280,17 +280,17 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Kayak + agences à l'aéroport) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
     <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-  <p class="sub">💡 Compare prices (Kayak) or find agencies at the airport.</p>
+  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
   <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Compare car rentals → Brooklyn </a>
-    <a class="btn alt" id="carAirportCta" href="#" target="_blank" rel="nofollow sponsored">🛬 Agencies at the airport</a>
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Brooklyn </a>
+    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
   </div>
 </div>
 
@@ -407,42 +407,43 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Kayak (comparateur) + Google Maps (agences aéroport) --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var AIR = document.getElementById('carAirportCta');
+  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Brooklyn ";
   var dm = ("2026-09-04 \u2192 2026-10-17" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
-  var isEn = "en" === 'en';
-  function makeUrl(origin) {
-    var o = encodeURIComponent(origin || '');
+  var CAMREF = "1101l5IQud";
+  var CREATIVE = "1100l68075";
+  var ADREF = "PZG6faduu1";
+  function expediaUrl() {
+    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    if (o) url += '?pickup=' + o;
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    // Wrapper affilié (camref) pour le tracking
+    if (CAMREF) {
+      var lp = encodeURIComponent(url);
+      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
+        '&camref=' + encodeURIComponent(CAMREF) +
+        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
+        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
+    }
     return url;
   }
-  function airportUrl() {
+  function kayakUrl() {
     var d = encodeURIComponent(dest || '');
-    var q = isEn ? 'car rental ' + (dest || '') + ' airport' : 'location voiture aéroport ' + (dest || '');
-    return 'https://www.google.com/maps/search/' + encodeURIComponent(q);
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    return url;
   }
-  function apply(origin) {
-    CTA.href = makeUrl(origin);
-    if (AIR) AIR.href = airportUrl();
+  function apply() {
+    CTA.href = expediaUrl();
+    if (CMP) CMP.href = kayakUrl();
   }
-  var cached = null;
-  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
-  if (cached) { apply(cached); return; }
-  try {
-    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
-      var c = (j && j.city) ? j.city : '';
-      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
-      apply(c);
-    }).catch(function(){ apply(''); });
-  } catch(e){ apply(''); }
+  apply();
 })();
 </script>
 <script>

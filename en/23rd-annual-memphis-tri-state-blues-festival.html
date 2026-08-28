@@ -200,7 +200,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>23rd Annual Memphis Tri-State Blues Festival est un festival qui se déroule à Southaven du 2026-10-17 → 2026-10-17. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Get ready to groove in the heart of the Mississippi Delta at the 23rd Annual Memphis Tri-State Blues Festival, coming to Southaven in October 2026. This highly-anticipated event promises to be a soul-stirring celebration of the blues, with a lineup of world-renowned artists and local talent taking the stage to perform classic and contemporary blues music. The festival's infectious energy is palpable, creating an immersive experience that will leave you feeling the raw emotion and passion of the blues. Don't miss this must-see event that's a testament to the enduring legacy of the blues genre.</p>
   </div>
   
   
@@ -282,17 +282,17 @@ Southaven, une ville de l'État du Mississippi, est un excellent choix pour un f
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Kayak + agences à l'aéroport) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
     <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-  <p class="sub">💡 Compare prices (Kayak) or find agencies at the airport.</p>
+  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
   <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Compare car rentals → Southaven</a>
-    <a class="btn alt" id="carAirportCta" href="#" target="_blank" rel="nofollow sponsored">🛬 Agencies at the airport</a>
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Southaven</a>
+    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
   </div>
 </div>
 
@@ -409,42 +409,43 @@ Southaven, une ville de l'État du Mississippi, est un excellent choix pour un f
 })();
 </script>
 <script>
-/* --- Location de voiture : Kayak (comparateur) + Google Maps (agences aéroport) --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var AIR = document.getElementById('carAirportCta');
+  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Southaven";
   var dm = ("2026-10-17 \u2192 2026-10-17" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
-  var isEn = "en" === 'en';
-  function makeUrl(origin) {
-    var o = encodeURIComponent(origin || '');
+  var CAMREF = "1101l5IQud";
+  var CREATIVE = "1100l68075";
+  var ADREF = "PZG6faduu1";
+  function expediaUrl() {
+    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    if (o) url += '?pickup=' + o;
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    // Wrapper affilié (camref) pour le tracking
+    if (CAMREF) {
+      var lp = encodeURIComponent(url);
+      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
+        '&camref=' + encodeURIComponent(CAMREF) +
+        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
+        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
+    }
     return url;
   }
-  function airportUrl() {
+  function kayakUrl() {
     var d = encodeURIComponent(dest || '');
-    var q = isEn ? 'car rental ' + (dest || '') + ' airport' : 'location voiture aéroport ' + (dest || '');
-    return 'https://www.google.com/maps/search/' + encodeURIComponent(q);
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    return url;
   }
-  function apply(origin) {
-    CTA.href = makeUrl(origin);
-    if (AIR) AIR.href = airportUrl();
+  function apply() {
+    CTA.href = expediaUrl();
+    if (CMP) CMP.href = kayakUrl();
   }
-  var cached = null;
-  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
-  if (cached) { apply(cached); return; }
-  try {
-    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
-      var c = (j && j.city) ? j.city : '';
-      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
-      apply(c);
-    }).catch(function(){ apply(''); });
-  } catch(e){ apply(''); }
+  apply();
 })();
 </script>
 <script>

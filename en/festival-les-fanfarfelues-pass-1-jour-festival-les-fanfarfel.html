@@ -202,13 +202,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>FESTIVAL LES FANFARFELUES - PASS 1 JOUR - FESTIVAL LES FANFARFELUES est un festival qui se déroule à Vitre du 2026-08-22 → 2026-08-23. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Get ready to immerse yourself in the vibrant energy of Festival Les Fanfarfuelles, taking place in the charming city of Vitre on August 22nd and 23rd, 2026. This unique festival promises to transport attendees to a world of whimsical wonder, with a captivating blend of folk, pop, and world music that will leave you spellbound. Expect an eclectic mix of performances, from enchanting ballads to infectious dance beats, all woven together by the festival's infectious joie de vivre. As a must-see event, Festival Les Fanfarfuelles is an unmissable experience that will leave you humming the tunes long after the festival curtains close.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Vitre</h3>
-    <p>Vitre est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Vitre, a charming city in western France, is a hidden gem for festival enthusiasts. The city's unique blend of medieval architecture, artistic heritage, and vibrant cultural scene makes it an ideal destination for music lovers and art aficionados. During the summer months, Vitre hosts the popular Jazz à Vitre festival, which features a lineup of world-class jazz musicians, as well as the Fête des Lumières, a mesmerizing light festival that illuminates the city's historic streets. To get to Vitre, visitors can easily reach the city by train from nearby Angers or Le Mans, and parking is readily available, making it easy to explore the city on foot or by bike.</p>
   </div>
   
 </div>
@@ -282,17 +282,17 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Kayak + agences à l'aéroport) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
     <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-  <p class="sub">💡 Compare prices (Kayak) or find agencies at the airport.</p>
+  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
   <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Compare car rentals → Vitre</a>
-    <a class="btn alt" id="carAirportCta" href="#" target="_blank" rel="nofollow sponsored">🛬 Agencies at the airport</a>
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Vitre</a>
+    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
   </div>
 </div>
 
@@ -409,42 +409,43 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Kayak (comparateur) + Google Maps (agences aéroport) --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var AIR = document.getElementById('carAirportCta');
+  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Vitre";
   var dm = ("2026-08-22 \u2192 2026-08-23" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
-  var isEn = "en" === 'en';
-  function makeUrl(origin) {
-    var o = encodeURIComponent(origin || '');
+  var CAMREF = "1101l5IQud";
+  var CREATIVE = "1100l68075";
+  var ADREF = "PZG6faduu1";
+  function expediaUrl() {
+    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    if (o) url += '?pickup=' + o;
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    // Wrapper affilié (camref) pour le tracking
+    if (CAMREF) {
+      var lp = encodeURIComponent(url);
+      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
+        '&camref=' + encodeURIComponent(CAMREF) +
+        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
+        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
+    }
     return url;
   }
-  function airportUrl() {
+  function kayakUrl() {
     var d = encodeURIComponent(dest || '');
-    var q = isEn ? 'car rental ' + (dest || '') + ' airport' : 'location voiture aéroport ' + (dest || '');
-    return 'https://www.google.com/maps/search/' + encodeURIComponent(q);
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    return url;
   }
-  function apply(origin) {
-    CTA.href = makeUrl(origin);
-    if (AIR) AIR.href = airportUrl();
+  function apply() {
+    CTA.href = expediaUrl();
+    if (CMP) CMP.href = kayakUrl();
   }
-  var cached = null;
-  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
-  if (cached) { apply(cached); return; }
-  try {
-    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
-      var c = (j && j.city) ? j.city : '';
-      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
-      apply(c);
-    }).catch(function(){ apply(''); });
-  } catch(e){ apply(''); }
+  apply();
 })();
 </script>
 <script>

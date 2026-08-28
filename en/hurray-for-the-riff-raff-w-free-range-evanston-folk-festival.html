@@ -200,13 +200,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <div class="info-block">
     <h3>🎪 About the festival</h3>
-    <p>Hurray for the Riff Raff w. Free Range: Evanston Folk Festival Aftershow presented by Bluegrass Situation est un festival qui se déroule à Evanston du 2026-09-12 → 2026-09-12. C'est un rendez-vous incontournable pour les amateurs de musique, avec une programmation variée et une ambiance unique. Vérifie les dates et la programmation sur le site officiel.</p>
+    <p>Le festival « Hurray for the Riff Raff w. Free Range: Evanston Folk Festival Aftershow présenté par Bluegrass Situation » qui aura lieu à Evanston du 12 au 12 septembre 2026, promet d'être une expérience unique et inoubliable pour les amateurs de musique folk et de bluegrass. L'ambiance sera animée et conviviale, avec une mélange de musique acoustique et de rythmes traditionnels qui résonneront dans l'air. Le groupe Hurray for the Riff Raff, connu pour son mélange de folk, de rock et de blues, sera l'invité d'honneur de ce festival, offrant une expérience live exceptionnelle. C'est un événement à ne pas manquer pour les fans de la musique traditionnelle et les amateurs de concerts en plein air.</p>
   </div>
   
   
   <div class="info-block">
     <h3>🏙️ About Evanston</h3>
-    <p>Evanston est une ville qui accueille ce festival. Selon la destination, tu y trouveras des hôtels, restaurants et transports pour profiter pleinement de ton séjour. Pense à réserver tôt pendant la période du festival.</p>
+    <p>Evanston, une ville de 122 000 habitants située à l'ouest de Chicago, est une destination idéale pour un festival. L'ambiance est conviviale et accueillante, avec de nombreux parcs et jardins qui offrent un espace de détente pour les visiteurs. Vous pourrez découvrir les principaux sites de la ville, tels que la bibliothèque centrale du comté de Cook et le musée de l'art de l'État, qui proposent des expositions variées et des activités culturelles. Pour se déplacer, vous pouvez utiliser les transports en commun, tels que le système métro de la ville, ou louer une voiture pour explorer la région. Il est conseillé de réserver à l'avance un hébergement et de vérifier les horaires de fonctionnement des sites et des transports pour planifier votre séjour optimal.</p>
   </div>
   
 </div>
@@ -280,17 +280,17 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
 </div>
 
-<!-- STEP 5: LOCATION DE VOITURE (Kayak + agences à l'aéroport) -->
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
 <div class="step" data-step="5">
   <div class="step-head">
     <span class="step-num">5</span>
     <h2>🚗 Rent a car</h2>
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
-  <p class="sub">💡 Compare prices (Kayak) or find agencies at the airport.</p>
+  <p class="sub">💡 Pick up at the airport — destination pre-filled.</p>
   <div class="cta">
-    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Compare car rentals → Evanston</a>
-    <a class="btn alt" id="carAirportCta" href="#" target="_blank" rel="nofollow sponsored">🛬 Agencies at the airport</a>
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Rent a car → Evanston</a>
+    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Compare prices</a>
   </div>
 </div>
 
@@ -407,42 +407,43 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
-/* --- Location de voiture : Kayak (comparateur) + Google Maps (agences aéroport) --- */
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
 (function () {
   var CTA = document.getElementById('carCta');
-  var AIR = document.getElementById('carAirportCta');
+  var CMP = document.getElementById('carCompareCta');
   if (!CTA) return;
   var dest = "Evanston";
   var dm = ("2026-09-12 \u2192 2026-09-12" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
-  var isEn = "en" === 'en';
-  function makeUrl(origin) {
-    var o = encodeURIComponent(origin || '');
+  var CAMREF = "1101l5IQud";
+  var CREATIVE = "1100l68075";
+  var ADREF = "PZG6faduu1";
+  function expediaUrl() {
+    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
     var d = encodeURIComponent(dest || '');
-    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
-    if (o) url += '?pickup=' + o;
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    // Wrapper affilié (camref) pour le tracking
+    if (CAMREF) {
+      var lp = encodeURIComponent(url);
+      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
+        '&camref=' + encodeURIComponent(CAMREF) +
+        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
+        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
+    }
     return url;
   }
-  function airportUrl() {
+  function kayakUrl() {
     var d = encodeURIComponent(dest || '');
-    var q = isEn ? 'car rental ' + (dest || '') + ' airport' : 'location voiture aéroport ' + (dest || '');
-    return 'https://www.google.com/maps/search/' + encodeURIComponent(q);
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    return url;
   }
-  function apply(origin) {
-    CTA.href = makeUrl(origin);
-    if (AIR) AIR.href = airportUrl();
+  function apply() {
+    CTA.href = expediaUrl();
+    if (CMP) CMP.href = kayakUrl();
   }
-  var cached = null;
-  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
-  if (cached) { apply(cached); return; }
-  try {
-    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
-      var c = (j && j.city) ? j.city : '';
-      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
-      apply(c);
-    }).catch(function(){ apply(''); });
-  } catch(e){ apply(''); }
+  apply();
 })();
 </script>
 <script>

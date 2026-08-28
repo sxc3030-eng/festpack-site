@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fest'Pack">
+<link rel="canonical" href="https://festivalpacktravel.ca/fr/">
+<title>Pittsburgh Steelers vs To be decided — Ton plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffffff;--card:#f5f7fa;--accent:#003580;--gold:#f8b500;--text:#1a1a1a;--muted:#5b6472;--border:#e2e8f0;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+header{padding:1.4rem 1.2rem;background:#ffffff;border-bottom:2px solid var(--border);display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+header .logo{font-size:1.25rem;font-weight:800;letter-spacing:.5px;color:var(--text)}
+header .logo span{color:var(--accent)}
+header .menu{display:flex;gap:1rem;margin-left:.6rem}
+header .menu a{color:var(--muted);font-size:.92rem;font-weight:600;padding:.3rem .7rem;border-radius:8px}
+header .menu a:hover{background:#eef2ff;color:var(--accent);text-decoration:none}
+header .langs{margin-left:auto;display:flex;gap:.5rem}
+header .langs a{color:var(--muted);font-size:.9rem;padding:.2rem .6rem;border:1px solid var(--border);border-radius:99px}
+header .langs a.active{color:var(--text);border-color:var(--accent);background:#eef2ff}
+.burger{display:none;background:none;border:1px solid var(--border);border-radius:8px;font-size:1.2rem;padding:.25rem .6rem;cursor:pointer;color:var(--accent)}
+@media(max-width:700px){
+  header .burger{display:block;order:2;margin-left:auto}
+  header .langs{order:3;margin-left:0}
+  header .menu{display:none;order:4;width:100%;flex-direction:column;gap:.2rem;padding:.4rem 0;border-top:1px solid var(--border);margin-top:.4rem}
+  header .menu.open{display:flex}
+  header .menu a{padding:.6rem .7rem}
+}
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
+h1{font-size:1.6rem;margin-bottom:.4rem}
+h2{font-size:1.2rem;margin:1.4rem 0 .6rem;color:var(--accent)}
+p.sub{color:var(--muted);margin-bottom:1.2rem}
+.searchbar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.searchbar input,.searchbar select{padding:.55rem .8rem;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--text);font-size:.95rem}
+.searchbar input{flex:1;min-width:200px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+.card{background:var(--card);border-radius:12px;padding:1rem;display:flex;flex-direction:column;gap:.4rem;border:1px solid var(--border);transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.card-img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:.3rem}
+.hero-img{width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:.8rem}
+.card h3{font-size:1.05rem;color:var(--text)}
+.card .meta{color:var(--muted);font-size:.85rem}
+.card .badges{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.2rem}
+.badge{font-size:.72rem;padding:.15rem .5rem;border-radius:99px;background:#eef2f7;color:var(--text)}
+.badge.hot{background:#fef3e2;color:#b45309}
+.badge.region{background:#e0f2fe;color:#0369a1}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:8px;font-weight:600;margin-top:.4rem;text-align:center}
+.btn:hover{filter:brightness(1.05);text-decoration:none}
+.btn.alt{background:#eef2f7;color:var(--text)}
+.btn.flight-only{margin-top:.3rem;font-size:.85rem;padding:.4rem .8rem}
+.btn.main-cta{background:var(--accent);color:#fff;padding:.75rem 1.4rem;font-size:1.05rem;border-radius:10px;display:inline-block;box-shadow:0 2px 6px rgba(0,53,128,.18)}
+.btn.main-cta:hover{filter:brightness(1.08)}
+.step{background:var(--card);border-radius:12px;padding:1.1rem;margin:1rem 0;border-left:4px solid var(--accent);border:1px solid var(--border)}
+.step h2{margin-top:0}
+.step .cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.step-head{display:flex;align-items:center;gap:.7rem}
+.step-num{background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0}
+.step.locked{opacity:.55;border-left-color:#94a3b8}
+.check{display:inline-flex;align-items:center;gap:.35rem;margin-left:auto;cursor:pointer;user-select:none}
+.check input{width:20px;height:20px;accent-color:var(--gold);cursor:pointer}
+.check input:disabled{cursor:not-allowed;opacity:.35}
+.check span{font-weight:700;color:var(--gold)}
+.progress-wrap{display:flex;align-items:center;gap:.8rem;margin:1rem 0 .4rem}
+.progress{flex:1;height:10px;background:#e2e8f0;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#003580,#f8b500);transition:width .35s ease}
+.progress-label{font-weight:700;color:var(--muted);font-size:.9rem;min-width:2.5rem;text-align:right}
+.done{background:#f0fdf4;border:1px solid #86efac;color:#14532d;border-radius:12px;padding:1rem;font-weight:700;text-align:center;margin-top:1rem}
+.small{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+table{width:100%;border-collapse:collapse;margin:.6rem 0}
+th,td{text-align:left;padding:.5rem .6rem;border-bottom:1px solid var(--border);font-size:.92rem}
+th{color:var(--muted);font-weight:600}
+.transparency{background:#f0fdf4;border-radius:10px;padding:.9rem;font-size:.88rem;color:var(--muted);margin-top:1.2rem;border:1px solid var(--border)}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
+.hero{background:var(--card);border-radius:14px;padding:1.6rem;margin-bottom:1.4rem;border:1px solid var(--border)}
+.hero h1{font-size:1.8rem}
+.hero .meta{color:var(--muted);margin:.4rem 0 1rem}
+.pkg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.6rem}
+.pkg div{background:#fafbfc;border-radius:10px;padding:.9rem;border:1px solid var(--border)}
+.legal-body{max-width:760px;margin:0 auto;line-height:1.7}
+.legal-body h2{font-size:1.15rem;margin:1.2rem 0 .5rem;color:var(--accent)}
+.legal-body p,.legal-body li{font-size:.95rem;color:var(--text)}
+.legal-body ul{padding-left:1.2rem;margin:.4rem 0}
+.previews{position:absolute;top:100%;left:0;right:0;margin-top:4px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;max-height:320px;overflow:auto}
+.tl{display:flex;flex-direction:column;gap:1.2rem;margin-top:.6rem}
+.tl-month{display:flex;gap:.9rem;position:relative}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:.35rem;box-shadow:0 0 0 4px #eef2ff}
+.tl-month:not(:last-child)::before{content:'';position:absolute;left:6px;top:1.1rem;bottom:-1.2rem;width:2px;background:var(--border)}
+.tl-body{flex:1;min-width:0}
+.tl-header{font-weight:800;color:var(--accent);margin-bottom:.4rem}
+.tl-event{display:flex;gap:.7rem;align-items:center;padding:.45rem 0;color:var(--text)!important}
+.tl-event:hover{text-decoration:none;color:var(--accent)!important}
+.tl-event img{width:56px;height:40px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.tl-event strong{display:block;font-size:.95rem}
+.tl-event span{font-size:.8rem;color:var(--muted)}
+@media(max-width:640px){.tl-dot{display:none}.tl-month::before{display:none}}
+.breadcrumb{font-size:.85rem;color:var(--muted);margin-bottom:1rem}
+.breadcrumb a{color:var(--accent)}
+.backlink{display:inline-block;margin:1.2rem 0 0;font-weight:600;color:var(--accent)}
+.share{display:flex;align-items:center;gap:.5rem;margin-top:.8rem;flex-wrap:wrap}
+.share-label{font-size:.85rem;color:var(--muted);font-weight:600}
+.share-btn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#eef2f7;border:1px solid var(--border);font-size:1.05rem;cursor:pointer;color:var(--text)}
+.share-btn:hover{background:#e0e7ff;border-color:var(--accent);text-decoration:none}
+.vibe{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.6rem}
+.vibe-btn{background:#fafbfc;border:2px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;text-align:left;transition:.15s}
+.vibe-btn strong{display:block;font-size:1.05rem;color:var(--text)}
+.vibe-btn span{font-size:.85rem;color:var(--muted)}
+.vibe-btn:hover{border-color:var(--accent)}
+.vibe-btn.active{border-color:var(--accent);background:#eef2ff;box-shadow:0 0 0 3px rgba(0,53,128,.12)}
+.info-section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;margin:1rem 0}
+.info-section h2{color:var(--accent);margin-bottom:.6rem}
+.info-row{margin:.3rem 0;font-size:.95rem}
+.info-block{margin-top:.8rem}
+.info-block h3{font-size:1rem;color:var(--text);margin-bottom:.3rem}
+.info-block p{font-size:.92rem;color:var(--text);line-height:1.6}
+@media(max-width:640px){.vibe{grid-template-columns:1fr}}
+.previews a.pv{display:flex;gap:.8rem;align-items:center;padding:.6rem .8rem;border-bottom:1px solid var(--border)}
+.previews a.pv:last-child{border-bottom:none}
+.previews a.pv:hover{background:#eef2ff;text-decoration:none}
+.previews a.pv img{width:64px;height:44px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.previews a.pv strong{display:block;font-size:.95rem;color:var(--text)}
+.previews a.pv span{font-size:.82rem;color:var(--muted)}
+@media(max-width:640px){.pkg{grid-template-columns:1fr}}
+/* Widget de chat */
+.chat-fab{position:fixed;bottom:1.2rem;right:1.2rem;width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:1.6rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,53,128,.35);z-index:100;display:flex;align-items:center;justify-content:center}
+.chat-fab:hover{filter:brightness(1.1)}
+.chat-box{position:fixed;bottom:5.2rem;right:1.2rem;width:340px;max-width:calc(100vw - 2rem);height:440px;max-height:calc(100vh - 7rem);background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.18);z-index:101;display:flex;flex-direction:column;overflow:hidden}
+.chat-head{background:var(--accent);color:#fff;padding:.8rem 1rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.chat-head .close{margin-left:auto;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
+.chat-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.5rem;background:#f8fafc}
+.chat-msg{max-width:82%;padding:.55rem .8rem;border-radius:12px;font-size:.9rem;line-height:1.4}
+.chat-msg.bot{background:#fff;border:1px solid var(--border);align-self:flex-start}
+.chat-msg.user{background:var(--accent);color:#fff;align-self:flex-end}
+.chat-input{display:flex;gap:.4rem;padding:.6rem;border-top:1px solid var(--border);background:#fff}
+.chat-input input{flex:1;padding:.5rem .7rem;border:1px solid var(--border);border-radius:8px;font-size:.9rem}
+.chat-input button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-weight:700}
+.chat-note{font-size:.7rem;color:var(--muted);text-align:center;padding:.3rem}
+@media(max-width:640px){.chat-box{width:calc(100vw - 2rem);right:1rem;bottom:5rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><a href="../fr/index.html" style="color:inherit;text-decoration:none">🎪 Fest<span>'</span>Pack</a></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">☰</button>
+  <nav class="menu" id="mainMenu">
+    <a href="../fr/index.html">Accueil</a>
+    <a href="../fr/index.html#timeline">Timeline</a>
+    <a href="mailto:festivalpacktravel@gmail.com">Contact</a>
+  </nav>
+  <div class="langs">
+    <a href="../fr/index.html" class="active">🇫🇷 FR</a>
+    <a href="../en/index.html" class="">🇬🇧 EN</a>
+  </div>
+</header>
+<main>
+
+
+
+
+
+
+
+
+<div class="breadcrumb">
+  <a href="../fr/index.html">← Accueil</a>
+  <span> / Pittsburgh Steelers vs To be decided</span>
+</div>
+
+<div class="hero">
+  
+  
+  <h1>🎪 Pittsburgh Steelers vs To be decided</h1>
+  <div class="meta">🗓️ 2026-09-12 → 2026-09-12 · 📍 Heinz Field, Pittsburgh, PA</div>
+  <p class="sub">⚽ Football américain — NFL</p>
+  <p class="sub">Billet pour Pittsburgh Steelers vs To be decided — Football américain — NFL.</p>
+  <div class="share">
+    <span class="share-label">Partager:</span>
+    <a class="share-btn" target="_blank" rel="noopener" id="shareFb" href="#">📘</a>
+    <a class="share-btn" target="_blank" rel="noopener" id="shareX" href="#">𝕏</a>
+    <a class="share-btn" target="_blank" rel="noopener" id="shareWa" href="#">💬</a>
+    <button class="share-btn" id="shareCopy" type="button">🔗</button>
+  </div>
+</div>
+
+<!-- SECTION INFORMATION : site officiel + descriptif festival + ville -->
+<div class="info-section">
+  <h2>ℹ️ Informations</h2>
+  
+  
+  <div class="info-block">
+    <h3>🎪 À propos du festival</h3>
+    <p>Assiste à Pittsburgh Steelers vs To be decided en direct. Football américain — NFL — réserve ton billet, ton vol et ton hôtel.</p>
+  </div>
+  
+  
+  <div class="info-block">
+    <h3>🏙️ À propos de Pittsburgh, PA</h3>
+    <p>Pittsburgh, PA est la ville hôte de cet événement sportif. Pense à réserver tôt.</p>
+  </div>
+  
+</div>
+
+<!-- Progress bar -->
+<div class="progress-wrap">
+  <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0/5</div>
+</div>
+
+<!-- STEP 1 : CHOIX VIP / BACKPACK (adapte les résultats) -->
+<div class="step" data-step="1">
+  <div class="step-head">
+    <span class="step-num">1</span>
+    <h2>👛 Choisis ton vibe</h2>
+    <label class="check"><input type="checkbox" data-check="1" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  <p class="sub">Ça adapte tes options de vol et d'hôtel.</p>
+  <div class="vibe">
+    <button type="button" class="vibe-btn" data-vibe="backpack" onclick="setVibe('backpack')">
+      <strong>🎒 Backpacker</strong>
+      <span>Auberges budget & vols éco</span>
+    </button>
+    <button type="button" class="vibe-btn" data-vibe="vip" onclick="setVibe('vip')">
+      <strong>💎 VIP / Confort</strong>
+      <span>Gros hôtels & vols business</span>
+    </button>
+  </div>
+</div>
+
+<!-- STEP 2 : BILLET -->
+<div class="step" data-step="2">
+  <div class="step-head">
+    <span class="step-num">2</span>
+    <h2>🎟️ Réserve le billet</h2>
+    <label class="check"><input type="checkbox" data-check="2" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  <p class="sub">D'abord le billet — ne réserve pas ton voyage avant de l'avoir.</p>
+  
+  <a class="btn" href="https://sportsevents365.com/event/386920?a_aid=7kwnif8ac4jca" target="_blank" rel="nofollow sponsored">🎟️ Acheter le billet →</a>
+  
+  
+</div>
+
+<!-- STEP 3: VOL (destination + origine auto par IP, lien construit côté client) -->
+<div class="step" data-step="3">
+  <div class="step-head">
+    <span class="step-num">3</span>
+    <h2>✈️ Réserve ton vol</h2>
+    <label class="check"><input type="checkbox" data-check="3" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  
+  <p class="sub">💡 Départ détecté automatiquement depuis ta position — destination préremplie.</p>
+  <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Fmode%3Dsearch%26trip%3Droundtrip%26leg1%3Dfrom%3AYUL%2Cto%3APittsburgh%2C%2520PA%2Cdeparture%3A2026-09-11TANYTIME%26leg2%3Dfrom%3APittsburgh%2C%2520PA%2Cto%3AYUL%2Cdeparture%3A2026-09-13TANYTIME%26options%3Dcabinclass%253Aeconomy&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Choisir mon vol → Pittsburgh, PA</a>
+  
+  
+  
+</div>
+
+<!-- STEP 4: HÔTEL (séparé, destination préremplie) -->
+<div class="step" data-step="4">
+  <div class="step-head">
+    <span class="step-num">4</span>
+    <h2>🏨 Réserve ton hôtel</h2>
+    <label class="check"><input type="checkbox" data-check="4" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  
+  <p class="sub">💡 Destination + dates préremplies — choisis juste ton hôtel.</p>
+  <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DPittsburgh%252C%2520PA%26startDate%3D2026-09-12%26endDate%3D2026-09-12&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Choisir mon hôtel → Pittsburgh, PA</a>
+  
+  
+</div>
+
+<!-- STEP 5: LOCATION DE VOITURE (Expedia Cars + Kayak alternative) -->
+<div class="step" data-step="5">
+  <div class="step-head">
+    <span class="step-num">5</span>
+    <h2>🚗 Loue une voiture</h2>
+    <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
+  </div>
+  <p class="sub">💡 Prise en charge à l'aéroport — destination préremplie.</p>
+  <div class="cta">
+    <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → Pittsburgh, PA</a>
+    <a class="btn alt" id="carCompareCta" href="#" target="_blank" rel="nofollow sponsored">⚖️ Comparer les prix</a>
+  </div>
+</div>
+
+<!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
+
+<div class="done" id="doneBanner" hidden>
+  🎉 Tout est coché ! Tu es prêt·e. Profite du festival !
+</div>
+
+<a class="backlink" href="../fr/index.html">← Retour à tous les événements</a>
+
+<script>
+/* --- Choix VIP / Backpack : adapte les liens vol + hôtel --- */
+(function () {
+  var PKG = {
+    backpack: "",
+    vip: ""
+  };
+  var hotelCta = document.getElementById('hotelCta');
+  var flightCta = document.getElementById('flightCta');
+  var saved = null;
+  try { saved = sessionStorage.getItem('fp-vibe'); } catch (e) {}
+  window.setVibe = function (v) {
+    try { sessionStorage.setItem('fp-vibe', v); } catch (e) {}
+    document.querySelectorAll('.vibe-btn').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-vibe') === v);
+    });
+    // Hôtel : bascule vers le package correspondant (VIP = gros hôtel, Backpack = budget)
+    if (hotelCta && PKG[v]) hotelCta.href = PKG[v];
+    // Vol : on peut ajuster la classe (business vs éco) — le lien reste le même,
+    // mais on note le choix pour le label
+    if (flightCta) {
+      var dest = flightCta.textContent.split('→').pop() || '';
+      var prefix = ("fr" === 'en') ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
+      flightCta.textContent = prefix + dest.trim() + (v === 'vip' ? ' 💎' : ' 🎒');
+    }
+  };
+  if (saved) setVibe(saved);
+})();
+</script>
+<script>
+/* --- Partage réseaux sociaux --- */
+(function () {
+  var url = encodeURIComponent(location.href);
+  var title = encodeURIComponent("Pittsburgh Steelers vs To be decided" + ' — Fest\'Pack');
+  var fb = document.getElementById('shareFb');
+  var x = document.getElementById('shareX');
+  var wa = document.getElementById('shareWa');
+  var cp = document.getElementById('shareCopy');
+  if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
+  if (x) x.href = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + title;
+  if (wa) wa.href = 'https://wa.me/?text=' + title + '%20' + url;
+  if (cp) cp.addEventListener('click', function () {
+    var done = function () { cp.textContent = '✅'; setTimeout(function(){ cp.textContent='🔗'; }, 1500); };
+    if (navigator.share) {
+      navigator.share({ title: "Pittsburgh Steelers vs To be decided", url: location.href }).catch(function(){});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(location.href).then(done).catch(function(){});
+    }
+  });
+})();
+</script>
+<script>
+/* --- Vol : origine auto par IP + lien Expedia DIRECT (le wrapper /affiliate renvoie 429) --- */
+(function () {
+  var CTA = document.getElementById('flightCta');
+  if (!CTA) return;
+  var dest = "Pittsburgh, PA";   // code IATA (ex: NTE pour Clisson)
+  var destLabel = "Pittsburgh, PA";
+  // dates ISO: début → fin
+  var dm = ("2026-09-12 \u2192 2026-09-12" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var isEn = "fr" === 'en';
+  var CAMREF = "1101l5IQud";
+
+  function makeUrl(origin) {
+    var o = encodeURIComponent(origin || '');
+    var d = encodeURIComponent(dest || '');
+    // Lien DIRECT Flights-Search (fonctionne, pas de 429) + tracking clickref
+    var url = 'https://www.expedia.ca/Flights-Search?trip=ROUNDTRIP' +
+      '&leg1=from:' + o + ',to:' + d +
+      (dep ? ',departure:' + dep + 'TANYTIME' : '') +
+      '&leg2=from:' + d + ',to:' + o +
+      (ret ? ',departure:' + ret + 'TANYTIME' : '');
+    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+    return url;
+  }
+  function setLabel(origin) {
+    var prefix = isEn ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
+    CTA.textContent = prefix + destLabel + (origin ? '  (✈ ' + origin + ')' : '');
+  }
+  function apply(origin) {
+    CTA.href = makeUrl(origin);
+    setLabel(origin);
+  }
+  // Origine déjà détectée (cache session)
+  var cached = null;
+  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
+  if (cached) { apply(cached); return; }
+  // Origine par IP (géolocalisation)
+  try {
+    fetch('https://ipwho.is/')
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || j.success === false) return;
+        var city = j.city || '';
+        window.__flightOrigin = city;
+        try { sessionStorage.setItem('fp-origin', city); } catch (e) {}
+        apply(city);
+      })
+      .catch(function () {});
+  } catch (e) {}
+})();
+</script>
+<script>
+/* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) + Kayak alternative --- */
+(function () {
+  var CTA = document.getElementById('carCta');
+  var CMP = document.getElementById('carCompareCta');
+  if (!CTA) return;
+  var dest = "Pittsburgh, PA";
+  var dm = ("2026-09-12 \u2192 2026-09-12" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var CAMREF = "1101l5IQud";
+  var CREATIVE = "1100l68075";
+  var ADREF = "PZG6faduu1";
+  function expediaUrl() {
+    // Expedia Cars utilise le NOM DE VILLE (pas le code IATA)
+    var d = encodeURIComponent(dest || '');
+    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    // Wrapper affilié (camref) pour le tracking
+    if (CAMREF) {
+      var lp = encodeURIComponent(url);
+      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
+        '&camref=' + encodeURIComponent(CAMREF) +
+        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
+        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
+    }
+    return url;
+  }
+  function kayakUrl() {
+    var d = encodeURIComponent(dest || '');
+    var url = 'https://www.kayak.fr/cars/' + d + '/' + d + '-' + (dep || '') + '/' + (ret || '');
+    return url;
+  }
+  function apply() {
+    CTA.href = expediaUrl();
+    if (CMP) CMP.href = kayakUrl();
+  }
+  apply();
+})();
+</script>
+<script>
+(function () {
+  var total = 5;
+  var key = 'festpack-done-' + 'pittsburgh-steelers-vs-to-be-decided';
+
+  function boxes() {
+    return [].slice.call(document.querySelectorAll('input[data-check]'));
+  }
+
+  function count() {
+    var bs = boxes();
+    var done = bs.filter(function (b) { return b.checked; }).length;
+    var tot = total; // toujours le total d'étapes (pas les contrôles verrouillés)
+    var fill = document.getElementById('progressFill');
+    var label = document.getElementById('progressLabel');
+    var banner = document.getElementById('doneBanner');
+    if (fill) fill.style.width = Math.round((done / tot) * 100) + '%';
+    if (label) label.textContent = done + '/' + tot;
+    if (banner) banner.hidden = done < tot;
+  }
+
+  function unlockSteps() {
+    [].slice.call(document.querySelectorAll('.step[data-step]')).forEach(function (s) {
+      var n = parseInt(s.getAttribute('data-step'), 10);
+      var check = s.querySelector('input[data-check]');
+      if (!check) return;
+      var prev = true;
+      for (var i = 1; i < n; i++) {
+        var p = document.querySelector('input[data-check="' + i + '"]');
+        if (p && !p.checked) { prev = false; break; }
+      }
+      check.disabled = !prev;
+      s.classList.toggle('locked', !prev);
+    });
+  }
+
+  window.handleChange = function () {
+    var arr = boxes().map(function (b) { return b.checked && !b.disabled ? 1 : 0; });
+    try { localStorage.setItem(key, JSON.stringify(arr)); } catch (e) {}
+    count();
+    unlockSteps();
+  };
+
+  // restore
+  try {
+    var saved = JSON.parse(localStorage.getItem(key) || '[]');
+    boxes().forEach(function (b, i) {
+      if (i < saved.length && saved[i] === 1) b.checked = true;
+    });
+  } catch (e) {}
+
+  unlockSteps();
+  count();
+})();
+</script>
+
+</main>
+<footer>💡 En passant par mes liens, tu paies exactement le même prix — le site me reverse juste une petite commission qui finance mes recherches. Merci !<br>📧 <a href="mailto:festivalpacktravel@gmail.com">festivalpacktravel@gmail.com</a><br><a href="legal/mentions.html">Mentions légales</a> · <a href="legal/privacy.html">Confidentialité</a> · <a href="legal/terms.html">Conditions</a> · <a href="legal/affiliate.html">Divulgation d'affiliation</a> · <a href="legal/cookies.html">Cookies</a></footer>
+<button class="chat-fab" id="chatFab" aria-label="Chat">💬</button>
+<div class="chat-box" id="chatBox" hidden>
+  <div class="chat-head">🤖 Fest'Pack Assistant <button class="close" id="chatClose" aria-label="Fermer">✕</button></div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="chat-msg bot">Salut ! Pose-moi une question sur les festivals, vols ou hôtels.</div>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" type="text" placeholder="Écris ta question…">
+    <button id="chatSend">➤</button>
+  </div>
+  <div class="chat-note">Assistant IA local</div>
+</div>
+<script>
+/* Widget de chat (assistant local) */
+(function () {
+  var fab = document.getElementById('chatFab');
+  var box = document.getElementById('chatBox');
+  var close = document.getElementById('chatClose');
+  var msgs = document.getElementById('chatMsgs');
+  var input = document.getElementById('chatInput');
+  var send = document.getElementById('chatSend');
+  if (!fab || !box) return;
+  var online = false;
+  var checked = false;
+  function addMsg(text, who) {
+    var d = document.createElement('div');
+    d.className = 'chat-msg ' + who;
+    d.textContent = text;
+    msgs.appendChild(d);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  // Vérifie la connexion au serveur (Ollama) — appelé à l'ouverture du chat
+  function checkHealth() {
+    if (checked) return;
+    checked = true;
+    fetch('/api/health', { method: 'GET' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        online = !!(d && d.status === 'ok');
+        if (online) {
+          addMsg('✅ Connecté — pose-moi ta question !', 'bot');
+        } else {
+          addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot');
+        }
+      })
+      .catch(function () {
+        online = false;
+        addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot');
+      });
+  }
+  fab.addEventListener('click', function () {
+    box.hidden = !box.hidden;
+    if (!box.hidden) { checkHealth(); input.focus(); }
+  });
+  close.addEventListener('click', function () { box.hidden = true; });
+  function ask() {
+    var q = input.value.trim();
+    if (!q) return;
+    addMsg(q, 'user');
+    input.value = '';
+    if (!online) {
+      addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot');
+      return;
+    }
+    // Appelle le serveur local (Ollama)
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: q })
+    }).then(function (r) { return r.json(); })
+      .then(function (d) { addMsg(d.reply || '…', 'bot'); })
+      .catch(function () { addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot'); });
+  }
+  send.addEventListener('click', ask);
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') ask(); });
+})();
+</script>
+<script>
+/* Menu mobile (hamburger) */
+(function(){
+  var b=document.getElementById('burgerBtn'), m=document.getElementById('mainMenu');
+  if(!b||!m) return;
+  b.addEventListener('click', function(){
+    var open=m.classList.toggle('open');
+    b.setAttribute('aria-expanded', open?'true':'false');
+    b.textContent = open ? '✕' : '☰';
+  });
+  m.addEventListener('click', function(e){
+    if(e.target.tagName==='A' && window.innerWidth<=720){ m.classList.remove('open'); b.textContent='☰'; b.setAttribute('aria-expanded','false'); }
+  });
+})();
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
