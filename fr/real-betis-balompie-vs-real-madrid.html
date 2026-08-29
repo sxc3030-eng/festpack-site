@@ -11,6 +11,18 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Fest'Pack">
 <link rel="canonical" href="https://festivalpacktravel.ca/fr/">
+<meta name="description" content="Real Betis Balompie vs Real Madrid (2026-09-04 → 2026-09-04) — Seville. Billet, vol & hôtels proches, tout en un.">
+<!-- Open Graph (partage Facebook/X/WhatsApp) -->
+<meta property="og:site_name" content="Fest'Pack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Real Betis Balompie vs Real Madrid — Fest'Pack">
+<meta property="og:description" content="Real Betis Balompie vs Real Madrid · 2026-09-04 → 2026-09-04 · Seville. Ton événement clé en main.">
+<meta property="og:url" content="https://festivalpacktravel.ca/fr/index.html">
+<meta property="og:image" content="https://festivalpacktravel.ca/img/real-betis-balompie-vs-real-madrid.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fest'Pack">
+<meta name="twitter:description" content="Ton événement clé en main : billet, vol, hôtels proches.">
+<meta name="twitter:image" content="https://festivalpacktravel.ca/icon-512.png">
 <title>Real Betis Balompie vs Real Madrid — Ton plan</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +68,15 @@ p.sub{color:var(--muted);margin-bottom:1.2rem}
 .badge{font-size:.72rem;padding:.15rem .5rem;border-radius:99px;background:#eef2f7;color:var(--text)}
 .badge.hot{background:#fef3e2;color:#b45309}
 .badge.region{background:#e0f2fe;color:#0369a1}
+.badge.cat-concert{background:#fae8ff;color:#a21caf}
+.badge.cat-festival{background:#eef2ff;color:#4338ca}
+.badge.cat-match{background:#dcfce7;color:#15803d}
+.badge.cat-race{background:#fee2e2;color:#b91c1c}
+.badge.cat-opera{background:#fdf4ff;color:#86198f}
+.badge.cat-theatre{background:#ffedd5;color:#c2410c}
+.cat-pills .pill{border:1px solid var(--border);background:#fff;border-radius:99px;padding:.35rem .8rem;font-size:.85rem;cursor:pointer;color:var(--text);font-weight:600;transition:.15s}
+.cat-pills .pill:hover{border-color:var(--accent);background:#eef2ff}
+.cat-pills .pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn{display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:8px;font-weight:600;margin-top:.4rem;text-align:center}
 .btn:hover{filter:brightness(1.05);text-decoration:none}
 .btn.alt{background:#eef2f7;color:var(--text)}
@@ -132,21 +153,37 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 .previews a.pv strong{display:block;font-size:.95rem;color:var(--text)}
 .previews a.pv span{font-size:.82rem;color:var(--muted)}
 @media(max-width:640px){.pkg{grid-template-columns:1fr}}
-/* Widget de chat */
-.chat-fab{position:fixed;bottom:1.2rem;right:1.2rem;width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:1.6rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,53,128,.35);z-index:100;display:flex;align-items:center;justify-content:center}
-.chat-fab:hover{filter:brightness(1.1)}
-.chat-box{position:fixed;bottom:5.2rem;right:1.2rem;width:340px;max-width:calc(100vw - 2rem);height:440px;max-height:calc(100vh - 7rem);background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.18);z-index:101;display:flex;flex-direction:column;overflow:hidden}
-.chat-head{background:var(--accent);color:#fff;padding:.8rem 1rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
-.chat-head .close{margin-left:auto;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
-.chat-msgs{flex:1;overflow-y:auto;padding:.8rem;display:flex;flex-direction:column;gap:.5rem;background:#f8fafc}
-.chat-msg{max-width:82%;padding:.55rem .8rem;border-radius:12px;font-size:.9rem;line-height:1.4}
-.chat-msg.bot{background:#fff;border:1px solid var(--border);align-self:flex-start}
-.chat-msg.user{background:var(--accent);color:#fff;align-self:flex-end}
-.chat-input{display:flex;gap:.4rem;padding:.6rem;border-top:1px solid var(--border);background:#fff}
-.chat-input input{flex:1;padding:.5rem .7rem;border:1px solid var(--border);border-radius:8px;font-size:.9rem}
-.chat-input button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-weight:700}
-.chat-note{font-size:.7rem;color:var(--muted);text-align:center;padding:.3rem}
-@media(max-width:640px){.chat-box{width:calc(100vw - 2rem);right:1rem;bottom:5rem}}
+
+/* Pagination controls for mobile */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pagination-controls .btn {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+}
+
+@media(max-width:640px) {
+  .pagination-controls {
+    margin-top: 1rem;
+  }
+  .pagination-controls .btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .searchbar {
+    flex-direction: column;
+  }
+  .searchbar input, .searchbar select {
+    width: 100%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -155,12 +192,12 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   <button class="burger" id="burgerBtn" aria-label="Menu" aria-expanded="false">☰</button>
   <nav class="menu" id="mainMenu">
     <a href="../fr/index.html">Accueil</a>
-    <a href="../fr/index.html#timeline">Timeline</a>
+    <a href="../fr/timeline.html">Timeline</a>
     <a href="mailto:festivalpacktravel@gmail.com">Contact</a>
   </nav>
   <div class="langs">
-    <a href="../fr/index.html" class="active">🇫🇷 FR</a>
-    <a href="../en/index.html" class="">🇬🇧 EN</a>
+    <a href="../fr/index.html" class="lang-link active" data-lang="fr">🇫🇷 FR</a>
+    <a href="../en/index.html" class="lang-link " data-lang="en">🇬🇧 EN</a>
   </div>
 </header>
 <main>
@@ -246,6 +283,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   </div>
   <p class="sub">D'abord le billet — ne réserve pas ton voyage avant de l'avoir.</p>
   
+  
+  
   <a class="btn" href="https://sportsevents365.com/event/395282?a_aid=7kwnif8ac4jca" target="_blank" rel="nofollow sponsored">🎟️ Acheter le billet →</a>
   
   
@@ -274,8 +313,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="4" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   
-  <p class="sub">💡 Destination + dates préremplies — choisis juste ton hôtel.</p>
-  <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DSeville%26startDate%3D2026-09-04%26endDate%3D2026-09-04&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Choisir mon hôtel → Seville</a>
+  <p class="sub">💡 Destination + dates préremplies — compare Expedia & Booking.com.</p>
+  <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
+    <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DSeville%26startDate%3D2026-09-04%26endDate%3D2026-09-04&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Expedia → Seville</a>
+    <a class="btn alt" id="bookingCta" href="#" target="_blank" rel="nofollow sponsored">🏨 Booking.com → Seville</a>
+  </div>
   
   
 </div>
@@ -317,8 +359,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     });
     // Hôtel : bascule vers le package correspondant (VIP = gros hôtel, Backpack = budget)
     if (hotelCta && PKG[v]) hotelCta.href = PKG[v];
-    // Vol : on peut ajuster la classe (business vs éco) — le lien reste le même,
-    // mais on note le choix pour le label
+    // Vol : change RÉELLEMENT la classe cabine (business en VIP, economy en Backpack)
+    if (window.setCabinClass) window.setCabinClass(v);
     if (flightCta) {
       var dest = flightCta.textContent.split('→').pop() || '';
       var prefix = ("fr" === 'en') ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
@@ -326,6 +368,37 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     }
   };
   if (saved) setVibe(saved);
+})();
+</script>
+<script>
+/* --- Billet Fnac Spectacles (EU uniquement, si pas de billet officiel) --- */
+(function () {
+  var CTA = document.getElementById('ticketCta');
+  if (!CTA) return;
+  var name = "Real Betis Balompie vs Real Madrid";
+  var affid = "3062961";
+  var region = "EU";
+  // Fnac ne s'applique qu'aux événements EU (les NA utilisent StubHub)
+  if (!affid || region === 'NA') return;
+  var q = encodeURIComponent(name);
+  // Format Fnac actuel (vérifié 2026-08) : /search/?searchterm=... (l'ancien /recherche?q= renvoie "page indisponible")
+  var landing = 'https://www.fnacspectacles.com/search/?searchterm=' + q;
+  CTA.href = 'https://www.awin1.com/cread.php?awinmid=12494&awinaffid=' + affid + '&ued=' + encodeURIComponent(landing);
+})();
+</script>
+<script>
+/* --- Billet StubHub (NA, si pas de billet officiel) --- */
+(function () {
+  var CTA = document.getElementById('ticketCta');
+  if (!CTA) return;
+  var name = "Real Betis Balompie vs Real Madrid";
+  var affid = "";
+  var region = "EU";
+  if (!affid || region !== 'NA') return;
+  var q = encodeURIComponent(name);
+  // Format StubHub actuel (vérifié 2026-08) : /search?q=... (l'ancien /search/results.aspx renvoie 404)
+  var landing = 'https://www.stubhub.ca/search?q=' + q + '&aid=' + affid;
+  CTA.href = landing;
 })();
 </script>
 <script>
@@ -363,16 +436,21 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var ret = dm[1] || '';
   var isEn = "fr" === 'en';
   var CAMREF = "1101l5IQud";
+  var cabin = 'economy';  // classe cabine par défaut (Backpacker)
 
   function makeUrl(origin) {
     var o = encodeURIComponent(origin || '');
     var d = encodeURIComponent(dest || '');
-    // Lien DIRECT Flights-Search (fonctionne, pas de 429) + tracking clickref
-    var url = 'https://www.expedia.ca/Flights-Search?trip=ROUNDTRIP' +
+    // Format Expedia actuel (vérifié 2026-08) : mode=search + trip=roundtrip
+    // + minuscules + options=cabinclass:<classe> obligatoires, sinon page 404.
+    // + pwaDialog=1 : lance la recherche automatiquement (sinon il faut cliquer "Search").
+    var url = 'https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip' +
       '&leg1=from:' + o + ',to:' + d +
       (dep ? ',departure:' + dep + 'TANYTIME' : '') +
       '&leg2=from:' + d + ',to:' + o +
-      (ret ? ',departure:' + ret + 'TANYTIME' : '');
+      (ret ? ',departure:' + ret + 'TANYTIME' : '') +
+      '&options=cabinclass%3A' + encodeURIComponent(cabin) +
+      '&pwaDialog=1';
     if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
     return url;
   }
@@ -384,6 +462,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     CTA.href = makeUrl(origin);
     setLabel(origin);
   }
+  // Exposé pour le choix VIP/Backpack : change réellement la classe cabine
+  window.setCabinClass = function (cls) {
+    cabin = (cls === 'vip') ? 'business' : 'economy';
+    var o = '';
+    try { o = sessionStorage.getItem('fp-origin') || ''; } catch (e) {}
+    if (o) apply(o);
+  };
   // Origine déjà détectée (cache session)
   var cached = null;
   try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
@@ -408,27 +493,57 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 (function () {
   var CTA = document.getElementById('carCta');
   if (!CTA) return;
+  // Pour la location de voiture, Expedia utilise le NOM DE VILLE (pas le code IATA).
+  // Format actuel (vérifié 2026-08) : /Cars?destination=... (l'ancien /Cars-Search renvoie 404).
+  var dest = "Seville" || "Seville";
+  var dm = ("2026-09-04 \u2192 2026-09-04" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var CAMREF = "1101l5IQud";
+  function expediaUrl() {
+    var d = encodeURIComponent(dest || '');
+    // Lien DIRECT Cars (le wrapper /affiliate renvoie 429, /Cars-Search renvoie 404)
+    var url = 'https://www.expedia.ca/Cars?destination=' + d +
+      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+    return url;
+  }
+  CTA.href = expediaUrl();
+})();
+</script>
+<script>
+/* --- Hôtel Expedia : lien DIRECT (le wrapper /affiliate renvoie 429) --- */
+(function () {
+  var CTA = document.getElementById('hotelCta');
+  if (!CTA) return;
   var dest = "Seville";
   var dm = ("2026-09-04 \u2192 2026-09-04" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
   var CAMREF = "1101l5IQud";
-  var CREATIVE = "1100l68075";
-  var ADREF = "PZG6faduu1";
-  function expediaUrl() {
-    var d = encodeURIComponent(dest || '');
-    var url = 'https://www.expedia.ca/Cars-Search?destination=' + d +
-      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
-    if (CAMREF) {
-      var lp = encodeURIComponent(url);
-      url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + lp +
-        '&camref=' + encodeURIComponent(CAMREF) +
-        (CREATIVE ? '&creativeref=' + encodeURIComponent(CREATIVE) : '') +
-        (ADREF ? '&adref=' + encodeURIComponent(ADREF) : '');
-    }
-    return url;
-  }
-  CTA.href = expediaUrl();
+  // Lien DIRECT Hotel-Search (le wrapper /affiliate renvoie 429 "Bot or Not")
+  var url = 'https://www.expedia.ca/Hotel-Search?destination=' + encodeURIComponent(dest) +
+    (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+  if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+  CTA.href = url;
+})();
+</script>
+<script>
+/* --- Hôtel Booking.com (en parallèle d'Expedia pour comparer les prix) --- */
+(function () {
+  var CTA = document.getElementById('bookingCta');
+  if (!CTA) return;
+  var dest = "Seville";
+  var dm = ("2026-09-04 \u2192 2026-09-04" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var aid = "";
+  var label = "casse-tete";
+  // URL Booking.com : recherche hôtels par ville + dates (checkin/checkout)
+  var url = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(dest) +
+    '&checkin=' + dep + '&checkout=' + ret + '&group_adults=2&no_rooms=1';
+  if (aid) url += '&aid=' + encodeURIComponent(aid) + '&label=' + encodeURIComponent(label);
+  CTA.href = url;
 })();
 </script>
 <script>
@@ -489,83 +604,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 
 </main>
 <footer>💡 En passant par mes liens, tu paies exactement le même prix — le site me reverse juste une petite commission qui finance mes recherches. Merci !<br>📧 <a href="mailto:festivalpacktravel@gmail.com">festivalpacktravel@gmail.com</a><br><a href="legal/mentions.html">Mentions légales</a> · <a href="legal/privacy.html">Confidentialité</a> · <a href="legal/terms.html">Conditions</a> · <a href="legal/affiliate.html">Divulgation d'affiliation</a> · <a href="legal/cookies.html">Cookies</a></footer>
-<button class="chat-fab" id="chatFab" aria-label="Chat">💬</button>
-<div class="chat-box" id="chatBox" hidden>
-  <div class="chat-head">🤖 Fest'Pack Assistant <button class="close" id="chatClose" aria-label="Fermer">✕</button></div>
-  <div class="chat-msgs" id="chatMsgs">
-    <div class="chat-msg bot">Salut ! Pose-moi une question sur les festivals, vols ou hôtels.</div>
-  </div>
-  <div class="chat-input">
-    <input id="chatInput" type="text" placeholder="Écris ta question…">
-    <button id="chatSend">➤</button>
-  </div>
-  <div class="chat-note">Assistant IA local</div>
-</div>
-<script>
-/* Widget de chat (assistant local) */
-(function () {
-  var fab = document.getElementById('chatFab');
-  var box = document.getElementById('chatBox');
-  var close = document.getElementById('chatClose');
-  var msgs = document.getElementById('chatMsgs');
-  var input = document.getElementById('chatInput');
-  var send = document.getElementById('chatSend');
-  if (!fab || !box) return;
-  var online = false;
-  var checked = false;
-  function addMsg(text, who) {
-    var d = document.createElement('div');
-    d.className = 'chat-msg ' + who;
-    d.textContent = text;
-    msgs.appendChild(d);
-    msgs.scrollTop = msgs.scrollHeight;
-  }
-  // Vérifie la connexion au serveur (Ollama) — appelé à l'ouverture du chat
-  function checkHealth() {
-    if (checked) return;
-    checked = true;
-    fetch('/api/health', { method: 'GET' })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        online = !!(d && d.status === 'ok');
-        if (online) {
-          addMsg('✅ Connecté — pose-moi ta question !', 'bot');
-        } else {
-          addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot');
-        }
-      })
-      .catch(function () {
-        online = false;
-        addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot');
-      });
-  }
-  fab.addEventListener('click', function () {
-    box.hidden = !box.hidden;
-    if (!box.hidden) { checkHealth(); input.focus(); }
-  });
-  close.addEventListener('click', function () { box.hidden = true; });
-  function ask() {
-    var q = input.value.trim();
-    if (!q) return;
-    addMsg(q, 'user');
-    input.value = '';
-    if (!online) {
-      addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot');
-      return;
-    }
-    // Appelle le serveur local (Ollama)
-    fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: q })
-    }).then(function (r) { return r.json(); })
-      .then(function (d) { addMsg(d.reply || '…', 'bot'); })
-      .catch(function () { addMsg('🤖 Assistant hors ligne — démarre le serveur local.', 'bot'); });
-  }
-  send.addEventListener('click', ask);
-  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') ask(); });
-})();
-</script>
+
 <script>
 /* Menu mobile (hamburger) */
 (function(){
@@ -585,6 +624,20 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('../sw.js').catch(() => {});
   });
 }
+/* Sélecteur de langue : garde la page courante (ex: hellfest-2026.html) */
+(function(){
+  var cur = location.pathname.split('/').pop() || 'index.html';
+  var curLang = (location.pathname.indexOf('/en/') !== -1) ? 'en' : 'fr';
+  document.querySelectorAll('.lang-link').forEach(function(a){
+    var target = a.getAttribute('data-lang');
+    if(target === curLang) return; // lien actif
+    if(cur === 'index.html'){
+      a.href = '../' + target + '/index.html';
+    } else {
+      a.href = '../' + target + '/' + cur;
+    }
+  });
+})();
 </script>
 </body>
 </html>
