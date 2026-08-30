@@ -303,7 +303,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <p class="sub">💡 Départ détecté automatiquement depuis ta position — destination préremplie.</p>
   <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
-    <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:SJC,departure:2026-09-26TANYTIME&leg2=from:SJC,to:YUL,departure:2026-09-26TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">✈️ Expedia → Santa Cruz</a>
+    <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:VVI,departure:2026-09-26TANYTIME&leg2=from:VVI,to:YUL,departure:2026-09-26TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">✈️ Expedia → Santa Cruz</a>
     <a class="btn alt" id="bookingFlightCta" href="#" target="_blank" rel="nofollow sponsored">✈️ Booking.com → Santa Cruz</a>
   </div>
   
@@ -449,7 +449,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 (function () {
   var CTA = document.getElementById('flightCta');
   if (!CTA) return;
-  var dest = "SJC";   // code IATA (ex: NTE pour Clisson)
+  var dest = "VVI";   // code IATA (ex: NTE pour Clisson)
   var destLabel = "Santa Cruz";
   // dates ISO: début → fin
   var dm = ("2026-09-26 \u2192 2026-09-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -520,7 +520,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 (function () {
   var CTA = document.getElementById('bookingFlightCta');
   if (!CTA) return;
-  var dest = "SJC";   // code IATA (ex: NTE pour Clisson)
+  var dest = "VVI";   // code IATA (ex: NTE pour Clisson)
   var dm = ("2026-09-26 \u2192 2026-09-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
@@ -592,7 +592,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   if (!CTA) return;
   // Pour la location de voiture, Expedia utilise le NOM DE VILLE (pas le code IATA).
   // Format actuel (vérifié 2026-08) : /Cars?destination=... (l'ancien /Cars-Search renvoie 404).
-  var dest = "Santa Cruz" || "SJC";
+  var dest = "Santa Cruz" || "VVI";
   var dm = ("2026-09-26 \u2192 2026-09-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
@@ -619,7 +619,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 (function () {
   var CTA = document.getElementById('bookingCarCta');
   if (!CTA) return;
-  var dest = "Santa Cruz" || "SJC";
+  var dest = "Santa Cruz" || "VVI";
   var dm = ("2026-09-26 \u2192 2026-09-26" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
