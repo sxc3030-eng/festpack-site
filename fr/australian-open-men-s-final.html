@@ -72,7 +72,7 @@ p.sub{color:var(--muted);margin-bottom:1.2rem}
 .badge.cat-festival{background:#eef2ff;color:#4338ca}
 .badge.cat-match{background:#dcfce7;color:#15803d}
 .badge.cat-race{background:#fee2e2;color:#b91c1c}
-.badge.cat-opera{background:#fdf4ff;color:#86198f}
+.badge.cat-activity{background:#fdf4ff;color:#86198f}
 .badge.cat-theatre{background:#ffedd5;color:#c2410c}
 .cat-pills .pill{border:1px solid var(--border);background:#fff;border-radius:99px;padding:.35rem .8rem;font-size:.85rem;cursor:pointer;color:var(--text);font-weight:600;transition:.15s}
 .cat-pills .pill:hover{border-color:var(--accent);background:#eef2ff}
@@ -285,10 +285,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   
   
-  
-  
-  <a class="btn" id="ticketCta" href="https://www.stubhub.ca/search?q=Australian%20Open%20%E2%80%94%20Men%27s%20Final" target="_blank" rel="nofollow sponsored">🎟️ Acheter le billet →</a>
-  
+  <a class="btn" href="https://sportsevents365.com/event/390886?a_aid=7kwnif8ac4jca" target="_blank" rel="nofollow sponsored">🎟️ Acheter le billet →</a>
   
   
 </div>
@@ -302,7 +299,10 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   </div>
   
   <p class="sub">💡 Départ détecté automatiquement depuis ta position — destination préremplie.</p>
-  <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Fmode%3Dsearch%26trip%3Droundtrip%26leg1%3Dfrom%3AYUL%2Cto%3AMEL%2Cdeparture%3A2027-01-30TANYTIME%26leg2%3Dfrom%3AMEL%2Cto%3AYUL%2Cdeparture%3A2027-02-01TANYTIME%26options%3Dcabinclass%253Aeconomy&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">✈️ Choisir mon vol → Melbourne</a>
+  <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
+    <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:MEL,departure:2027-01-31TANYTIME&leg2=from:MEL,to:YUL,departure:2027-01-31TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">✈️ Expedia → Melbourne</a>
+    <a class="btn alt" id="bookingFlightCta" href="#" target="_blank" rel="nofollow sponsored">✈️ Booking.com → Melbourne</a>
+  </div>
   
   
   
@@ -318,7 +318,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <p class="sub">💡 Destination + dates préremplies — compare Expedia & Booking.com.</p>
   <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
-    <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DMelbourne%26startDate%3D2027-01-31%26endDate%3D2027-01-31&camref=1101l5IQud&creativeref=1100l68075&adref=PZG6faduu1" target="_blank" rel="nofollow sponsored">🏨 Expedia → Melbourne</a>
+    <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/Hotel-Search?destination=Melbourne&startDate=2027-01-31&endDate=2027-01-31&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">🏨 Expedia → Melbourne</a>
     <a class="btn alt" id="bookingCta" href="#" target="_blank" rel="nofollow sponsored">🏨 Booking.com → Melbourne</a>
   </div>
   
@@ -333,7 +333,10 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="5" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   <p class="sub">💡 Prise en charge à l'aéroport — destination préremplie.</p>
-  <a class="btn main-cta" id="carCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Louer une voiture → Melbourne</a>
+  <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
+    <a class="btn main-cta" id="carCta" href="https://www.expedia.ca/Cars?destination=Melbourne&startDate=2027-01-31&endDate=2027-01-31&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">🚗 Expedia → Melbourne</a>
+    <a class="btn alt" id="bookingCarCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Booking.com → Melbourne</a>
+  </div>
 </div>
 
 <!-- STEP 6: PACKAGES (optionnel) — supprimé : redondant avec le choix vibe en haut -->
@@ -347,10 +350,22 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 <script>
 /* --- Choix VIP / Backpack : adapte les liens vol + hôtel --- */
 (function () {
-  var PKG = {
-    backpack: "",
-    vip: ""
-  };
+  // Liens hôtel DIRECTS filtrés par gamme (le wrapper /affiliate renvoie 429).
+  var _pkgDest = "Melbourne";
+  var _pkgDm = ("2027-01-31 \u2192 2027-01-31" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var _pkgDep = _pkgDm[0] || '', _pkgRet = _pkgDm[1] || '';
+  var _pkgCamref = "1101l5IQud";
+  function _pkgHotelUrl(stars) {
+    var today = new Date().toISOString().slice(0, 10);
+    var hasDep = _pkgDep && _pkgDep >= today;
+    var hasRet = _pkgRet && _pkgRet >= today;
+    var u = 'https://www.expedia.ca/Hotel-Search?destination=' + encodeURIComponent(_pkgDest || '') +
+      (hasDep ? '&startDate=' + _pkgDep : '') + (hasRet ? '&endDate=' + _pkgRet : '') +
+      '&stars=' + stars;
+    if (_pkgCamref) u += '&clickref=' + encodeURIComponent(_pkgCamref);
+    return u;
+  }
+  var PKG = { backpack: _pkgHotelUrl('1,2'), vip: _pkgHotelUrl('4,5') };
   var hotelCta = document.getElementById('hotelCta');
   var flightCta = document.getElementById('flightCta');
   var saved = null;
@@ -380,7 +395,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   if (!CTA) return;
   var name = "Australian Open \u2014 Men\u0027s Final";
   var affid = "3062961";
-  var region = "NA";
+  var region = "WW";
   // Fnac ne s'applique qu'aux événements EU (les NA utilisent StubHub)
   if (!affid || region === 'NA') return;
   var q = encodeURIComponent(name);
@@ -395,8 +410,8 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CTA = document.getElementById('ticketCta');
   if (!CTA) return;
   var name = "Australian Open \u2014 Men\u0027s Final";
-  var affid = "";
-  var region = "NA";
+  var affid = "123456789";
+  var region = "WW";
   if (!affid || region !== 'NA') return;
   var q = encodeURIComponent(name);
   // Format StubHub actuel (vérifié 2026-08) : /search?q=... (l'ancien /search/results.aspx renvoie 404)
@@ -431,7 +446,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 (function () {
   var CTA = document.getElementById('flightCta');
   if (!CTA) return;
-  var dest = "Melbourne";   // code IATA (ex: NTE pour Clisson)
+  var dest = "MEL";   // code IATA (ex: NTE pour Clisson)
   var destLabel = "Melbourne";
   // dates ISO: début → fin
   var dm = ("2027-01-31 \u2192 2027-01-31" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
@@ -447,11 +462,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     // Format Expedia actuel (vérifié 2026-08) : mode=search + trip=roundtrip
     // + minuscules + options=cabinclass:<classe> obligatoires, sinon page 404.
     // + pwaDialog=1 : lance la recherche automatiquement (sinon il faut cliquer "Search").
+    // Dates seulement si futures (sinon Expedia affiche "No results" → revient à la barre).
+    var today = new Date().toISOString().slice(0, 10);
+    var hasDep = dep && dep >= today;
+    var hasRet = ret && ret >= today;
     var url = 'https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip' +
       '&leg1=from:' + o + ',to:' + d +
-      (dep ? ',departure:' + dep + 'TANYTIME' : '') +
+      (hasDep ? ',departure:' + dep + 'TANYTIME' : '') +
       '&leg2=from:' + d + ',to:' + o +
-      (ret ? ',departure:' + ret + 'TANYTIME' : '') +
+      (hasRet ? ',departure:' + ret + 'TANYTIME' : '') +
       '&options=cabinclass%3A' + encodeURIComponent(cabin) +
       '&pwaDialog=1';
     if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
@@ -492,13 +511,85 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
 })();
 </script>
 <script>
+/* --- Vol Booking.com (comparaison Expedia) : flights.booking.com/flights/ORIG-DEST/
+   → LANCE LA RECHERCHE automatiquement (URL /flights/ORIG-DEST/, pas index.html).
+   Le départ vient de la géoloc IP (sessionStorage fp-origin), sinon YUL par défaut. --- */
+(function () {
+  var CTA = document.getElementById('bookingFlightCta');
+  if (!CTA) return;
+  var dest = "MEL";   // code IATA (ex: NTE pour Clisson)
+  var dm = ("2027-01-31 \u2192 2027-01-31" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var aid = "";
+  var label = "casse-tete";
+  var isEn = "fr" === 'en';
+  function makeUrl(origin) {
+    // Format Booking vols (vérifié 2026-08) : /flights/{from}-{to}/ lance la recherche.
+    // Origin/dest = codes IATA obligatoires (Booking n'accepte pas les noms de ville).
+    // L'origine vient de la géoloc IP (nom de ville) → on la mappe en code IATA connu.
+    var CITY_TO_IATA = {
+      'quebec': 'YQB', 'quebec city': 'YQB', 'montreal': 'YUL', 'montréal': 'YUL',
+      'toronto': 'YYZ', 'ottawa': 'YOW', 'vancouver': 'YVR', 'calgary': 'YYC',
+      'edmonton': 'YEG', 'winnipeg': 'YWG', 'halifax': 'YHZ', 'paris': 'CDG',
+      'london': 'LHR', 'londres': 'LHR', 'new york': 'JFK', 'chicago': 'ORD',
+      'los angeles': 'LAX', 'las vegas': 'LAS', 'boston': 'BOS', 'miami': 'MIA',
+      'mexico city': 'MEX', 'madrid': 'MAD', 'barcelona': 'BCN', 'barcelone': 'BCN',
+      'rome': 'FCO', 'rome city': 'FCO', 'milan': 'MXP', 'berlin': 'BER',
+      'amsterdam': 'AMS', 'brussels': 'BRU', 'geneva': 'GVA', 'zurich': 'ZRH',
+      'dublin': 'DUB', 'lisbon': 'LIS', 'porto': 'OPO', 'stockholm': 'ARN',
+      'copenhagen': 'CPH', 'oslo': 'OSL', 'helsinki': 'HEL', 'warsaw': 'WAW',
+      'prague': 'PRG', 'vienna': 'VIE', 'budapest': 'BUD', 'athens': 'ATH',
+      'istanbul': 'IST', 'dubai': 'DXB', 'doha': 'DOH', 'tokyo': 'NRT',
+      'osaka': 'KIX', 'seoul': 'ICN', 'bangkok': 'BKK', 'singapore': 'SIN',
+      'sydney': 'SYD', 'melbourne': 'MEL', 'auckland': 'AKL', 'sao paulo': 'GRU',
+      'rio de janeiro': 'GIG', 'buenos aires': 'EZE', 'new delhi': 'DEL',
+      'mumbai': 'BOM', 'kuala lumpur': 'KUL', 'jakarta': 'CGK', 'manila': 'MNL',
+      'ho chi minh city': 'SGN', 'hanoi': 'HAN', 'lagos': 'LOS', 'nairobi': 'NBO',
+      'cape town': 'CPT', 'johannesburg': 'JNB', 'cairo': 'CAI', 'casablanca': 'CMN'
+    };
+    var o = encodeURIComponent((origin || '').trim().toLowerCase());
+    o = CITY_TO_IATA[o] || 'YUL';   // fallback YUL si ville inconnue
+    var d = encodeURIComponent((dest || 'PAR').toUpperCase());
+    var today = new Date().toISOString().slice(0, 10);
+    var hasDep = dep && dep >= today;
+    var hasRet = ret && ret >= today;
+    var url = 'https://flights.booking.com/flights/' + o + '-' + d + '/' +
+      '?type=ROUNDTRIP&from=' + o + '&to=' + d +
+      (hasDep ? '&depart=' + dep : '') + (hasRet ? '&return=' + ret : '') +
+      '&adults=1&cabinClass=ECONOMY';
+    if (aid) url += '&aid=' + encodeURIComponent(aid) + '&label=' + encodeURIComponent(label);
+    return url;
+  }
+  function apply(origin) {
+    CTA.href = makeUrl(origin);
+    var prefix = isEn ? '✈️ Booking.com → ' : '✈️ Booking.com → ';
+    CTA.textContent = prefix + "Melbourne" + (origin ? '  (✈ ' + origin + ')' : '');
+  }
+  var cached = null;
+  try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
+  if (cached) { apply(cached); return; }
+  try {
+    fetch('https://ipwho.is/')
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (!j || j.success === false) { apply(''); return; }
+        var city = j.city || '';
+        try { sessionStorage.setItem('fp-origin', city); } catch (e) {}
+        apply(city);
+      })
+      .catch(function () { apply(''); });
+  } catch (e) { apply(''); }
+})();
+</script>
+<script>
 /* --- Location de voiture : Expedia Cars (destination = NOM DE VILLE, pas IATA) --- */
 (function () {
   var CTA = document.getElementById('carCta');
   if (!CTA) return;
   // Pour la location de voiture, Expedia utilise le NOM DE VILLE (pas le code IATA).
   // Format actuel (vérifié 2026-08) : /Cars?destination=... (l'ancien /Cars-Search renvoie 404).
-  var dest = "Melbourne" || "Melbourne";
+  var dest = "Melbourne" || "MEL";
   var dm = ("2027-01-31 \u2192 2027-01-31" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
   var dep = dm[0] || '';
   var ret = dm[1] || '';
@@ -506,12 +597,39 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   function expediaUrl() {
     var d = encodeURIComponent(dest || '');
     // Lien DIRECT Cars (le wrapper /affiliate renvoie 429, /Cars-Search renvoie 404)
+    // Dates seulement si futures (sinon Expedia Cars revient à la barre).
+    var today = new Date().toISOString().slice(0, 10);
+    var hasDep = dep && dep >= today;
+    var hasRet = ret && ret >= today;
     var url = 'https://www.expedia.ca/Cars?destination=' + d +
-      (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+      (hasDep ? '&startDate=' + dep : '') + (hasRet ? '&endDate=' + ret : '');
     if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
     return url;
   }
   CTA.href = expediaUrl();
+})();
+</script>
+<script>
+/* --- Location de voiture Booking.com (comparaison Expedia) ---
+   FIX : pareil que l'hôtel — Booking renvoie à la barre si les dates sont passées.
+   On ne met les dates que si elles sont futures. */
+(function () {
+  var CTA = document.getElementById('bookingCarCta');
+  if (!CTA) return;
+  var dest = "Melbourne" || "MEL";
+  var dm = ("2027-01-31 \u2192 2027-01-31" || '').match(/\d{4}-\d{2}-\d{2}/g) || [];
+  var dep = dm[0] || '';
+  var ret = dm[1] || '';
+  var aid = "";
+  var label = "casse-tete";
+  var today = new Date().toISOString().slice(0, 10);
+  var hasDep = dep && dep >= today;
+  var hasRet = ret && ret >= today;
+  var url = 'https://www.booking.com/cars/index.html?ss=' + encodeURIComponent(dest);
+  if (hasDep) url += '&prefdate1=' + dep;
+  if (hasRet) url += '&prefdate2=' + ret;
+  if (aid) url += '&aid=' + encodeURIComponent(aid) + '&label=' + encodeURIComponent(label);
+  CTA.href = url;
 })();
 </script>
 <script>
@@ -525,14 +643,21 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var ret = dm[1] || '';
   var CAMREF = "1101l5IQud";
   // Lien DIRECT Hotel-Search (le wrapper /affiliate renvoie 429 "Bot or Not")
+  // Dates seulement si futures (sinon Expedia affiche "no results").
+  var today = new Date().toISOString().slice(0, 10);
+  var hasDep = dep && dep >= today;
+  var hasRet = ret && ret >= today;
   var url = 'https://www.expedia.ca/Hotel-Search?destination=' + encodeURIComponent(dest) +
-    (dep ? '&startDate=' + dep : '') + (ret ? '&endDate=' + ret : '');
+    (hasDep ? '&startDate=' + dep : '') + (hasRet ? '&endDate=' + ret : '');
   if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
   CTA.href = url;
 })();
 </script>
 <script>
-/* --- Hôtel Booking.com (en parallèle d'Expedia pour comparer les prix) --- */
+/* --- Hôtel Booking.com (en parallèle d'Expedia pour comparer les prix) ---
+   FIX : Booking renvoie errorc_searchstring_not_found si checkin < aujourd'hui
+   (dates passées). On ne met les dates que si elles sont FUTURES ; sinon on
+   laisse Booking choisir ses dates par défaut → la recherche part toujours. */
 (function () {
   var CTA = document.getElementById('bookingCta');
   if (!CTA) return;
@@ -542,9 +667,15 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var ret = dm[1] || '';
   var aid = "";
   var label = "casse-tete";
-  // URL Booking.com : recherche hôtels par ville + dates (checkin/checkout)
+  var today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+  // Si les dates sont passées, Booking refuserait la recherche → on n'en met pas
+  var hasDep = dep && dep >= today;
+  var hasRet = ret && ret >= today;
+  // URL Booking.com : recherche hôtels par ville + dates (seulement si futures)
   var url = 'https://www.booking.com/searchresults.html?ss=' + encodeURIComponent(dest) +
-    '&checkin=' + dep + '&checkout=' + ret + '&group_adults=2&no_rooms=1';
+    '&group_adults=2&no_rooms=1';
+  if (hasDep) url += '&checkin=' + dep;
+  if (hasRet) url += '&checkout=' + ret;
   if (aid) url += '&aid=' + encodeURIComponent(aid) + '&label=' + encodeURIComponent(label);
   CTA.href = url;
 })();
