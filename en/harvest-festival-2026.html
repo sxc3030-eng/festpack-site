@@ -287,6 +287,12 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   </div>
 </div>
 
+<!-- Bannière Expedia (leaderboard affilié) -->
+<div class="expedia-banner">
+  <div class="eg-affiliate-banners" data-program="ca-expedia" data-network="pz" data-layout="leaderboard" data-image="adventure" data-message="bye-bye-bucket-list-hello-adventure" data-camref="1110lEJIZ" data-pubref="" data-link="event"></div>
+  <script class="eg-affiliate-banners-script" src="https://creator.expediagroup.com/products/banners/assets/eg-affiliate-banners.js"></script>
+</div>
+
 <!-- SECTION INFORMATION : site officiel + descriptif festival + ville -->
 <div class="info-section">
   <h2>ℹ️ Information</h2>
@@ -850,6 +856,25 @@ if ('serviceWorker' in navigator) {
     i = (i + 1) % items.length;
     items[i].classList.add('active');
   }, 4000);
+})();
+/* Bannière Expedia : fallback si le postMessage de resize est bloqué */
+(function(){
+  var checked = 0;
+  var timer = setInterval(function(){
+    var frame = document.querySelector('.eg-affiliate-banners-frame');
+    if(frame){
+      var w = parseInt(frame.style.width, 10);
+      var h = parseInt(frame.style.height, 10);
+      if(!w || !h){
+        frame.style.width = '100%';
+        frame.style.maxWidth = '728px';
+        frame.style.height = '90px';
+      }
+      clearInterval(timer);
+    } else if(++checked > 20) {
+      clearInterval(timer);
+    }
+  }, 500);
 })();
 </script>
 </body>
