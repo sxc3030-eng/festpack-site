@@ -185,6 +185,57 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   }
 }
 
+/* Bandeau pub OmniPost (flux RSS d'annonces) */
+.ads-banner {
+  margin: 0 auto 1.4rem;
+  max-width: 960px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.ads-inner {
+  position: relative;
+  width: 100%;
+  min-height: 110px;
+  height: 22vw;
+  max-height: 130px;
+}
+.ad-item {
+  position: absolute;
+  inset: 0;
+  display: block;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+.ad-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.ad-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ad-label {
+  position: absolute;
+  top: .35rem;
+  right: .5rem;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  font-size: .65rem;
+  padding: .1rem .4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+@media(max-width:640px) {
+  .ads-inner { height: 40vw; min-height: 90px; max-height: 200px; }
+}
+
 </style>
 </head>
 <body>
@@ -239,6 +290,25 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <button class="pill" data-cat="vacation" onclick="setCat(this)">🏖️ Vacation</button>
   </div>
 </div>
+
+
+<!-- Bandeau pub OmniPost (flux RSS d'annonces) -->
+<div class="ads-banner" id="adsBanner">
+  <div class="ads-inner">
+    
+    <a class="ad-item" href="https://Profai.ca/offre" target="_blank" rel="noopener sponsored nofollow" data-title="school">
+      <img src="../img/ads/33300dd6ba52b678.jpg" alt="School">
+      <span class="ad-label">Ad</span>
+    </a>
+    
+    <a class="ad-item" href="https://Festivalpacktravel.ca/forfait-Montreal" target="_blank" rel="noopener sponsored nofollow" data-title="festivalpacktravel">
+      <img src="../img/ads/a7c37c6045c41b9b.jpg" alt="Festivalpacktravel">
+      <span class="ad-label">Ad</span>
+    </a>
+    
+  </div>
+</div>
+
 
 
 <div class="grid" id="cards">
@@ -2069,13 +2139,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:CAG,departure:2026-08-30TANYTIME&leg2=from:CAG,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Cagliari" data-airport="CAG" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -2141,13 +2209,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:VGO,departure:2026-08-30TANYTIME&leg2=from:VGO,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Vigo" data-airport="VGO" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -2159,13 +2225,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:LHR,departure:2026-08-30TANYTIME&leg2=from:LHR,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="London" data-airport="LHR" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -2591,13 +2655,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:LCG,departure:2026-08-30TANYTIME&leg2=from:LCG,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="La Coruna" data-airport="LCG" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -2717,13 +2779,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-festival">🎪 Festival</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:IAH,departure:2026-08-30TANYTIME&leg2=from:IAH,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="The Woodlands" data-airport="IAH" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -2879,13 +2939,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:MUC,departure:2026-08-30TANYTIME&leg2=from:MUC,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Augsburg" data-airport="MUC" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -3347,13 +3405,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-festival">🎪 Festival</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:ORD,departure:2026-08-30TANYTIME&leg2=from:ORD,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Chicago" data-airport="ORD" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -3418,13 +3474,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-race">🏎️ Race</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:ZAZ,departure:2026-08-30TANYTIME&leg2=from:ZAZ,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Alcaniz" data-airport="ZAZ" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -3903,13 +3957,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:LBA,departure:2026-08-30TANYTIME&leg2=from:LBA,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Leeds" data-airport="LBA" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4119,13 +4171,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:MAN,departure:2026-08-30TANYTIME&leg2=from:MAN,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Manchester" data-airport="MAN" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4263,13 +4313,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-concert">🎤 Concert</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:JFK,departure:2026-08-30TANYTIME&leg2=from:JFK,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="New York City, NY" data-airport="JFK" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4281,13 +4329,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-concert">🎤 Concert</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:JFK,departure:2026-08-30TANYTIME&leg2=from:JFK,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="New York City, NY" data-airport="JFK" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4299,13 +4345,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-concert">🎤 Concert</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:JFK,departure:2026-08-30TANYTIME&leg2=from:JFK,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="New York City, NY" data-airport="JFK" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4317,13 +4361,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-concert">🎤 Concert</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:JFK,departure:2026-08-30TANYTIME&leg2=from:JFK,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="New York City, NY" data-airport="JFK" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4335,13 +4377,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-concert">🎤 Concert</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:JFK,departure:2026-08-30TANYTIME&leg2=from:JFK,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="New York City, NY" data-airport="JFK" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4749,13 +4789,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-festival">🎪 Festival</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:TPA,departure:2026-08-30TANYTIME&leg2=from:TPA,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="St. Petersburg" data-airport="TPA" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -4767,13 +4805,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:AMS,departure:2026-08-30TANYTIME&leg2=from:AMS,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Almere" data-airport="AMS" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -5235,13 +5271,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-festival">🎪 Festival</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:ALB,departure:2026-08-30TANYTIME&leg2=from:ALB,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Saratoga Springs" data-airport="ALB" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -5487,13 +5521,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:GDN,departure:2026-08-30TANYTIME&leg2=from:GDN,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Gdansk" data-airport="GDN" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -5684,13 +5716,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:MAD,departure:2026-08-30TANYTIME&leg2=from:MAD,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Madrid" data-airport="MAD" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -6078,13 +6108,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:BSL,departure:2026-08-30TANYTIME&leg2=from:BSL,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Freiburg" data-airport="BSL" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -6240,13 +6268,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:SEA,departure:2026-08-30TANYTIME&leg2=from:SEA,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Seattle, WA" data-airport="SEA" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -6528,13 +6554,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:FCO,departure:2026-08-30TANYTIME&leg2=from:FCO,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Rome" data-airport="FCO" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -6546,13 +6570,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:NAP,departure:2026-08-30TANYTIME&leg2=from:NAP,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Naples" data-airport="NAP" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -6636,13 +6658,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌍 Europe</span>
       <span class="badge cat-match">⚽ Match</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:NCL,departure:2026-08-30TANYTIME&leg2=from:NCL,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Sunderland" data-airport="NCL" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -7338,13 +7358,11 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="badge region">🌎 North America</span>
       <span class="badge cat-festival">🎪 Festival</span>
       
-      <span class="badge">✈️ Flight</span>
+      
       
       <span class="badge">🎟️ Ticket</span>
     </div>
     <span class="btn">See the guide</span>
-    
-    <span class="btn alt flight-only" data-flight="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:ORF,departure:2026-08-30TANYTIME&leg2=from:ORF,to:YUL,departure:2026-08-30TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" data-city="Portsmouth" data-airport="ORF" onclick="event.preventDefault();event.stopPropagation();openFlight(this)">✈️ Flight only</span>
     
   </a>
   
@@ -7651,6 +7669,21 @@ if ('serviceWorker' in navigator) {
       a.href = '../' + target + '/' + cur;
     }
   });
+})();
+/* Bandeau pub OmniPost : rotation automatique des annonces */
+(function(){
+  var items = document.querySelectorAll('#adsBanner .ad-item');
+  if(items.length <= 1) {
+    if(items.length === 1) items[0].classList.add('active');
+    return;
+  }
+  var i = 0;
+  items[0].classList.add('active');
+  setInterval(function(){
+    items[i].classList.remove('active');
+    i = (i + 1) % items.length;
+    items[i].classList.add('active');
+  }, 4000);
 })();
 </script>
 </body>
