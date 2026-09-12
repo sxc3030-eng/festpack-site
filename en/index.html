@@ -6235,28 +6235,21 @@ function filterCards(){
   openPreviews(document.getElementById('q').value);
 }
 
-/* --- Vol seul : origine par IP + lien Expedia DIRECT (pas le wrapper /affiliate qui renvoie 429) --- */
+/* --- Vol seul : lien Expedia DIRECT (pas le wrapper /affiliate qui renvoie 429).
+   AUCUNE géolocalisation ici : la ville de départ n'est utilisée que si le
+   visiteur l'a fait détecter lui-même depuis une fiche d'événement (loi 25,
+   art. 8.1 : toute fonction de localisation désactivée par défaut). --- */
 function openFlight(el){
   var dest = el.getAttribute('data-airport') || el.getAttribute('data-city') || '';
   var origin = '';
   try { origin = sessionStorage.getItem('fp-origin') || ''; } catch(e){}
   var CAMREF = "1101l5IQud";
-  var open = function(o){
-    var oo = encodeURIComponent(o||''), dd = encodeURIComponent(dest);
-    var url = 'https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip'
-      + '&leg1=from:'+oo+',to:'+dd + '&leg2=from:'+dd+',to:'+oo
-      + '&options=cabinclass%3Aeconomy&pwaDialog=1';
-    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
-    window.open(url, '_blank');
-  };
-  if (origin) { open(origin); return; }
-  try {
-    fetch('https://ipwho.is/').then(function(r){return r.json();}).then(function(j){
-      var c = (j && j.city) ? j.city : '';
-      try { sessionStorage.setItem('fp-origin', c); } catch(e){}
-      open(c);
-    }).catch(function(){ open(''); });
-  } catch(e){ open(''); }
+  var oo = encodeURIComponent(origin), dd = encodeURIComponent(dest);
+  var url = 'https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip'
+    + '&leg1=from:'+oo+',to:'+dd + '&leg2=from:'+dd+',to:'+oo
+    + '&options=cabinclass%3Aeconomy&pwaDialog=1';
+  if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+  window.open(url, '_blank');
 }
 </script>
 

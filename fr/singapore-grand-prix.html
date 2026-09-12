@@ -416,11 +416,18 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     <label class="check"><input type="checkbox" data-check="3" onchange="handleChange(this)"> <span>✓</span></label>
   </div>
   
-  <p class="sub">💡 Départ détecté automatiquement depuis ta position — destination préremplie.</p>
+  <p class="sub">💡 Destination préremplie. Ajoute ta ville de départ si tu veux que la recherche soit prête.</p>
   <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
     <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:SIN,departure:2026-10-11TANYTIME&leg2=from:SIN,to:YUL,departure:2026-10-11TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">✈️ Expedia → Singapore City</a>
     <a class="btn alt" id="bookingFlightCta" href="#" target="_blank" rel="nofollow sponsored">✈️ Booking.com → Singapore City</a>
   </div>
+  <!-- Détection de la ville de départ : SUR CLIC UNIQUEMENT. La loi 25
+       (article 8.1) exige qu'une fonction de localisation soit désactivée par
+       défaut ; le site interrogeait ipwho.is au chargement de chaque fiche. -->
+  <button type="button" class="btn alt flight-only" id="detectOrigin" style="margin-top:.5rem">
+    📍 Détecter ma ville de départ
+  </button>
+  <p class="small" id="originNote">Facultatif. Ton adresse IP est envoyée à ipwho.is, qui renvoie un nom de ville — rien n'est conservé chez nous.</p>
   
   
   
@@ -609,23 +616,46 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     try { o = sessionStorage.getItem('fp-origin') || ''; } catch (e) {}
     if (o) apply(o);
   };
-  // Origine déjà détectée (cache session)
+  // Lien sans origine : Expedia ouvre avec la destination remplie et demande
+  // la ville de départ. C'est l'état par défaut, sans aucune géolocalisation.
+  apply('');
+  // Origine déjà détectée pendant cette visite : l'élève a déjà cliqué, on
+  // n'a pas à redemander.
   var cached = null;
   try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
   if (cached) { apply(cached); return; }
-  // Origine par IP (géolocalisation)
-  try {
+
+  // Détection SUR CLIC seulement (loi 25, art. 8.1 : désactivée par défaut).
+  var bouton = document.getElementById('detectOrigin');
+  var note = document.getElementById('originNote');
+  if (!bouton) return;
+  bouton.addEventListener('click', function () {
+    bouton.disabled = true;
+    bouton.textContent = isEn ? 'Detecting…' : 'Détection…';
     fetch('https://ipwho.is/')
       .then(function (r) { return r.json(); })
       .then(function (j) {
-        if (!j || j.success === false) return;
-        var city = j.city || '';
+        if (!j || j.success === false || !j.city) { throw new Error('sans ville'); }
+        var city = j.city;
         window.__flightOrigin = city;
         try { sessionStorage.setItem('fp-origin', city); } catch (e) {}
         apply(city);
+        if (window.__applyBookingOrigin) window.__applyBookingOrigin(city);
+        bouton.hidden = true;
+        if (note) {
+          note.textContent = (isEn ? 'Departure city: ' : 'Ville de départ : ') + city;
+        }
       })
-      .catch(function () {});
-  } catch (e) {}
+      .catch(function () {
+        bouton.disabled = false;
+        bouton.textContent = isEn ? '📍 Detect my departure city' : '📍 Détecter ma ville de départ';
+        if (note) {
+          note.textContent = isEn
+            ? 'Detection failed. Type your departure city on the partner site.'
+            : 'Détection impossible. Écris ta ville de départ sur le site du partenaire.';
+        }
+      });
+  });
 })();
 </script>
 <script>
@@ -684,20 +714,13 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     var prefix = isEn ? '✈️ Booking.com → ' : '✈️ Booking.com → ';
     CTA.textContent = prefix + "Singapore City" + (origin ? '  (✈ ' + origin + ')' : '');
   }
+  // Aucune géolocalisation ici : on part de YUL par défaut (cf. makeUrl) et
+  // le bouton « Détecter ma ville de départ » de l'étape Vol met ce lien à
+  // jour s'il est utilisé.
   var cached = null;
   try { cached = sessionStorage.getItem('fp-origin'); } catch (e) {}
-  if (cached) { apply(cached); return; }
-  try {
-    fetch('https://ipwho.is/')
-      .then(function (r) { return r.json(); })
-      .then(function (j) {
-        if (!j || j.success === false) { apply(''); return; }
-        var city = j.city || '';
-        try { sessionStorage.setItem('fp-origin', city); } catch (e) {}
-        apply(city);
-      })
-      .catch(function () { apply(''); });
-  } catch (e) { apply(''); }
+  apply(cached || '');
+  window.__applyBookingOrigin = apply;
 })();
 </script>
 <script>
