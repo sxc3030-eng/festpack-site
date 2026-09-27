@@ -1,11 +1,5 @@
 [
  {
-  "title": "Souveraincode.ca",
-  "link": "https://souveraincode.ca/souvc",
-  "img": "../img/ads/8b7e8b1b209d303a.jpg",
-  "guid": "8b7e8b1b209d303a"
- },
- {
   "title": "World Cup Tickets - Sports Events 365",
   "link": "https://www.sportsevents365.it/dock/competition/world-cup?a_aid=7kwnif8ac4jca&a_bid=6b9d7eeb",
   "img": "../img/ads/528201f98d4c1540.jpg",
@@ -18,27 +12,111 @@
   "guid": "a1b2c3d4e5f60718"
  },
  {
-  "title": "profai",
-  "link": "https://Profai.ca",
+  "title": "profAI",
+  "link": "https://profai.ca/",
   "img": "../img/ads/805e399ae67daf58.jpg",
   "guid": "805e399ae67daf58"
  },
  {
-  "title": "decodemin.dev",
-  "link": "https://decodemind.dev/Decodemind",
+  "title": "DecodeMind",
+  "link": "https://decodemind.dev/",
   "img": "../img/ads/60f07dedf45a01e8.jpg",
   "guid": "60f07dedf45a01e8"
  },
  {
-  "title": "LuceAI",
-  "link": "https://Luceai.ca/LuceAI",
-  "img": "../img/ads/3e095b34ce040f6f.jpg",
-  "guid": "3e095b34ce040f6f"
+  "title": "DecodeMind — Ton code ne quitte jamais ton navigateur",
+  "link": "https://decodemind.dev/",
+  "img": "../img/ads/27e5487194e4fae0.jpg",
+  "guid": "27e5487194e4fae0"
  },
  {
-  "title": "Luceai.ca",
-  "link": "https://Luceai.ca",
-  "img": "../img/ads/35e29bce2dc1fe01.jpg",
-  "guid": "35e29bce2dc1fe01"
+  "title": "SouverainCode — Trois interfaces, un seul compte",
+  "link": "https://souveraincode.ca/",
+  "img": "../img/ads/b573d69d87616125.jpg",
+  "guid": "b573d69d87616125"
+ },
+ {
+  "title": "SouverainCode — Vos données restent au Québec",
+  "link": "https://souveraincode.ca/",
+  "img": "../img/ads/51dc17261cae4666.jpg",
+  "guid": "51dc17261cae4666"
+ },
+ {
+  "title": "SouverainCode — La SouverainBox : l’IA entièrement chez vous",
+  "link": "https://souveraincode.ca/",
+  "img": "../img/ads/fe1ff2bc8896982a.jpg",
+  "guid": "fe1ff2bc8896982a"
+ },
+ {
+  "title": "Luce — Un petit appel. Une grande différence.",
+  "link": "https://luceai.ca/",
+  "img": "../img/ads/84a01b91d979d3e0.jpg",
+  "guid": "84a01b91d979d3e0"
+ },
+ {
+  "title": "Luce — Vous programmez. Luce s’occupe du reste.",
+  "link": "https://luceai.ca/",
+  "img": "../img/ads/b1d07aae9b6e8ac9.jpg",
+  "guid": "b1d07aae9b6e8ac9"
+ },
+ {
+  "title": "Luce — Une présence qui pense à vous, sans jamais tromper",
+  "link": "https://luceai.ca/",
+  "img": "../img/ads/4107819200412f5b.jpg",
+  "guid": "4107819200412f5b"
+ },
+ {
+  "title": "profAI — Il fait réfléchir, il ne donne pas la réponse",
+  "link": "https://profai.ca/",
+  "img": "../img/ads/ff391cf6e11b3d3f.jpg",
+  "guid": "ff391cf6e11b3d3f"
+ },
+ {
+  "title": "profAI — Un prof pour chaque matière du programme",
+  "link": "https://profai.ca/",
+  "img": "../img/ads/77b33a059c84ced1.jpg",
+  "guid": "77b33a059c84ced1"
+ },
+ {
+  "title": "profAI — Jour et nuit, à son rythme",
+  "link": "https://profai.ca/",
+  "img": "../img/ads/555c6af5d972b7cc.jpg",
+  "guid": "555c6af5d972b7cc"
+ },
+ {
+  "title": "Archipel — Soyez indépendant, choisissez votre futur AI local",
+  "link": "https://archipelonline.com/",
+  "img": "../img/ads/0067ea6578865514.jpg",
+  "guid": "0067ea6578865514"
+ },
+ {
+  "title": "Formation Archipel — Les tutoriels vidéo de nos programmes, en français et en anglais",
+  "link": "https://archipelonline.com/formation/",
+  "img": "../img/ads/63a1f808892da5a8.jpg",
+  "guid": "63a1f808892da5a8"
+ },
+ {
+  "title": "DecodeMind — Ton code ne quitte jamais ton navigateur",
+  "link": "https://decodemind.dev/",
+  "img": "../img/ads/7e072b90a9d250e6.jpg",
+  "guid": "7e072b90a9d250e6"
+ },
+ {
+  "title": "DecodeMind — Choisis un dossier, rien ne part",
+  "link": "https://decodemind.dev/",
+  "img": "../img/ads/7f1499d1a5293573.jpg",
+  "guid": "7f1499d1a5293573"
+ },
+ {
+  "title": "DecodeMind — Python, TypeScript, HTML",
+  "link": "https://decodemind.dev/",
+  "img": "../img/ads/3cf535a5d556a41c.jpg",
+  "guid": "3cf535a5d556a41c"
+ },
+ {
+  "title": "Expedia — Vols, hôtels et forfaits — lien partenaire",
+  "link": "https://www.expedia.com/affiliate/5A6I6XI",
+  "img": "../img/ads/9921d7953bdd2521.jpg",
+  "guid": "9921d7953bdd2521"
  }
 ]
