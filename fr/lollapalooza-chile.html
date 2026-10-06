@@ -359,7 +359,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       <span class="ad-label">Pub</span>
     </a>
     
-    <a class="ad-item" href="https://www.expedia.com/affiliate/5A6I6XI" target="_blank" rel="noopener sponsored nofollow" data-title="expedia — vols, hôtels et forfaits — lien partenaire">
+    <a class="ad-item" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2F&camref=1101l5IQud" target="_blank" rel="noopener sponsored nofollow" data-title="expedia — vols, hôtels et forfaits — lien partenaire">
       <img src="../img/ads/9921d7953bdd2521.jpg" alt="Expedia — Vols, hôtels et forfaits — lien partenaire">
       <span class="ad-label">Pub</span>
     </a>
@@ -471,8 +471,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <p class="sub">💡 Destination préremplie. Ajoute ta ville de départ si tu veux que la recherche soit prête.</p>
   <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
-    <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip&leg1=from:YUL,to:SCL,departure:2027-03-19TANYTIME&leg2=from:SCL,to:YUL,departure:2027-03-21TANYTIME&options=cabinclass%3Aeconomy&pwaDialog=1&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">✈️ Expedia → Santiago</a>
-    <a class="btn alt" id="bookingFlightCta" href="#" target="_blank" rel="nofollow sponsored">✈️ Booking.com → Santiago</a>
+    <a class="btn main-cta" id="flightCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FFlights-Search%3Fmode%3Dsearch%26trip%3Droundtrip%26leg1%3Dfrom%3AYUL%2Cto%3ASCL%2Cdeparture%3A2027-03-19TANYTIME%26leg2%3Dfrom%3ASCL%2Cto%3AYUL%2Cdeparture%3A2027-03-21TANYTIME%26options%3Dcabinclass%253Aeconomy%26pwaDialog%3D1&camref=1101l5IQud" target="_blank" rel="nofollow sponsored">✈️ Expedia → Santiago</a>
   </div>
   <!-- Détection de la ville de départ : SUR CLIC UNIQUEMENT. La loi 25
        (article 8.1) exige qu'une fonction de localisation soit désactivée par
@@ -496,8 +495,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   
   <p class="sub">💡 Destination + dates préremplies — compare Expedia & Booking.com.</p>
   <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
-    <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/Hotel-Search?destination=Santiago&startDate=2027-03-19&endDate=2027-03-21&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">🏨 Expedia → Santiago</a>
-    <a class="btn alt" id="bookingCta" href="#" target="_blank" rel="nofollow sponsored">🏨 Booking.com → Santiago</a>
+    <a class="btn main-cta" id="hotelCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FHotel-Search%3Fdestination%3DSantiago%26startDate%3D2027-03-19%26endDate%3D2027-03-21&camref=1101l5IQud" target="_blank" rel="nofollow sponsored">🏨 Expedia → Santiago</a>
   </div>
   
   
@@ -512,8 +510,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   </div>
   <p class="sub">💡 Prise en charge à l'aéroport — destination préremplie.</p>
   <div class="cta" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.4rem">
-    <a class="btn main-cta" id="carCta" href="https://www.expedia.ca/Cars?destination=Santiago&startDate=2027-03-19&endDate=2027-03-21&clickref=1101l5IQud" target="_blank" rel="nofollow sponsored">🚗 Expedia → Santiago</a>
-    <a class="btn alt" id="bookingCarCta" href="#" target="_blank" rel="nofollow sponsored">🚗 Booking.com → Santiago</a>
+    <a class="btn main-cta" id="carCta" href="https://www.expedia.ca/affiliate?siteid=1&landingPage=https%3A%2F%2Fwww.expedia.ca%2FCars%3Fdestination%3DSantiago%26startDate%3D2027-03-19%26endDate%3D2027-03-21&camref=1101l5IQud" target="_blank" rel="nofollow sponsored">🚗 Expedia → Santiago</a>
   </div>
 </div>
 
@@ -540,7 +537,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     var u = 'https://www.expedia.ca/Hotel-Search?destination=' + encodeURIComponent(_pkgDest || '') +
       (hasDep ? '&startDate=' + _pkgDep : '') + (hasRet ? '&endDate=' + _pkgRet : '') +
       '&stars=' + stars;
-    if (_pkgCamref) u += '&clickref=' + encodeURIComponent(_pkgCamref);
+    if (_pkgCamref) u = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + encodeURIComponent(u) + '&camref=' + encodeURIComponent(_pkgCamref);
     return u;
   }
   var PKG = { backpack: _pkgHotelUrl('1,2'), vip: _pkgHotelUrl('4,5') };
@@ -651,7 +648,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
       (hasRet ? ',departure:' + ret + 'TANYTIME' : '') +
       '&options=cabinclass%3A' + encodeURIComponent(cabin) +
       '&pwaDialog=1';
-    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+    if (CAMREF) url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + encodeURIComponent(url) + '&camref=' + encodeURIComponent(CAMREF);
     return url;
   }
   function setLabel(origin) {
@@ -797,7 +794,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
     var hasRet = ret && ret >= today;
     var url = 'https://www.expedia.ca/Cars?destination=' + d +
       (hasDep ? '&startDate=' + dep : '') + (hasRet ? '&endDate=' + ret : '');
-    if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+    if (CAMREF) url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + encodeURIComponent(url) + '&camref=' + encodeURIComponent(CAMREF);
     return url;
   }
   CTA.href = expediaUrl();
@@ -843,7 +840,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var hasRet = ret && ret >= today;
   var url = 'https://www.expedia.ca/Hotel-Search?destination=' + encodeURIComponent(dest) +
     (hasDep ? '&startDate=' + dep : '') + (hasRet ? '&endDate=' + ret : '');
-  if (CAMREF) url += '&clickref=' + encodeURIComponent(CAMREF);
+  if (CAMREF) url = 'https://www.expedia.ca/affiliate?siteid=1&landingPage=' + encodeURIComponent(url) + '&camref=' + encodeURIComponent(CAMREF);
   CTA.href = url;
 })();
 </script>
