@@ -2376,7 +2376,7 @@ function openFlight(el){
   var origin = '';
   try { origin = sessionStorage.getItem('fp-origin') || ''; } catch(e){}
   var CAMREF = "1110lEJIZ";
-  var oo = encodeURIComponent(origin), dd = encodeURIComponent(dest);
+  var oo = encodeURIComponent(/^[A-Z]{3}$/.test(origin) ? origin : 'YUL'), dd = encodeURIComponent(dest);  // jamais de départ vide
   var url = 'https://www.expedia.ca/Flights-Search?mode=search&trip=roundtrip'
     + '&leg1=from:'+oo+',to:'+dd + '&leg2=from:'+dd+',to:'+oo
     + '&options=cabinclass%3Aeconomy&pwaDialog=1';

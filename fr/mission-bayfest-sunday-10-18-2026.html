@@ -638,8 +638,24 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   var CAMREF = "1110lEJIZ";
   var cabin = 'economy';  // classe cabine par défaut (Backpacker)
 
+  // Sans ville de départ, Expedia refuse la recherche (« Please select where
+  // you're leaving from ») : on part de Montréal (YUL) tant que la ville du
+  // visiteur n'est pas connue ou n'a pas d'aéroport dans cette liste.
+  var DEPART = {
+    'montreal': 'YUL', 'montréal': 'YUL', 'quebec': 'YQB', 'québec': 'YQB',
+    'quebec city': 'YQB', 'ottawa': 'YOW', 'toronto': 'YYZ', 'mississauga': 'YYZ',
+    'vancouver': 'YVR', 'calgary': 'YYC', 'edmonton': 'YEG', 'winnipeg': 'YWG',
+    'halifax': 'YHZ', 'gatineau': 'YOW', 'laval': 'YUL', 'longueuil': 'YUL',
+    'sherbrooke': 'YUL', 'trois-rivieres': 'YUL', 'trois-rivières': 'YUL',
+    'saguenay': 'YBG', 'paris': 'CDG', 'lyon': 'LYS', 'marseille': 'MRS',
+    'bruxelles': 'BRU', 'brussels': 'BRU', 'geneve': 'GVA', 'genève': 'GVA',
+    'geneva': 'GVA', 'london': 'LHR', 'new york': 'JFK', 'boston': 'BOS'
+  };
+  function departConnu(origin) {
+    return DEPART[(origin || '').trim().toLowerCase()] || '';
+  }
   function makeUrl(origin) {
-    var o = encodeURIComponent(origin || '');
+    var o = encodeURIComponent(departConnu(origin) || 'YUL');
     var d = encodeURIComponent(dest || '');
     // Format Expedia actuel (vérifié 2026-08) : mode=search + trip=roundtrip
     // + minuscules + options=cabinclass:<classe> obligatoires, sinon page 404.
@@ -660,7 +676,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:2rem 1rem}
   }
   function setLabel(origin) {
     var prefix = isEn ? '✈️ Choose my flight → ' : '✈️ Choisir mon vol → ';
-    CTA.textContent = prefix + destLabel + (origin ? '  (✈ ' + origin + ')' : '');
+    CTA.textContent = prefix + destLabel + (departConnu(origin) ? '  (✈ ' + origin + ')' : '');
   }
   function apply(origin) {
     CTA.href = makeUrl(origin);
